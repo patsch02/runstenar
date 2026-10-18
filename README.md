@@ -13,7 +13,8 @@ Sidan läser `data/*.json` med `fetch` och måste därför servas över http:
 
 ## Filer
 
-- `index.html`, `style.css`, `app.js` – själva sajten (ingen byggkedja).
+- `index.html`, `style.css`, `js/*.js` – själva sajten (ingen byggkedja); MapLibre ligger i `vendor/`.
+- `scripts/kontroll.rb` – kontroller före publicering (se CLAUDE.md).
 - `data/runor.json` – 6 590 inskrifter, byggd av `scripts/bygg-data.sh`.
 - `data/orter.json` – handplockade orter med ungefärliga årtal. Redigeras för hand.
 - `data/leder.json` – farleder och landvägar som schematiska linjer med ungefärliga årtal. Redigeras för hand.
@@ -22,7 +23,7 @@ Sidan läser `data/*.json` med `fetch` och måste därför servas över http:
   kort (`g` flik, `typ` fynd/rekonstruktion/teckning, `bild` filnamn på Wikimedia Commons, `fynd` och `plats`,
   `ungefar` om platsen är ungefärlig, `dom` för Myt eller sanning) och `drakt` med delarna till de schematiska
   figurerna (antingen `kort` = id för ett kort, eller `id`, `n`, `text`). Var siffrorna sitter på figurerna står i
-  `TB_FIGURER` i app.js. Bildernas upphov och licens hämtas live från Commons API. Fyndplatserna för Historiska
+  `TB_FIGURER` i js/tidsbild.js. Bildernas upphov och licens hämtas live från Commons API. Fyndplatserna för Historiska
   museets föremål är kontrollerade via K-samsök (förvärvsnummer 34000 och 5208 = Birka); museets periodfält där är
   inte pålitligt och används inte; registret ger heller sällan fyndplats för föremål utanför Birka. Perioder (tillsammans hela tidslinjen; `b` är exklusivt, och den sista perioden har `b` 1551 så att år 1550
   kommer med): romersk järnålder och folkvandringstid (150–550, huvudbilden är tunikan och byxorna från Thorsbergs

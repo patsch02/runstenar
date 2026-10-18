@@ -11,24 +11,36 @@ Statisk sajt utan byggsteg (ingen node, ingen python på datorn; ruby 2.6, jq oc
     ruby -run -e httpd . -p 8765      # öppna http://localhost:8765
 
 Förhandsvisningen startas med `.claude/launch.json` (namn "runstenar"). Datafilerna hämtas med
-`fetch(..., { cache: 'no-cache' })`; bumpa `?v=N` på `style.css` och `app.js` i `index.html`
+`fetch(..., { cache: 'no-cache' })`; bumpa `?v=N` på `style.css` och skripten i `js/` i `index.html`
 när de ändras, annars kan webbläsaren visa gamla versioner.
+
+Före publicering (commit och push till `main`, som GitHub Pages publicerar på https://patsch02.github.io/runstenar/):
+
+    ruby scripts/kontroll.rb           # JSON, signum i berättelser, filer, dubbla namn i js/, Commons-bilder, start i Chrome
+    ruby scripts/kontroll.rb --snabb   # utan nätet och Chrome
 
 ## Filer
 
-- `index.html` – panel (berättelser överst; en vald tur tar över panelen via klassen `turlage`. Sök, lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i app.js).
-- Borttagna ur panelen för tydlighetens skull (kod och data finns kvar, se kommentaren vid `lage` i app.js): Öde-namn, husgrunder och ödetomter, färdnamn, sjöspärrar och båtar, vårdkasar, skattfynd, offerplatser.
+- `index.html` – panel (berättelser överst; en vald tur tar över panelen via klassen `turlage`. Sök, lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i js/grund.js).
+- Borttagna ur panelen för tydlighetens skull (kod och data finns kvar, se kommentaren vid `lage` i js/grund.js): Öde-namn, husgrunder och ödetomter, färdnamn, sjöspärrar och båtar, vårdkasar, skattfynd, offerplatser.
 - `style.css` – färger som CSS-variabler, ljust och mörkt läge (`--nu`, `--sedan`, `--accent` …). Formgivningen
   "museum i kvällsljus" (pergament/natt, rödockra som accent, Fraunces för rubriker och Inter för text från Google Fonts)
   ligger i avsnittet Formgivning sist i filen och går före de enklare reglerna ovanför.
 - Panelen har också utfällbara rutor med museitips ("Museer och platser att besöka", handskrivna i index.html) och ordlista.
-- Välkomstrutan (`visaValkommen()` i app.js) visas en gång per besök. Bilder från Commons hämtas med
+- Välkomstrutan (`visaValkommen()` i js/panel.js) visas en gång per besök. Bilder från Commons hämtas med
   `hamtaCommons()` och fylls i med `fyllCommons()` (upphov och licens visas alltid).
-- `app.js` – all logik, uppdelad i avsnitt med rubriker `// ---------- … ----------`.
+- `js/*.js` – all logik, tio vanliga skript (inte ES-moduler) som laddas i ordning i index.html och delar globalt
+  omfång: grund (konstanter, `lage`, `meddela()`), karta, lager, tidslinje (inkl. Uppdatering), sok, detalj, berattelser,
+  tidsbild (inkl. Commons), panel (välkomst, ordlista, adress, panel), start (sist). Inom filerna avsnitt med rubriker
+  `// ---------- … ----------`. Två toppnivånamn får aldrig heta likadant i olika filer (en funktion skriver tyst över
+  den andra); `scripts/kontroll.rb` letar efter det.
   Mönster per lager: `laggTillX()` (källa + kartlager; tunga lager hämtas först när de slås på, via `LATA_LAGER`/`laddaLager()`, och flyttas in under runstenarna),
   `ritaX()` (filter och synlighet för valt år, anropas från `uppdatera()`), `visaX()` (detaljruta).
   Tillstånd i `lage` (år, kryssrutor, färgläge). Kryssrutor kopplas i listan i `start()`.
-  Kartbibliotek: MapLibre GL 5.6.0 från unpkg. Bakgrund: OpenFreeMap, rensad på vägar och namn.
+  Kartbibliotek: MapLibre GL 5.6.0 i `vendor/maplibre-gl-5.6.0/` (BSD-licens). Bakgrund: OpenFreeMap, rensad på vägar och namn;
+  svarar den inte inom 8 s används en enfärgad reservstil. Externa tjänster som fallerar (bakgrundskarta, SGU:s strandlinje,
+  Commons, RAÄ:s bilder) ger en stängbar rad via `meddela(nyckel, text)`; Google Fonts faller tillbaka på systemtypsnitt.
+  `<html data-start="klar">` sätts när sidan är igång och `data-fel` vid ofångade fel (läses av kontrollskriptet).
   Kartsymboler ritas på canvas med `ikon()`.
   Adressens hash (avsnittet Adress) speglar år, kartvy, lager som avviker från förvalen (`l=+gravar,-leder`),
   färgläge, öppen inskrift (`s=`) eller pågående tur (`tur=…&steg=…`); nya lager ska läggas i listan `LAGER`.

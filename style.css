@@ -604,3 +604,12 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 /* Lager som hämtas när de slås på */
 .rad.laddar > label::after { content: 'laddar …'; margin-left: 6px; font-size: 11px; color: var(--text-2); }
 .rad.fel > label::after { content: 'kunde inte laddas'; margin-left: 6px; font-size: 11px; color: var(--accent); }
+
+/* Meddelanden när en extern tjänst inte svarar */
+#meddelanden { position: fixed; left: 50%; transform: translateX(-50%); top: 12px; z-index: 20; margin: 0; padding: 0;
+  list-style: none; display: flex; flex-direction: column; gap: 6px; width: min(520px, calc(100% - 24px)); }
+#meddelanden li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px 8px 14px; border-radius: 10px; font-size: 13px;
+  background: var(--yta); color: var(--text); border: 1px solid var(--kant); border-left: 3px solid var(--accent); box-shadow: 0 4px 16px rgb(0 0 0 / .15); }
+#meddelanden li span { flex: 1; }
+#meddelanden button { border: 0; background: none; color: var(--text-2); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px; }
+.bildfel { margin: 0 0 10px; font-style: italic; }
