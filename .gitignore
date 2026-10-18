@@ -1,0 +1,6 @@
+# Rådata från byggskripten (ca 210 MB, hämtas igen av scripts/bygg-*.sh)
+.cache/
+
+# Lokala inställningar
+.DS_Store
+.claude/settings.local.json

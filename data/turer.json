@@ -1,0 +1,970 @@
+[
+  {
+    "id": "salme",
+    "n": "Salmeskeppen",
+    "kort": "41 män från Mälardalen begravda i två skepp på Ösel, före vikingatiden",
+    "bild": "Salme mõõk.JPG",
+    "steg": [
+      {
+        "rubrik": "Var ligger Salme?",
+        "ar": 750,
+        "vy": {
+          "c": [
+            20.0,
+            58.85
+          ],
+          "z": 5.6
+        },
+        "platser": [
+          {
+            "n": "Salme",
+            "x": 22.2506,
+            "y": 58.1675
+          },
+          {
+            "n": "Ösel (Saaremaa)",
+            "x": 22.55,
+            "y": 58.42,
+            "liten": true
+          },
+          {
+            "n": "Mälardalen",
+            "x": 17.2,
+            "y": 59.45,
+            "liten": true
+          }
+        ],
+        "linjer": [
+          [
+            [
+              17.545,
+              59.335
+            ],
+            [
+              17.85,
+              59.27
+            ],
+            [
+              18.4,
+              59.12
+            ],
+            [
+              19.3,
+              58.85
+            ],
+            [
+              20.6,
+              58.4
+            ],
+            [
+              21.6,
+              58.08
+            ],
+            [
+              22.1,
+              58.1
+            ],
+            [
+              22.2506,
+              58.1675
+            ]
+          ]
+        ],
+        "text": "Salme är en by på Sõrvehalvön längst i sydväst på Ösel (Saaremaa), Estlands största ö. Från Mälaren är det omkring 300 kilometer över Östersjön – några dygns segling. Den streckade linjen är en tänkbar väg, inte en känd."
+      },
+      {
+        "rubrik": "Fyndplatsen",
+        "ar": 750,
+        "vy": {
+          "c": [
+            22.2506,
+            58.1675
+          ],
+          "z": 13.5
+        },
+        "platser": [
+          {
+            "n": "Fyndplatsen för Salmeskeppen",
+            "x": 22.2506,
+            "y": 58.1675
+          }
+        ],
+        "text": "Det första skeppet kom fram 2008, när jord schaktades bort för ett bygge i utkanten av byn; det andra hittades 2010. När männen begravdes låg platsen vid stranden, bara en och en halv meter över havet. Landhöjningen har sedan lyft marken fyra meter, och i dag ligger fyndplatsen 230 meter från vattnet."
+      },
+      {
+        "rubrik": "Två skepp",
+        "ar": 750,
+        "vy": {
+          "c": [
+            22.2506,
+            58.1675
+          ],
+          "z": 15
+        },
+        "platser": [
+          {
+            "n": "Fyndplatsen för Salmeskeppen",
+            "x": 22.2506,
+            "y": 58.1675
+          }
+        ],
+        "text": "Det mindre skeppet var 11,5 meter långt och rymde sju döda. Det större var över 17 meter långt och 3 meter brett; där låg 34 män i fyra lager. Skeppen byggdes omkring 650–700, troligen i nuvarande Sverige, och hade lagats i årtionden. Spåren av kölen visar att det större hade segel – det äldsta kända segelfartyget i Östersjöområdet."
+      },
+      {
+        "rubrik": "Svärd, spel och jaktfalkar",
+        "ar": 750,
+        "bild": "Salme mõõk.JPG",
+        "bildtext": "Svärd från Salme",
+        "platser": [
+          {
+            "n": "Fyndplatsen för Salmeskeppen",
+            "x": 22.2506,
+            "y": 58.1675
+          }
+        ],
+        "text": "I gravarna låg delar av mer än 40 svärd, många med påkostade fästen av brons och de flesta medvetet förstörda. Där fanns också sköldar, spjut, pilspetsar och kammar, hundratals spelpjäser av valben och horn med sex tärningar – och sex hundar och två jaktfalkar."
+      },
+      {
+        "rubrik": "Hemma i Mälardalen",
+        "ar": 750,
+        "vy": {
+          "c": [
+            17.7,
+            59.65
+          ],
+          "z": 7.2
+        },
+        "platser": [
+          {
+            "n": "Vendel",
+            "x": 17.593,
+            "y": 60.174,
+            "liten": true
+          },
+          {
+            "n": "Valsgärde",
+            "x": 17.642,
+            "y": 59.906,
+            "liten": true,
+            "vanster": true
+          }
+        ],
+        "text": "Isotoper i tänderna och föremålens form pekar mot Mälardalen, och dna visar att fyra av männen var bröder och släkt med en femte, kanske en farbror. Ingen runsten minns dem – långa minnestexter på sten blev sed först på 900- och 1000-talen. Vid samma tid begravdes stormän i båtar i Vendel och Valsgärde i Uppland. Strandlinjen visar att Mälaren då var en vik av Östersjön."
+      },
+      {
+        "rubrik": "Plundring eller diplomati?",
+        "ar": 750,
+        "vy": {
+          "c": [
+            22.2506,
+            58.1675
+          ],
+          "z": 11
+        },
+        "platser": [
+          {
+            "n": "Fyndplatsen för Salmeskeppen",
+            "x": 22.2506,
+            "y": 58.1675
+          }
+        ],
+        "text": "Skeppens sidor är fulla av pilspetsar, några med tre spetsar för brandpilar. Först tolkades fyndet som ett misslyckat plundringståg. Men männen i det stora skeppet var förnäma, och hundar och jaktfalkar tar man med på jakt eller besök, inte på plundring – kanske kom de för att knyta förbund. De döda begravdes i sina skepp utan gravhög, och platsen glömdes under sand."
+      },
+      {
+        "rubrik": "Kung Yngvar?",
+        "ar": 750,
+        "vy": {
+          "c": [
+            20.8,
+            58.7
+          ],
+          "z": 5.8
+        },
+        "platser": [
+          {
+            "n": "Salme",
+            "x": 22.2506,
+            "y": 58.1675
+          },
+          {
+            "n": "Ösel – Eysýsla på fornnordiska",
+            "x": 22.55,
+            "y": 58.42,
+            "liten": true
+          }
+        ],
+        "text": "Kvädet Ynglingatal, bevarat i Snorres Ynglingasaga från 1200-talet, och den norska krönikan Historia Norwegiae berättar att den svenske kungen Yngvar föll på en ö i Östersjön som kallades Eysýsla – Ösel. Det är lockande att koppla honom till Salme, men källorna är skrivna långt senare och kopplingen kan inte bevisas."
+      }
+    ]
+  },
+  {
+    "id": "rok",
+    "n": "Rökstenen",
+    "kort": "Världens längsta runinskrift och dess gåtor",
+    "bild": "Rökstenen 1.JPG",
+    "steg": [
+      {
+        "rubrik": "En far minns sin son",
+        "ar": 850,
+        "s": [
+          "Ög 136"
+        ],
+        "oppna": "Ög 136",
+        "vy": {
+          "c": [
+            14.7752,
+            58.295
+          ],
+          "z": 12
+        },
+        "text": "Rökstenen i Östergötland har omkring 760 runor på fem sidor, fler än någon annan runsten. Varin ristade den efter sin döde son Vämod, troligen under 800-talet. Det mesta av texten handlar inte om sonen utan är ”minnen” som Varin säger till de unga männen."
+      },
+      {
+        "rubrik": "Tjodrik på sin häst",
+        "ar": 850,
+        "vy": {
+          "c": [
+            11,
+            54.5
+          ],
+          "z": 4.2
+        },
+        "plats": {
+          "n": "Aachen",
+          "x": 6.08,
+          "y": 50.776
+        },
+        "text": "En strof berättar om Tjodrik den djärve som ”sitter nu på sin gotiska häst”. Den brukar kopplas till östgotakungen Teoderik den store (död 526) och den ryttarstaty av honom som Karl den store lät föra från Ravenna till Aachen år 801. Kopplingen till statyn är en tolkning, men den visar hur långt berättelser färdades."
+      },
+      {
+        "rubrik": "Chiffer och tolkningar",
+        "ar": 850,
+        "s": [
+          "Ög 136"
+        ],
+        "vy": {
+          "c": [
+            14.7752,
+            58.295
+          ],
+          "z": 10
+        },
+        "text": "Delar av texten är skrivna med äldre runor och med chifferrunor, som om de var menade att lösas. Forskarna är inte överens om vad den handlar om: hjältedikt, uppmaning till hämnd eller, enligt en tolkning från 2020, oro för köld och mörker efter klimatkatastrofen på 500-talet. Ingen tolkning är säker."
+      }
+    ]
+  },
+  {
+    "id": "jelling",
+    "n": "Jelling",
+    "kort": "Kungen som ”gjorde danerna kristna”",
+    "bild": "Jellingsten lille 1.jpg",
+    "steg": [
+      {
+        "rubrik": "Gorm minns Tyra",
+        "ar": 950,
+        "s": [
+          "DR 41"
+        ],
+        "oppna": "DR 41",
+        "vy": {
+          "c": [
+            9.4194,
+            55.7565
+          ],
+          "z": 12
+        },
+        "text": "Kung Gorm reste den lilla Jellingstenen efter sin hustru Tyra, ”Danmarks bot”. Den räknas till Skandinaviens äldsta kungliga runstenar. Gorm dog 958 eller 959 enligt årsringarna i gravkammaren i Jellings norra hög, så stenen är äldre än så."
+      },
+      {
+        "rubrik": "Harald gör danerna kristna",
+        "ar": 975,
+        "s": [
+          "DR 42"
+        ],
+        "oppna": "DR 42",
+        "vy": {
+          "c": [
+            9.4194,
+            55.7565
+          ],
+          "z": 12
+        },
+        "text": "Sonen Harald Blåtand lät omkring 965 resa den stora Jellingstenen efter sina föräldrar och skrev in sig själv: Harald som vann hela Danmark och Norge och gjorde danerna kristna. På en sida finns Skandinaviens äldsta Kristusbild. Stenen är ett politiskt manifest, ristat någon gång mellan dopet på 960-talet och Haralds död omkring 986."
+      },
+      {
+        "rubrik": "Sven Tveskäggs män vid Hedeby",
+        "ar": 1025,
+        "s": [
+          "DR 1",
+          "DR 3"
+        ],
+        "vy": {
+          "c": [
+            9.57,
+            54.49
+          ],
+          "z": 10
+        },
+        "text": "Vid Hedeby, Danmarks stora handelsstad vid Slien, står stenar över Sven Tveskäggs hirdmän. En av dem dog ”när krigare belägrade Hedeby”. Runstenarna blev vanliga i Danmark några generationer före Uppland: Jelling satte modet, och det spreds norrut."
+      }
+    ]
+  },
+  {
+    "id": "england",
+    "n": "Englandsfararna",
+    "kort": "Danagäld och Knut den stores här",
+    "bild": "U 344, Orkesta.JPG",
+    "steg": [
+      {
+        "rubrik": "Västerut till England",
+        "ar": 1050,
+        "lager": [
+          "resor"
+        ],
+        "s": [
+          "Sm 104",
+          "Sö 160",
+          "Gs 8",
+          "N 184",
+          "Sm 101",
+          "Sm 27",
+          "Sm 29",
+          "Sm 5",
+          "Sm 77",
+          "Sö 166",
+          "Sö 46",
+          "Vg 187",
+          "Vg 20",
+          "DR 337",
+          "DR 6",
+          "U 1181",
+          "U 539",
+          "U 616",
+          "Sö 207",
+          "Vs 18",
+          "Vs 5",
+          "Ög 104",
+          "Sö 55",
+          "U 812",
+          "U 978",
+          "Ög Fv1950;341",
+          "U 194",
+          "U 241",
+          "U 344",
+          "Vs 9",
+          "Sö 83"
+        ],
+        "text": "Ett trettiotal runstenar nämner England. Kring år 1000 betalade engelska kungar enorma summor silver, danagäld, för att få fred, och efter 1016 var dansken Knut den store kung i England. Männen på stenarna var med i härarna, och en del kom aldrig hem."
+      },
+      {
+        "rubrik": "Ulf tog tre gälder",
+        "ar": 1050,
+        "s": [
+          "U 344",
+          "U 194",
+          "U 241"
+        ],
+        "oppna": "U 344",
+        "text": "Ulf i Borresta ”har i England tagit tre gälder”: först Tostes, sedan Torkels och sist Knuts. Torkel den höge ledde en här i England 1009–1012, och Knut betalade av sin flotta 1018 med 72 000 pund silver enligt den anglosaxiska krönikan. Alle i Väsby och Ulvrik i Lingsberg tog också gäld."
+      },
+      {
+        "rubrik": "Begravd i Bath",
+        "ar": 1050,
+        "s": [
+          "Sm 101",
+          "Sm 5",
+          "Sm 27",
+          "Sm 29",
+          "Sm 77",
+          "Sm 104",
+          "Vg 187",
+          "Vg 20"
+        ],
+        "oppna": "Sm 101",
+        "text": "I Småland och Västergötland finns en egen grupp Englandsstenar. Gunnar på Nöbbelesholmsstenen lades i en stenkista i Bath av sin bror Helge. Stenarna saknar djurornamentik och är därför daterade till 980–1015 efter stil. Det passar med Sven Tveskäggs tåg mot England från 990-talet, men stildateringen är grov."
+      }
+    ]
+  },
+  {
+    "id": "ingvar",
+    "n": "Ingvarståget",
+    "kort": "Ett fälttåg österut som nästan ingen överlevde",
+    "bild": "SÖ179 Gripsholm Runestone.jpg",
+    "steg": [
+      {
+        "rubrik": "De som for med Ingvar",
+        "ar": 1045,
+        "s": [
+          "Sö 9",
+          "Sö 105",
+          "Sö 107",
+          "Sö 108",
+          "Sö 131",
+          "Sö 173",
+          "Sö 179",
+          "Sö 254",
+          "Sö 277",
+          "Sö 281",
+          "Sö 287",
+          "Sö 320",
+          "Sö 335",
+          "U 439",
+          "U 644",
+          "U 654",
+          "U 661",
+          "U 778",
+          "U 1143",
+          "U Fv1992;157",
+          "Vs 19",
+          "Ög 155"
+        ],
+        "text": "Över tjugo runstenar i Mälardalen minns män som for österut med Ingvar. Inget annat vikingatida fälttåg har så många stenar, och nästan alla minns någon som dog. Isländska annaler sätter Ingvars död till 1041. Sagan om Yngvar den vittfarne skrevs långt senare och blandar minnen med saga."
+      },
+      {
+        "rubrik": "”Söderut i Särkland”",
+        "ar": 1045,
+        "lager": [
+          "resor"
+        ],
+        "s": [
+          "Sö 179",
+          "Sö 131",
+          "Sö 281"
+        ],
+        "oppna": "Sö 179",
+        "vy": {
+          "c": [
+            33,
+            52
+          ],
+          "z": 3.3
+        },
+        "text": "Gripsholmsstenen är skriven på vers: ”De for manligen fjärran efter guld och österut gav örnen mat, de dog söderut i Särkland.” Särkland var de muslimska länderna kring Kaspiska havet, dit silvret i de svenska skatterna kom ifrån. Linjerna på kartan är ungefärliga."
+      },
+      {
+        "rubrik": "Skeppen och ristaren",
+        "ar": 1045,
+        "s": [
+          "U 778",
+          "U 439",
+          "Sö 179"
+        ],
+        "oppna": "U 778",
+        "text": "Banke ”ägde ensam ett skepp och styrde österut i Ingvars följe”, och Säbjörn ”styrde skepp österut med Ingvar”. Båda stenarna och Gripsholmsstenen är ristade av samme Äskil, på båda sidor om Mälaren. Kanske beställde familjerna stenarna samtidigt, när beskedet kom att ingen skulle komma hem."
+      },
+      {
+        "rubrik": "Hur gamla är stenarna?",
+        "ar": 1045,
+        "s": [
+          "Sö 9",
+          "Sö 105",
+          "Sö 107",
+          "Sö 108",
+          "Sö 131",
+          "Sö 173",
+          "Sö 179",
+          "Sö 254",
+          "Sö 277",
+          "Sö 281",
+          "Sö 287",
+          "Sö 320",
+          "Sö 335",
+          "U 439",
+          "U 644",
+          "U 654",
+          "U 661",
+          "U 778",
+          "U 1143",
+          "U Fv1992;157",
+          "Vs 19",
+          "Ög 155"
+        ],
+        "text": "Ingvarsstenarna är viktiga för hela runstensforskningen: eftersom tåget går att datera till omkring 1040 ger de en fast punkt för ornamentikstilarna. Databasen anger oftast 1010–1050 och för Sö 131 till och med 980–1015, vilket visar hur grova stildateringar kan vara."
+      }
+    ]
+  },
+  {
+    "id": "jarlabanke",
+    "n": "Jarlabanke",
+    "kort": "Mannen som ”ensam ägde hela Täby”",
+    "bild": "U 164, Vallentuna.jpg",
+    "steg": [
+      {
+        "rubrik": "En bro för hans själ",
+        "ar": 1060,
+        "lager": [
+          "broar"
+        ],
+        "s": [
+          "U 164",
+          "U 165",
+          "U 127",
+          "U 261"
+        ],
+        "oppna": "U 164",
+        "vy": {
+          "c": [
+            18.0633,
+            59.4994
+          ],
+          "z": 12.5
+        },
+        "text": "Vid Täby tä byggde Jarlabanke en vägbank, Jarlabankes bro, med runstenar i båda ändar. Han reste dem över sig själv medan han levde, ”gjorde denna bro för sin själ” och skrev att han ”ensam ägde hela Täby”. Att bygga broar var ett gott kristet verk, och samtidigt en tydlig maktdemonstration."
+      },
+      {
+        "rubrik": "Herre över hundaret",
+        "ar": 1060,
+        "s": [
+          "U 212"
+        ],
+        "oppna": "U 212",
+        "text": "På stenen vid Vallentuna kyrka går han ett steg längre: han ”gjorde denna tingsplats och ägde ensam hela detta hundare”. Hundaret var bygdens rättsliga och militära distrikt. Om han verkligen ägde det eller bara ville göra anspråk på det kan vi inte veta – stenen är hans egen version."
+      },
+      {
+        "rubrik": "En släkt i sten",
+        "ar": 1060,
+        "s": [
+          "U 136",
+          "U 101",
+          "U 143",
+          "U 142",
+          "U 149",
+          "U 150"
+        ],
+        "text": "Runt Täby restes stenar av och efter Jarlabankes släkt i flera generationer: modern Jorunn och fadern Ingefast, sönerna Sven och Ingefast, och enligt den vanliga rekonstruktionen farfadern Östen, som enligt Brobystenen ”for till Jerusalem och dog uppe i Grekland”. Få släkter i vikingatidens Sverige går att följa så långt."
+      }
+    ]
+  },
+  {
+    "id": "hillersjo",
+    "n": "Hillersjöhällen",
+    "kort": "Ett arvsskifte berättat i sten",
+    "bild": "U 29, Hillersjö (drawing).jpg",
+    "steg": [
+      {
+        "rubrik": "”Tyd!”",
+        "ar": 1080,
+        "s": [
+          "U 29"
+        ],
+        "oppna": "U 29",
+        "vy": {
+          "c": [
+            17.7049,
+            59.3881
+          ],
+          "z": 12
+        },
+        "text": "Hillersjöhällen börjar med uppmaningen ”Tyd!” och berättar sedan Gerlögs liv: hon gifte sig med Germund, som drunknade, och sedan med Gudrik. Deras dotter Inga gifte sig med Ragnfast i Snottsta. Hällen ristades av Torbjörn skald."
+      },
+      {
+        "rubrik": "Ingas stenar i Snottsta",
+        "ar": 1080,
+        "s": [
+          "U 329",
+          "U 330",
+          "U 331",
+          "U 332"
+        ],
+        "oppna": "U 331",
+        "text": "Vid Snottsta och Vreta lät Inga resa fyra stenar efter sin man Ragnfast. En av dem säger att han ”ensam ägde denna gård efter Sigfast, sin fader”, en annan att Inga ”ärvde sina barn”. Stenarna stod vid vägen där alla kunde se dem."
+      },
+      {
+        "rubrik": "Arvet vandrar",
+        "ar": 1080,
+        "s": [
+          "U 29",
+          "U 329",
+          "U 330",
+          "U 331",
+          "U 332"
+        ],
+        "text": "Läs ihop dem: Ragnfast dör, sedan deras son, och Inga ärver sonen. Inga gifter om sig och dör, och då ärver hennes mor Gerlög. Gården går alltså från Ragnfasts släkt till Gerlögs. Historikern Birgit Sawyer har visat att många runstenar kan läsas som arvshandlingar – och att kvinnor kunde ärva och resa stenar."
+      }
+    ]
+  },
+  {
+    "id": "kvinnor",
+    "n": "Kvinnor som reste stenar",
+    "kort": "Mödrar, änkor och arvtagare som lät rista sina namn",
+    "bild": "Dynna stone.JPG",
+    "steg": [
+      {
+        "rubrik": "Sigrid bygger en bro",
+        "ar": 1030,
+        "s": [
+          "Sö 101"
+        ],
+        "oppna": "Sö 101",
+        "vy": {
+          "c": [
+            16.6344,
+            59.4413
+          ],
+          "z": 11
+        },
+        "bild": "Sö 101, Ramsund.jpg",
+        "text": "Många runstenar restes av kvinnor, ensamma eller tillsammans med män. Vid Ramsund lät Sigrid göra en bro ”för Holmgers själ”, sin make och far till Sigröd. Hällen är mest känd för bilderna av Sigurd Fafnesbane – sagohjälten som dödar draken."
+      },
+      {
+        "rubrik": "Gunnvor och den skickligaste mön",
+        "ar": 1040,
+        "s": [
+          "N 68"
+        ],
+        "oppna": "N 68",
+        "vy": {
+          "c": [
+            10.6029,
+            60.3228
+          ],
+          "z": 9
+        },
+        "bild": "Dynna stone.JPG",
+        "text": "I Hadeland i Norge lät Gunnvor bygga en bro efter sin dotter Astrid, ”den skickligaste mön i Hadeland”. Dynnastenen är en av få runstenar som hedrar en ung kvinna, och bilderna på den – stjärnan och de tre vise männen – hör till de tidigaste kristna bilderna i Norden."
+      },
+      {
+        "rubrik": "Estrid i Täby",
+        "ar": 1050,
+        "s": [
+          "U 136",
+          "U 101"
+        ],
+        "oppna": "U 136",
+        "vy": {
+          "c": [
+            18.01,
+            59.465
+          ],
+          "z": 11
+        },
+        "bild": "U 136, Broby bro.jpg",
+        "text": "Vid Broby bro lät Estrid resa stenar efter sin make Östen, som ”sökte till Jerusalem och dog uppe i Grekland”. På en annan sten minns hon sina söner Ingifast och Ingvar. Hennes sonsöner Heming och Jarlabanke lät röja vägen och bygga broarna – släkten satte sina stenar längs de vägar alla färdades."
+      },
+      {
+        "rubrik": "Ingirun vill till Jerusalem",
+        "ar": 1060,
+        "s": [
+          "U 605"
+        ],
+        "oppna": "U 605",
+        "vy": {
+          "c": [
+            17.7874,
+            59.4743
+          ],
+          "z": 11
+        },
+        "text": "En sten vid Stäket, som nu är försvunnen och känd från äldre avbildningar, restes av en kvinna – kanske Ingirun, läsningen av namnet är osäker – till minne av sig själv. Hon ”vill fara österut och bort till Jerusalem”. Det är ett av de tidigaste vittnesbörden om en nordisk pilgrimsresa."
+      },
+      {
+        "rubrik": "Varför kvinnor?",
+        "ar": 1060,
+        "s": [
+          "U 29",
+          "U 101",
+          "U 136",
+          "Sö 101",
+          "U 605"
+        ],
+        "vy": {
+          "c": [
+            17.6,
+            59.45
+          ],
+          "z": 8
+        },
+        "text": "Historikern Birgit Sawyer har visat att runstenarna ofta kan läsas som arvshandlingar: den som reste stenen visade att den hade rätt till arvet. Kvinnor reser stenar när män i släkten är döda, och Hillersjöhällen (egen berättelse) visar hur ett arv kunde gå genom flera kvinnor. Sök på ett kvinnonamn för att se fler."
+      }
+    ]
+  },
+  {
+    "id": "kristnandet",
+    "n": "Kristnandet",
+    "kort": "Från Ansgar i Birka till kyrkorna – hur Norden blev kristet",
+    "bild": "Frösöstenen sommar.JPG",
+    "steg": [
+      {
+        "rubrik": "Ansgar i Birka",
+        "ar": 830,
+        "vy": {
+          "c": [
+            17.545,
+            59.335
+          ],
+          "z": 9
+        },
+        "platser": [
+          {
+            "n": "Birka",
+            "x": 17.545,
+            "y": 59.335
+          }
+        ],
+        "text": "Omkring 830 kom missionären Ansgar till handelsplatsen Birka, enligt hans levnadsteckning skriven av Rimbert. Han fick predika och en kyrka byggdes, men missionen lämnade få spår. Kristendomen kom till Norden långsamt, genom kontakter, handel och kungar – under flera hundra år."
+      },
+      {
+        "rubrik": "Harald gör danerna kristna",
+        "ar": 975,
+        "s": [
+          "DR 42"
+        ],
+        "oppna": "DR 42",
+        "vy": {
+          "c": [
+            9.4194,
+            55.7565
+          ],
+          "z": 11
+        },
+        "bild": "Jellingsten lille 1.jpg",
+        "text": "I Jelling lät kung Harald Blåtand resa den stora stenen efter sina föräldrar Gorm och Tyra och kallar sig där den Harald som ”vann hela Danmark och Norge och gjorde danerna kristna”. Den har den äldsta Kristusbilden i Skandinavien. Läs mer i berättelsen om Jelling."
+      },
+      {
+        "rubrik": "Kors och böner",
+        "ar": 1060,
+        "s": [
+          "U 956",
+          "U 164",
+          "U 112"
+        ],
+        "oppna": "U 956",
+        "vy": {
+          "c": [
+            17.8,
+            59.6
+          ],
+          "z": 9
+        },
+        "text": "De flesta uppländska runstenarna från 1000-talet har ett kors, och många slutar med en bön: ”Gud och Guds moder hjälpe hans själ.” Arkeologen Anne-Sofie Gräslund har tolkat stenarna som kristna minnesmärken, resta medan det ännu fanns få kyrkor och kyrkogårdar."
+      },
+      {
+        "rubrik": "Döda i dopkläder",
+        "ar": 1060,
+        "s": [
+          "U 699"
+        ],
+        "oppna": "U 699",
+        "vy": {
+          "c": [
+            17.3845,
+            59.4991
+          ],
+          "z": 10
+        },
+        "text": "Ingileif lät resa en sten efter sin man Brune, som ”dog i vita kläder i Danmark”. Uttrycket syftar på den vita dräkt man bar veckan efter dopet: han döptes alltså strax före sin död. Några stenar i Uppland säger detsamma."
+      },
+      {
+        "rubrik": "Broar för själen",
+        "ar": 1060,
+        "s": [
+          "U 164",
+          "U 101",
+          "Sö 101",
+          "N 68"
+        ],
+        "lager": [
+          "broar"
+        ],
+        "vy": {
+          "c": [
+            15.5,
+            59.6
+          ],
+          "z": 5.6
+        },
+        "text": "Att bygga en bro eller röja en väg var en kristen god gärning som kunde hjälpa en död själ. Jarlabanke lät göra en bro ”för sin själ”. Brostenarna är inringade på kartan; de flesta finns i Mälardalen."
+      },
+      {
+        "rubrik": "Jämtland kristnas",
+        "ar": 1060,
+        "s": [
+          "J RS1928;66"
+        ],
+        "oppna": "J RS1928;66",
+        "vy": {
+          "c": [
+            14.6212,
+            63.1825
+          ],
+          "z": 9
+        },
+        "bild": "Frösöstenen sommar.JPG",
+        "text": "På Frösön, där ortnamnet minner om guden Frö, står Sveriges nordligaste runsten. Östman, Gudfasts son, lät resa den och bygga en bro, ”och han lät kristna Jämtland”. Stenen är daterad efter stilen; det exakta året är okänt."
+      },
+      {
+        "rubrik": "Kyrkorna tar över",
+        "ar": 1180,
+        "lager": [
+          "kyrkor"
+        ],
+        "vy": {
+          "c": [
+            16,
+            59
+          ],
+          "z": 5.5
+        },
+        "text": "Under 1100-talet byggs stenkyrkor i hela landet, och de resta runstenarna upphör. Minnet av de döda flyttar till kyrkogården – runor huggs nu på gravhällar och i kyrkorna själva. Kyrkolagret visar bara kyrkor med känt byggår och är långt ifrån fullständigt."
+      }
+    ]
+  },
+  {
+    "id": "grekland",
+    "n": "Väringar i Grekland",
+    "kort": "De som for till Miklagård, tjänade kejsaren och sällan kom hem",
+    "bild": "U 112, Ed (side B) (Griklanti).JPG",
+    "steg": [
+      {
+        "rubrik": "Vägen till Miklagård",
+        "ar": 1020,
+        "lager": [
+          "resor"
+        ],
+        "vy": {
+          "c": [
+            25,
+            52
+          ],
+          "z": 3.6
+        },
+        "platser": [
+          {
+            "n": "Miklagård (Konstantinopel)",
+            "x": 28.98,
+            "y": 41.01
+          }
+        ],
+        "linjer": [
+          [
+            [
+              17.8,
+              59.4
+            ],
+            [
+              20.5,
+              59.7
+            ],
+            [
+              24.5,
+              59.9
+            ],
+            [
+              29.8,
+              59.95
+            ],
+            [
+              31.3,
+              58.5
+            ],
+            [
+              31.3,
+              56.5
+            ],
+            [
+              30.5,
+              54.8
+            ],
+            [
+              30.5,
+              50.45
+            ],
+            [
+              32.3,
+              47.8
+            ],
+            [
+              31.5,
+              46.6
+            ],
+            [
+              30.5,
+              44.5
+            ],
+            [
+              28.98,
+              41.01
+            ]
+          ]
+        ],
+        "text": "Runstenarna kallar det bysantinska riket Grekland, och huvudstaden Konstantinopel Miklagård – den stora staden. Dit for man via Östersjön och de ryska floderna. Ett trettiotal runstenar nämner Grekland eller grekerna. Den streckade linjen är en schematisk väg, inte en känd rutt."
+      },
+      {
+        "rubrik": "Fem söner",
+        "ar": 990,
+        "s": [
+          "Ög 81"
+        ],
+        "oppna": "Ög 81",
+        "vy": {
+          "c": [
+            15.0997,
+            58.3605
+          ],
+          "z": 10
+        },
+        "bild": "Ög 81, Högby (side A).JPG",
+        "text": "Högbystenen i Östergötland räknar upp den gode mannen Gulles fem söner och var de dog: Asmund vid Före (kanske Fyrisvallarna), Halvdan på Holm (kanske Bornholm), Kåre vid Od, även Bue är död – och Assur ”österut i Grekland”. Få stenar visar så tydligt hur långt en enda familj spreds."
+      },
+      {
+        "rubrik": "Han kom till grekerna",
+        "ar": 1000,
+        "s": [
+          "Sö 170"
+        ],
+        "oppna": "Sö 170",
+        "vy": {
+          "c": [
+            17.1151,
+            58.8037
+          ],
+          "z": 10
+        },
+        "text": "Vid Nälberga i Södermanland restes en av de äldsta Grekland-stenarna, efter Baulv: ”han kom till grekerna, dog sedan hos dem.” Stenen är i stil Rak och därmed troligen från tiden kring år 1000."
+      },
+      {
+        "rubrik": "Hövding för hirden",
+        "ar": 1080,
+        "s": [
+          "U 112",
+          "U 104"
+        ],
+        "oppna": "U 112",
+        "vy": {
+          "c": [
+            17.868,
+            59.505
+          ],
+          "z": 12
+        },
+        "bild": "U 112, Ed (side B) (Griklanti).JPG",
+        "text": "Vid Ed i Uppland lät Ragnvald rista i ett stort stenblock att han ”var i Grekland, var hövding för hirden”. Hirden tolkas ofta som väringagardet, kejsarens livvakt av nordbor. I samma socken minns Torsten sin far och bror som ”var ute i Grekland”."
+      },
+      {
+        "rubrik": "Grekland i sten",
+        "ar": 1080,
+        "lager": [
+          "resor"
+        ],
+        "vy": {
+          "c": [
+            17.5,
+            59.2
+          ],
+          "z": 6.5
+        },
+        "s": [
+          "Sö 170",
+          "Ög 81",
+          "U 112",
+          "U 104",
+          "U 136",
+          "U 518",
+          "U 956",
+          "U 1016"
+        ],
+        "text": "Här är några av de stenar som nämner Grekland. De flesta finns i Uppland och Södermanland och är resta efter män som dog borta. Linjerna visar alla resor som runtexterna nämner; slå av ”Resor” i panelen efter berättelsen om du vill."
+      }
+    ]
+  }
+]

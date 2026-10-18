@@ -1,0 +1,606 @@
+:root {
+  color-scheme: light;
+  --yta: #f8f3ea;
+  --yta-2: #efe6d6;
+  --kant: #e0d5c1;
+  --text: #221b14;
+  --text-2: #685c4c;
+  --nu: #b4441c;      /* ristas omkring nu */
+  --sedan: #2e5f80;   /* finns sedan tidigare */
+  --grov: #a39883;    /* grovt daterad */
+  --annan: #6d6152;
+  --ort: #221b14;
+  --led-hav: #4f7d99;
+  --led-land: #8a6a3b;
+  --bygd: #1baf7a;
+  --namn-1: #0a3d2e;  /* ortnamnens perioder, äldst … yngst */
+  --namn-2: #0f5c43;
+  --namn-3: #177d59;
+  --namn-4: #25a070;
+  --namn-5: #4cbf8a;
+  --grav: #4a3aa7;
+  --kult: #d18b00;
+  --strand: #86a9c0;
+  --sjo: #1f4e79;
+  --forsvar: #a3382c;
+  --skatt: #e6e3da;
+  --ode: #c2417a;
+  --accent: #b4441c;
+  --accent-2: #8a3315;
+  --guld: #b98a2e;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --skugga: 0 18px 40px -12px rgb(50 30 10 / .28), 0 2px 6px rgb(50 30 10 / .10);
+  --glas: color-mix(in srgb, var(--yta) 86%, transparent);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --yta: #16171a;
+    --yta-2: #212226;
+    --kant: #34353b;
+    --text: #f4eee4;
+    --text-2: #b8ae9f;
+    --nu: #e5793c;
+    --sedan: #6ea6cf;
+    --grov: #8b8478;
+    --annan: #cfc6b8;
+    --ort: #f4eee4;
+    --led-hav: #86aec6;
+    --led-land: #c2a271;
+    --bygd: #199e70;
+    --namn-1: #d4f3e3;
+    --namn-2: #a3e4c4;
+    --namn-3: #6fcda2;
+    --namn-4: #3fae80;
+    --namn-5: #22895f;
+    --grav: #9085e9;
+    --kult: #eda100;
+    --strand: #335d7d;
+    --sjo: #9cc4e4;
+    --forsvar: #e58b7d;
+    --skatt: #d8d5cc;
+    --ode: #e87ba4;
+    --accent: #e5793c;
+    --accent-2: #f19a62;
+    --guld: #d9b25c;
+    --skugga: 0 22px 50px -12px rgb(0 0 0 / .65), 0 2px 8px rgb(0 0 0 / .35);
+    --glas: color-mix(in srgb, var(--yta) 82%, transparent);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--yta);
+  overflow: hidden;
+}
+#karta { position: absolute; inset: 0; }
+
+.ruta {
+  position: absolute;
+  background: color-mix(in srgb, var(--yta) 94%, transparent);
+  border: 1px solid var(--kant);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / .12);
+  backdrop-filter: blur(6px);
+}
+
+/* Vänsterpanel */
+#panel { top: 12px; left: 12px; width: 320px; max-height: calc(100% - 190px); overflow: auto; padding: 14px 16px; }
+h1 { font-size: 18px; margin: 0 0 4px; line-height: 1.2; }
+.ingress { margin: 0 0 12px; color: var(--text-2); }
+.lagertips { margin: 0 0 6px; font-size: 12px; color: var(--text-2); }
+.i-tecken { display: inline-grid; place-items: center; width: 16px; height: 16px; border: 1px solid var(--kant); border-radius: 50%; font: italic 600 11px/1 Georgia, serif; vertical-align: -3px; }
+.prick { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 2px; }
+.prick.nu { background: var(--nu); }
+.prick.sedan { background: var(--sedan); opacity: .7; }
+.prick.grov { background: var(--grov); opacity: .7; }
+.prick.fylld { background: var(--text-2); }
+.ort-symbol { display: inline-block; width: 8px; height: 8px; margin: 0 3px 0 1px; background: var(--ort); transform: rotate(45deg); }
+label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+hr { width: 100%; border: 0; border-top: 1px solid var(--kant); margin: 5px 0; }
+details summary { cursor: pointer; font-weight: 600; }
+details p { margin: 8px 0 0; color: var(--text-2); font-size: 13px; }
+
+/* Lager: en rad per lager med kryssruta, symbol, namn, antal och i-knapp, samlade i grupper */
+.lager { margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.grupp { border-top: 1px solid var(--kant); padding: 6px 0; }
+.grupp:last-child { border-bottom: 1px solid var(--kant); }
+.grupp > summary { display: flex; align-items: baseline; gap: 8px; padding: 2px 0; list-style: none; }
+.grupp > summary::-webkit-details-marker { display: none; }
+.grupp > summary::before { content: '▸'; color: var(--text-2); width: 10px; transition: transform .15s; }
+.grupp[open] > summary::before { transform: rotate(90deg); }
+.grupp > summary .aktiva { margin-left: auto; font-weight: 400; color: var(--text-2); font-size: 12px; }
+.grupp[open] > summary { margin-bottom: 4px; }
+.rad { display: flex; align-items: center; gap: 6px; min-height: 24px; }
+.rad > label { flex: 1; min-width: 0; }
+.rad input, .rad .tom { flex: none; width: 13px; height: 13px; margin: 0; }
+.rad > b, .rad > small { margin-left: auto; min-width: 3.5em; text-align: right; }
+.rad > b { font-weight: 600; }
+.rad > small { color: var(--text-2); font-size: 12px; }
+.rad > label + :is(b, small) { margin-left: 0; }
+.rad:not(:has(.info-knapp)) > :is(b, small):last-child { margin-right: 26px; }
+.rad.under { padding-left: 19px; font-size: 13px; color: var(--text-2); }
+.rad.under > b { color: var(--text); }
+.rad:has(> label > input:not(:checked)) { color: var(--text-2); }
+.rad:has(> label > input:not(:checked)) > b { opacity: .45; }
+.rad:has(> label > input:not(:checked)) > label > span:not(.tom) { opacity: .45; }
+.rad:has(> label > input:not(:checked)) + .rad.under,
+.rad:has(> label > input:not(:checked)) + .rad.under + .rad.under { display: none; }
+.info-knapp { flex: none; display: grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 1px solid var(--kant); border-radius: 50%; background: none; color: var(--text-2); font: italic 600 11px/1 Georgia, serif; cursor: pointer; }
+.info-knapp:hover, .info-knapp[aria-expanded="true"] { background: var(--text); border-color: var(--text); color: var(--yta); }
+.info { margin: 2px 0 6px 19px; padding: 6px 10px; background: var(--yta-2); border-radius: 6px; font-size: 12.5px; color: var(--text-2); }
+.vag-symbol { display: inline-block; width: 12px; margin: 0 1px 3px 0; border-top: 2px solid var(--led-land); }
+.tom-symbol { display: inline-block; width: 12px; }
+.om { margin-top: 4px; }
+a { color: var(--sedan); }
+
+/* Detaljruta */
+#detalj { top: 12px; right: 12px; width: 340px; max-height: calc(100% - 190px); overflow: auto; padding: 14px 16px; }
+#detalj h2 { margin: 0 28px 2px 0; font-size: 20px; }
+#detalj .under { color: var(--text-2); margin: 0 0 10px; }
+#detalj dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; margin: 0 0 12px; }
+#detalj dt { color: var(--text-2); }
+#detalj dd { margin: 0; }
+#detalj blockquote { margin: 0 0 10px; padding: 8px 12px; background: var(--yta-2); border-left: 3px solid var(--nu); border-radius: 0 6px 6px 0; }
+#detalj .runor { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--text-2); overflow-wrap: anywhere; margin: 0 0 10px; }
+#detalj .not { font-size: 12px; color: var(--text-2); }
+#detalj .stang { position: absolute; top: 8px; right: 8px; border: 0; background: none; font-size: 20px; line-height: 1; cursor: pointer; color: var(--text-2); padding: 4px 8px; }
+
+/* Tidslinje */
+#tidslinje { left: 12px; right: 12px; bottom: 12px; padding: 10px 16px 8px; display: flex; gap: 18px; align-items: center; }
+.styrning { display: flex; align-items: center; gap: 12px; flex: none; }
+#spela { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--text); color: var(--yta); font-size: 16px; cursor: pointer; }
+.ar { width: 120px; }
+#ar-tal { display: block; font-size: 32px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+#ar-epok { font-size: 12px; color: var(--text-2); }
+#fart { font: inherit; color: inherit; background: var(--yta-2); border: 1px solid var(--kant); border-radius: 6px; padding: 3px 4px; }
+.spar { flex: 1; min-width: 0; position: relative; }
+#histogram { display: block; width: 100%; height: 64px; }
+#histogram rect { fill: var(--grov); opacity: .45; }
+#histogram rect.passerad { fill: var(--sedan); opacity: .75; }
+#histogram rect.aktiv { fill: var(--nu); opacity: 1; }
+#ar { position: absolute; left: 0; top: 0; width: 100%; height: 64px; margin: 0; opacity: 0; cursor: ew-resize; }
+#ar:focus-visible + .skala { outline: 2px solid var(--sedan); outline-offset: 2px; }
+.markor { position: absolute; top: 0; width: 2px; height: 64px; background: var(--text); pointer-events: none; }
+.skala { position: relative; height: 16px; font-size: 11px; color: var(--text-2); border-top: 1px solid var(--kant); }
+.skala span { position: absolute; top: 2px; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+.tips { position: absolute; bottom: 86px; transform: translateX(-50%); background: var(--text); color: var(--yta); padding: 3px 8px; border-radius: 5px; font-size: 12px; white-space: nowrap; pointer-events: none; }
+
+/* Orter på kartan */
+.ort { display: flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; }
+.ort i { width: 9px; height: 9px; background: var(--ort); transform: rotate(45deg); outline: 2px solid var(--yta); flex: none; }
+.ort.ringborg i { border-radius: 50%; background: none; border: 2.5px solid var(--ort); transform: none; }
+.ort.handelsplats i { background: var(--yta); border: 2.5px solid var(--ort); }
+.ort span { font-weight: 600; font-size: 12px; color: var(--text); text-shadow: 0 0 3px var(--yta), 0 0 3px var(--yta), 0 0 3px var(--yta), 0 0 3px var(--yta); }
+.ort.dold { visibility: hidden; }   /* MapLibre styr själv opacity på markörer */
+
+.maplibregl-popup-content { background: var(--yta); color: var(--text); border-radius: 8px; padding: 8px 12px; font: inherit; box-shadow: 0 2px 12px rgb(0 0 0 / .2); max-width: 260px; }
+.maplibregl-popup-tip { border-top-color: var(--yta) !important; border-bottom-color: var(--yta) !important; }
+.maplibregl-popup-content small { color: var(--text-2); display: block; }
+
+@media (max-width: 760px) {
+  #panel { width: auto; right: 12px; max-height: 38%; }
+  #panel .om, #panel .ingress, #panel .lagertips { display: none; }
+  #detalj { top: auto; bottom: 150px; left: 12px; right: 12px; width: auto; max-height: 45%; }
+  #tidslinje { flex-direction: column; align-items: stretch; gap: 6px; }
+  .styrning { justify-content: space-between; }
+  .spar { flex: none; }
+}
+
+/* Kartans egna knappar läggs ovanför tidslinjen */
+.maplibregl-ctrl-bottom-right { bottom: 112px; right: 4px; }
+@media (max-width: 760px) { .maplibregl-ctrl-bottom-right { bottom: 168px; } }
+
+/* Försvunna inskrifter, leder */
+.prick.ring { background: none; border: 2px solid var(--sedan); }
+.led-symbol { display: inline-block; width: 12px; margin: 0 1px 3px 0; border-top: 2px dotted var(--led-hav); }
+#detalj .status { margin: 0 0 10px; font-size: 13px; color: var(--text-2); }
+#detalj .status.borta { padding: 8px 12px; border: 1px dashed var(--kant); border-radius: 6px; }
+#detalj .status b { color: var(--text); }
+
+/* Resor, bebyggelse */
+.prick.bygd { background: linear-gradient(90deg, var(--namn-1) 0 50%, var(--namn-4) 50%); }
+.res-symbol { display: inline-block; width: 12px; margin: 0 1px 3px 0; border-top: 2px solid var(--nu); }
+.ode-symbol { display: inline-block; width: 12px; font-weight: 700; line-height: 1; text-align: center; margin-right: 1px; }
+.prick.grav { background: var(--grav); opacity: .7; }
+.ode-symbol.reg { color: var(--ode); }
+
+/* Sökning */
+.sokruta { margin-bottom: 12px; }
+#sok { width: 100%; font: inherit; color: inherit; background: var(--yta-2); border: 1px solid var(--kant); border-radius: 6px; padding: 6px 8px; }
+#sok:focus-visible { outline: 2px solid var(--sedan); outline-offset: 1px; }
+#traffar { list-style: none; margin: 4px 0 0; padding: 4px 0; border: 1px solid var(--kant); border-radius: 6px; background: var(--yta); max-height: 300px; overflow: auto; }
+#traffar .grupp { padding: 4px 8px 2px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--text-2); }
+#traffar button { display: flex; flex-direction: column; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; padding: 4px 8px; cursor: pointer; }
+#traffar button:hover, #traffar button:focus-visible { background: var(--yta-2); outline: none; }
+#traffar small, #markering small { color: var(--text-2); font-size: 12px; display: block; }
+#markering { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-top: 6px; padding: 6px 8px; border: 2px solid var(--text); border-radius: 6px; }
+#markering button { border: 0; background: none; color: var(--text-2); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 2px; }
+#markering[hidden] { display: none; }
+
+/* Färgläggning per stil eller ristare */
+.fargval { display: flex; align-items: center; gap: 8px; margin: 8px 0 0; }
+.fargval > label { cursor: default; white-space: nowrap; }
+#farg { flex: 1; min-width: 0; font: inherit; color: inherit; background: var(--yta-2); border: 1px solid var(--kant); border-radius: 6px; padding: 4px 6px; }
+#farglegend { list-style: none; margin: 6px 0 0; padding: 0; }
+#farglegend button { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-radius: 4px; padding: 2px 4px; cursor: pointer; }
+#farglegend button:hover, #farglegend button:focus-visible { background: var(--yta-2); outline: none; }
+#farglegend i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+#farglegend span { flex: 1; }
+#farglegend small { color: var(--text-2); font-variant-numeric: tabular-nums; }
+/* I kategoriläge visar teckenförklaringens tre tidsprickar bara styrka, inte färg */
+body:not([data-farg="tid"])[data-farg] .prick.nu { background: var(--text); }
+body:not([data-farg="tid"])[data-farg] .prick.sedan { background: var(--text); opacity: .5; }
+body:not([data-farg="tid"])[data-farg] .prick.grov { background: var(--text); opacity: .25; }
+body:not([data-farg="tid"])[data-farg] .prick.ring { border-color: var(--text); }
+
+/* Kultplatser och kyrkor */
+.tri { display: inline-block; width: 0; height: 0; margin: 0 2px 0 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid var(--kult); opacity: .45; }
+.tri.fylld { opacity: 1; }
+.kors-symbol { display: inline-block; width: 12px; text-align: center; font-weight: 700; line-height: 1; margin-right: 1px; }
+.strand-symbol { display: inline-block; width: 12px; height: 8px; margin-right: 1px; border-radius: 2px; background: var(--strand); }
+.fard-symbol { display: inline-block; width: 12px; height: 6px; margin: 0 1px 1px 0; border: 2px solid var(--led-land); border-bottom: 0; border-radius: 8px 8px 0 0; }
+.sjo-symbol { display: inline-block; width: 12px; text-align: center; font-size: 11px; line-height: 1; margin-right: 1px; color: var(--sjo); }
+.borg-symbol { display: inline-block; width: 10px; height: 10px; margin: 0 2px 0 0; border: 2px solid var(--forsvar); border-bottom-color: transparent; border-radius: 50%; }
+.kase-symbol { display: inline-block; width: 12px; text-align: center; font-weight: 700; font-size: 11px; line-height: 1; margin-right: 1px; color: var(--forsvar); }
+.skatt-symbol { display: inline-block; width: 10px; height: 10px; margin-right: 2px; border-radius: 50%; background: var(--skatt); border: 1.5px solid var(--text); }
+.skatt-symbol.svag { opacity: .45; }
+.mynt-symbol { display: inline-block; width: 10px; height: 10px; margin-right: 2px; border-radius: 50%; border: 1.5px solid var(--text-2); background: color-mix(in srgb, var(--text-2) 30%, transparent); }
+#myntlegend { list-style: none; margin: 0 0 2px 16px; padding: 0; font-size: 12px; }
+#myntlegend li { display: flex; align-items: center; gap: 6px; }
+#myntlegend i { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+#myntlegend span { flex: 1; }
+#myntlegend small { color: var(--text-2); font-variant-numeric: tabular-nums; }
+
+/* Mellanrubriker, "alltid"-etikett och avslagna lager */
+.mellan { margin: 8px 0 2px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; color: var(--text-2); }
+.grupp > summary + .mellan { margin-top: 0; }
+.alltid { display: inline-block; margin-left: 4px; padding: 0 5px; border: 1px solid var(--kant); border-radius: 4px; font-size: 10.5px; line-height: 15px; color: var(--text-2); white-space: nowrap; }
+.rad:has(> label > input:not(:checked)) > b { font-size: 0; }
+.rad:has(> label > input:not(:checked)) > b::after { content: '–'; font-size: 14px; }
+
+/* Tidslinjens fart och bildtext */
+.fart { display: flex; flex-direction: column; gap: 2px; font-size: 11px; color: var(--text-2); cursor: default; }
+.fart select { color: var(--text); font-size: 14px; }
+.histotext { position: absolute; left: 0; top: 0; font-size: 11px; color: var(--text-2); pointer-events: none; }
+#detalj .bild { margin: 0 0 10px; }
+#detalj .bild .ram { display: block; min-height: 120px; background: var(--yta-2); border-radius: 6px; overflow: hidden; }
+#detalj .bild img { display: block; width: 100%; max-height: 260px; object-fit: cover; }
+#detalj .bild figcaption { margin-top: 4px; overflow-wrap: anywhere; }
+#detalj .bild.raa .ram { min-height: 0; display: flex; justify-content: center; }
+#detalj .bild.raa img { width: auto; max-width: 100%; }
+#namnlegend { list-style: none; margin: 2px 0 4px 16px; padding: 0; font-size: 12px; }
+#namnlegend li { display: flex; align-items: center; gap: 6px; padding: 1px 0; }
+#namnlegend li.senare { opacity: .45; }
+#namnlegend i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+#namnlegend span { flex: 1; line-height: 1.25; }
+#namnlegend small { color: var(--text-2); font-size: 11px; }
+#namnlegend em { font-style: normal; color: var(--text-2); font-size: 11px; white-space: nowrap; }
+
+/* Berättelser: turlistan i panelen och läget där panelen visar en tur */
+#berattelser { margin: 0 0 10px; }
+#turlista { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 2px; }
+#turlista button { display: block; width: 100%; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-radius: 6px; padding: 4px 6px; cursor: pointer; }
+#turlista button:hover, #turlista button:focus-visible { background: var(--yta-2); outline: none; }
+#turlista b { display: block; font-weight: 600; }
+#turlista small { display: block; color: var(--text-2); font-size: 12px; line-height: 1.3; }
+#panel.turlage > :not(h1):not(#tur) { display: none; }
+#tur .tillbaka { font: inherit; font-size: 12px; color: var(--text-2); background: none; border: 0; padding: 0; cursor: pointer; }
+#tur .tillbaka:hover { color: var(--text); }
+#tur h2 { font-size: 16px; margin: 6px 0 0; }
+#tur .stegnr { font-size: 12px; color: var(--text-2); margin: 0 0 8px; }
+#tur h3 { font-size: 15px; margin: 0 0 6px; }
+#tur p.text { margin: 0 0 10px; line-height: 1.45; }
+#tur .stenar { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 10px; }
+#tur .stenar button { font: inherit; font-size: 12px; color: inherit; background: var(--yta-2); border: 1px solid var(--kant); border-radius: 4px; padding: 1px 6px; cursor: pointer; }
+#tur .stenar button:hover { border-color: var(--text); }
+#tur .prickar { display: flex; gap: 5px; justify-content: center; margin: 0 0 8px; }
+#tur .prickar button { width: 9px; height: 9px; padding: 0; border-radius: 50%; border: 1.5px solid var(--text-2); background: none; cursor: pointer; }
+#tur .prickar button[aria-current="step"] { background: var(--text); border-color: var(--text); }
+#tur .knappar { display: flex; gap: 8px; }
+#tur .knappar button { flex: 1; font: inherit; border-radius: 6px; padding: 6px 8px; cursor: pointer; border: 1px solid var(--kant); background: var(--yta-2); color: var(--text); }
+#tur .knappar button.nasta { background: var(--text); border-color: var(--text); color: var(--yta); }
+#tur .knappar button:disabled { opacity: .4; cursor: default; }
+.ort.tur-plats i { background: var(--nu); width: 12px; height: 12px; }
+.ort.tur-plats span { font-size: 13px; }
+@media (max-width: 760px) {
+  #panel.turlage { max-height: 45%; }
+  #turlista small { display: none; }
+}
+
+/* Tidsbild: kläder, smycken, hus, skepp och vapen för perioden på tidslinjen */
+#visa-tidsbild { font: inherit; font-weight: 600; color: var(--text); background: var(--yta-2); border: 1px solid var(--kant); border-radius: 18px; padding: 6px 14px; cursor: pointer; white-space: nowrap; }
+#visa-tidsbild[aria-expanded="true"] { background: var(--text); color: var(--yta); border-color: var(--text); }
+#tidsbild { top: 12px; left: 344px; right: 12px; bottom: 120px; overflow: auto; padding: 14px 18px; z-index: 3; }
+#tidsbild .stang { position: absolute; top: 8px; right: 8px; border: 0; background: none; font-size: 20px; line-height: 1; cursor: pointer; color: var(--text-2); padding: 4px 8px; }
+#tidsbild h2 { font-size: 18px; margin: 0 30px 2px 0; }
+#tidsbild .ingress { margin: 0 0 10px; color: var(--text-2); max-width: 70ch; }
+.tb-yta { display: grid; grid-template-columns: 250px 1fr; gap: 18px; align-items: start; }
+.tb-figurer { position: sticky; top: 0; }
+.tb-figurer .par { display: flex; gap: 6px; }
+.tb-figurer figure { margin: 0; flex: 1; text-align: center; }
+.tb-figurer figcaption { font-size: 12px; font-weight: 600; }
+.tb-figurer svg { width: 100%; height: auto; display: block; }
+.tb-figurer .kropp { fill: var(--yta-2); stroke: var(--text-2); stroke-width: 1.2; }
+.tb-figurer .plagg { fill: color-mix(in srgb, var(--nu) 22%, var(--yta)); stroke: var(--text-2); stroke-width: 1.2; }
+.tb-figurer .plagg2 { fill: color-mix(in srgb, var(--grov) 35%, var(--yta)); stroke: var(--text-2); stroke-width: 1.2; }
+.tb-figurer .metall { fill: var(--sedan); stroke: var(--text); stroke-width: .8; }
+.tb-figurer .parla { fill: var(--nu); }
+.tb-figurer .punkt { cursor: pointer; }
+.tb-figurer .punkt circle { fill: var(--text); stroke: var(--yta); stroke-width: 1.5; }
+.tb-figurer .punkt text { fill: var(--yta); font-size: 9px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.tb-figurer .punkt:hover circle, .tb-figurer .punkt.vald circle { fill: var(--nu); }
+.tb-figurer .not { font-size: 11.5px; color: var(--text-2); margin: 6px 0 0; }
+.tb-del { margin: 8px 0 0; padding: 8px 10px; background: var(--yta-2); border-radius: 6px; font-size: 13px; }
+.tb-del b { display: block; }
+.tb-flikar { display: flex; flex-wrap: wrap; gap: 4px; margin: 0 0 10px; }
+.tb-flikar button { font: inherit; font-size: 13px; color: inherit; background: none; border: 1px solid var(--kant); border-radius: 14px; padding: 3px 10px; cursor: pointer; }
+.tb-flikar button[aria-selected="true"] { background: var(--text); color: var(--yta); border-color: var(--text); }
+.tb-kort { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.tb-kort article { background: var(--yta-2); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; border: 2px solid transparent; }
+.tb-kort article.vald { border-color: var(--nu); }
+.tb-kort .bild { position: relative; display: block; aspect-ratio: 4 / 3; background: var(--kant); }
+.tb-kort .bild img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tb-kort .etikett { position: absolute; left: 6px; top: 6px; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 4px; background: var(--yta); color: var(--text); }
+.tb-kort .etikett.myt { background: var(--nu); color: #fff; }
+.tb-kort .innehall { padding: 8px 10px 10px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.tb-kort h3 { font-size: 14.5px; margin: 0; }
+.tb-kort p { margin: 0; font-size: 13px; line-height: 1.45; }
+.tb-kort .fynd { font-size: 12px; color: var(--text-2); }
+.tb-kort .upphov { font-size: 11px; color: var(--text-2); overflow-wrap: anywhere; }
+.tb-kort .upphov a { color: inherit; }
+.tb-kort .till-karta { align-self: flex-start; margin-top: auto; font: inherit; font-size: 12px; color: inherit; background: var(--yta); border: 1px solid var(--kant); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+.tb-kort .till-karta:hover { border-color: var(--text); }
+.tb-tom { max-width: 52ch; }
+.tb-tom button { font: inherit; color: var(--yta); background: var(--text); border: 0; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+@media (max-width: 1000px) {
+  .tb-yta { grid-template-columns: 1fr; }
+  .tb-figurer { position: static; max-width: 320px; }
+}
+@media (max-width: 760px) {
+  #tidsbild { left: 12px; top: 12px; bottom: 170px; }
+}
+
+/* ---------- Formgivning: museum i kvällsljus ----------
+   Varm pergamentton i ljust läge, djup natt i mörkt, rödockra som accent (runstenarna var ofta
+   målade med rödockra), Fraunces för rubriker och Inter för text. Reglerna här ligger sist och
+   går före de enklare reglerna ovan. */
+
+body { font-family: var(--sans); font-size: 14px; letter-spacing: -.003em; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; }
+
+/* Rutorna: glas med mjuk skugga och rundare hörn */
+.ruta {
+  background: var(--glas);
+  border: 1px solid color-mix(in srgb, var(--kant) 70%, transparent);
+  border-radius: 18px;
+  box-shadow: var(--skugga);
+  backdrop-filter: blur(16px) saturate(1.25);
+}
+
+/* Vänsterpanelen */
+#panel { width: 344px; padding: 20px 20px 16px; max-height: calc(100% - 200px); }
+#panel .kicker { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
+.ingress { font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+.mellan { color: var(--accent); letter-spacing: .14em; font-size: 10.5px; }
+
+/* Berättelser som kort med bild */
+#turlista { gap: 6px; margin-top: 8px; }
+#turlista button { display: grid; grid-template-columns: 56px 1fr; gap: 2px 12px; align-items: center; padding: 6px; border-radius: 12px; transition: background .15s, transform .15s; }
+#turlista button:hover { background: var(--yta-2); transform: translateX(2px); }
+#turlista .tumme { grid-row: span 2; width: 56px; height: 56px; border-radius: 10px; object-fit: cover; background: var(--yta-2); box-shadow: inset 0 0 0 1px var(--kant); }
+#turlista b { font-family: var(--serif); font-size: 15.5px; font-weight: 600; align-self: end; }
+#turlista small { align-self: start; font-size: 12px; }
+
+#sok { border-radius: 12px; padding: 9px 12px; background: var(--yta-2); border-color: transparent; }
+#sok:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.grupp > summary { font-family: var(--serif); font-size: 15px; }
+
+/* Turläget */
+#tur h2 { font-size: 24px; margin-top: 10px; }
+#tur .turbild { margin: 12px -20px 12px; }
+#tur .turbild img { display: block; width: 100%; height: 170px; object-fit: cover; background: var(--yta-2); }
+#tur .turbild figcaption { padding: 4px 20px 0; font-size: 11px; color: var(--text-2); overflow-wrap: anywhere; }
+#tur .turbild figcaption a { color: inherit; }
+#tur h3 { font-size: 19px; line-height: 1.25; }
+#tur p.text { font-size: 14.5px; line-height: 1.6; }
+#tur .knappar button { border-radius: 999px; padding: 9px 12px; font-weight: 500; }
+#tur .knappar button.nasta { background: var(--accent); border-color: var(--accent); color: #fff; }
+#tur .prickar button[aria-current="step"] { background: var(--accent); border-color: var(--accent); }
+#tur .stenar button { border-radius: 999px; padding: 2px 10px; }
+
+/* Detaljrutan */
+#detalj { width: 370px; padding: 20px; max-height: calc(100% - 200px); }
+#detalj h2 { font-size: 30px; line-height: 1.05; }
+#detalj .under { text-transform: uppercase; letter-spacing: .12em; font-size: 11px; font-weight: 600; color: var(--accent); }
+#detalj .bild .ram { border-radius: 12px; }
+#detalj blockquote {
+  font-family: var(--serif); font-size: 17px; line-height: 1.5; font-style: italic;
+  background: none; border-left: 3px solid var(--accent); border-radius: 0; padding: 4px 0 4px 16px; margin: 4px 0 14px;
+}
+#detalj .runor { font-size: 12.5px; letter-spacing: .02em; padding: 10px 12px; background: var(--yta-2); border-radius: 10px; }
+
+/* Tidslinjen */
+#tidslinje { padding: 14px 22px 12px; gap: 24px; }
+#spela { width: 52px; height: 52px; background: var(--accent); color: #fff; font-size: 18px; box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--accent) 70%, transparent); transition: transform .15s; }
+#spela:hover { transform: scale(1.06); }
+#ar-tal { font-family: var(--serif); font-size: 44px; font-weight: 600; letter-spacing: -.02em; line-height: 1; }
+#ar-epok { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--accent); }
+#histogram rect { fill: color-mix(in srgb, var(--text) 22%, transparent); }
+#histogram rect.passerad { fill: color-mix(in srgb, var(--sedan) 75%, transparent); }
+#histogram rect.aktiv { fill: var(--accent); }
+#visa-tidsbild { background: var(--text); color: var(--yta); border: 0; padding: 10px 18px; font-weight: 600; box-shadow: var(--skugga); }
+#visa-tidsbild[aria-expanded="true"] { background: var(--accent); color: #fff; }
+
+/* Epokband under histogrammet (läggs till av design-ny.js) */
+.epokband { position: relative; height: 18px; margin: 3px 0 1px; border-radius: 6px; overflow: hidden; }
+.epokband span {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .04em; white-space: nowrap; overflow: hidden;
+  color: color-mix(in srgb, var(--text) 80%, transparent); border-right: 1px solid var(--yta);
+}
+.epokband span.aktiv { color: #fff; background: var(--accent) !important; }
+
+/* Ortmarkörer och popupper */
+.ort span { font-family: var(--serif); font-size: 13px; font-weight: 600; }
+.maplibregl-popup-content { border-radius: 12px; font-family: var(--sans); box-shadow: var(--skugga); }
+
+/* Välkomstrutan (läggs till av design-ny.js) */
+.valkommen {
+  position: absolute; inset: 0; z-index: 10; display: grid; place-items: center; padding: 16px;
+  background: radial-gradient(ellipse at 50% 40%, rgb(10 8 6 / .35), rgb(10 8 6 / .78));
+  animation: tona-in .5s ease;
+}
+.valkommen .kort {
+  width: min(720px, 100%); border-radius: 24px; overflow: hidden; background: var(--yta); box-shadow: var(--skugga);
+  display: grid; grid-template-columns: 1fr 1.1fr;
+}
+.valkommen .bild { min-height: 380px; position: relative; background: #2a2622; }
+.valkommen .bild img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 18%; }
+.valkommen .bild small { position: absolute; left: 10px; right: 10px; bottom: 8px; font-size: 10.5px; color: #fff; text-shadow: 0 1px 3px #000; }
+.valkommen .bild small a { color: inherit; }
+.valkommen .text { padding: 34px 32px 28px; display: flex; flex-direction: column; gap: 14px; }
+.valkommen .kicker { margin: 0; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.valkommen h2 { margin: 0; font-size: 38px; line-height: 1.02; }
+.valkommen p { margin: 0; color: var(--text-2); font-size: 15px; line-height: 1.55; }
+.valkommen .siffror { display: flex; gap: 22px; margin: 4px 0; }
+.valkommen .siffror b { display: block; font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--text); }
+.valkommen .siffror span { font-size: 12px; color: var(--text-2); }
+.valkommen .val { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+.valkommen button { font: inherit; font-weight: 600; border-radius: 999px; padding: 11px 20px; cursor: pointer; border: 1px solid var(--kant); background: none; color: var(--text); }
+.valkommen button.primar { background: var(--accent); border-color: var(--accent); color: #fff; }
+@keyframes tona-in { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 760px) {
+  .valkommen .kort { grid-template-columns: 1fr; }
+  .valkommen .bild { min-height: 200px; }
+  .valkommen h2 { font-size: 30px; }
+  #panel { width: auto; }
+}
+
+/* Tidsbild */
+#tidsbild { left: 368px; bottom: 140px; padding: 24px 28px; }
+#tidsbild h2 { font-size: 32px; }
+#tidsbild h2 small { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--accent); margin-left: 6px; }
+#tidsbild .ingress { font-size: 15px; }
+.tb-yta { grid-template-columns: minmax(300px, 380px) 1fr; gap: 28px; }
+.tb-personer { position: sticky; top: 0; }
+.tb-personer h3 { margin: 0 0 8px; font-size: 20px; }
+.tb-personer .foto { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--skugga); background: var(--yta-2); min-height: 120px; }
+.tb-personer .foto img { width: 100%; height: auto; display: block; }
+.tb-personer .hot {
+  position: absolute; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid #fff; background: rgb(20 14 8 / .72); color: #fff; font: 600 12px/1 var(--sans);
+  cursor: pointer; box-shadow: 0 2px 8px rgb(0 0 0 / .4); transition: transform .15s, background .15s;
+  animation: puls 2.6s ease-in-out infinite;
+}
+.tb-personer .hot:hover, .tb-personer .hot.vald { background: var(--accent); transform: translate(-50%, -50%) scale(1.15); animation: none; }
+@keyframes puls { 0%, 100% { box-shadow: 0 0 0 0 rgb(255 255 255 / .55), 0 2px 8px rgb(0 0 0 / .4); } 50% { box-shadow: 0 0 0 7px rgb(255 255 255 / 0), 0 2px 8px rgb(0 0 0 / .4); } }
+.tb-personer .not { font-size: 12.5px; color: var(--text-2); margin: 10px 0 2px; }
+.tb-personer .upphov { font-size: 11px; color: var(--text-2); margin: 0; overflow-wrap: anywhere; }
+.tb-personer .upphov a { color: inherit; }
+.tb-personer .narbilder { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.tb-personer figure { margin: 0; }
+.tb-personer figure .bild { display: block; aspect-ratio: 3 / 4; border-radius: 12px; overflow: hidden; background: var(--yta-2); }
+.tb-personer figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tb-personer figcaption { font-size: 11.5px; color: var(--text-2); margin-top: 4px; line-height: 1.35; }
+.tb-del { background: var(--yta); border: 1px solid var(--kant); border-left: 3px solid var(--accent); border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: 13.5px; }
+.tb-del b { font-family: var(--serif); font-size: 15px; margin-bottom: 2px; }
+.tb-flikar button { border-radius: 999px; padding: 6px 14px; font-weight: 500; }
+.tb-flikar button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tb-kort { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.tb-kort article { background: var(--yta); border-radius: 16px; box-shadow: 0 1px 2px rgb(0 0 0 / .06), 0 0 0 1px var(--kant); transition: transform .2s, box-shadow .2s; }
+.tb-kort article:hover { transform: translateY(-3px); box-shadow: var(--skugga); }
+.tb-kort article.vald { border-color: transparent; box-shadow: 0 0 0 2px var(--accent), var(--skugga); }
+.tb-kort .bild { background: #f3eee5; }
+.tb-kort .etikett { border-radius: 999px; padding: 2px 9px; background: rgb(20 14 8 / .72); color: #fff; backdrop-filter: blur(4px); }
+.tb-kort .etikett.myt { background: var(--accent); }
+.tb-kort .innehall { padding: 12px 14px 14px; }
+.tb-kort h3 { font-size: 18px; }
+.tb-kort p { font-size: 13.5px; line-height: 1.55; }
+.tb-kort .till-karta { border-radius: 999px; padding: 4px 12px; }
+@media (max-width: 1000px) {
+  .tb-yta { grid-template-columns: 1fr; }
+  .tb-personer { position: static; max-width: 420px; }
+}
+@media (max-width: 760px) {
+  #tidsbild { left: 12px; padding: 18px; }
+}
+
+/* Platser i berättelserna */
+.ort.tur-plats.liten i { width: 8px; height: 8px; background: var(--yta); border: 2px solid var(--accent); }
+.ort.tur-plats.liten span { font-size: 12px; font-weight: 500; }
+.ort.tur-plats.vanster { flex-direction: row-reverse; }
+@media (max-width: 760px) {
+  #tur .turbild img { height: 96px; }
+}
+.tb-perioder { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 760px) {
+  .tb-personer .hot { width: 20px; height: 20px; font-size: 10.5px; border-width: 1.5px; }
+  .epokband span:not(.aktiv) { font-size: 0; }
+}
+
+/* Delbar länk och lagerräknare */
+.grupp > summary .aktiva.pa { color: var(--accent); font-weight: 500; }
+#detalj .lankar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+#detalj .dela { font: inherit; font-size: 12px; padding: 3px 10px; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--text-2); border: 1px solid var(--kant); }
+#detalj .dela:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Normaliserad text och personer i detaljrutan */
+#detalj .norm { margin: 0 0 10px; font-style: italic; font-family: var(--serif); color: var(--text-2); font-size: 13.5px; line-height: 1.45; }
+#detalj .norm .sprak { font-style: normal; font-family: inherit; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); margin-right: 4px; }
+#detalj .personer { margin: 0 0 12px; padding: 10px 12px; border: 1px solid var(--kant); border-radius: 10px; }
+#detalj .personer h3 { margin: 0 0 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); font-family: inherit; }
+#detalj .personer .slakt { margin: 0 0 6px; }
+#detalj .personer .namn { margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 4px; align-items: baseline; }
+#detalj .personer .namn span { font-size: 12px; color: var(--text-2); margin-right: 2px; }
+#detalj .person { font: inherit; font-weight: 500; padding: 0 2px; background: none; border: 0; border-bottom: 1px dotted var(--accent);
+  color: var(--text); cursor: pointer; }
+#detalj .person:hover { color: var(--accent); }
+#detalj .personer .not { margin: 0; }
+
+/* Ordlista */
+.ord { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: help;
+  text-decoration: underline dotted color-mix(in srgb, var(--accent) 70%, transparent); text-underline-offset: 3px; }
+.ord:hover { color: var(--accent); }
+.ordruta { position: fixed; z-index: 50; max-width: 300px; padding: 10px 12px; border-radius: 10px; font-size: 12.5px; line-height: 1.45;
+  background: var(--yta); color: var(--text); border: 1px solid var(--kant); box-shadow: 0 6px 24px rgb(0 0 0 / .18); }
+.ordruta b { display: block; margin-bottom: 3px; font-family: var(--serif); font-size: 14px; }
+.ordlista { margin: 8px 0 0; font-size: 12.5px; }
+.ordlista dt { font-weight: 600; margin-top: 8px; }
+.ordlista dd { margin: 2px 0 0; color: var(--text-2); }
+#detalj .runor .sprak { display: block; font-family: var(--sans, inherit); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 3px; }
+
+/* AI-översättning */
+#detalj blockquote.ai { border-left-style: dashed; }
+#detalj .ai-marke { display: block; margin-top: 6px; font-family: var(--sans); font-style: normal; font-size: 10.5px;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+#detalj details.engelsk { margin: -4px 0 10px; font-size: 12.5px; }
+#detalj details.engelsk summary { cursor: pointer; color: var(--text-2); font-weight: 500; font-size: 12px; }
+#detalj details.engelsk p { margin: 4px 0 0; color: var(--text-2); font-style: italic; }
+
+/* Museitips */
+.museer h3 { margin: 12px 0 4px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); font-family: var(--sans); }
+.museer ul { margin: 0; padding-left: 16px; font-size: 12.5px; color: var(--text-2); }
+.museer li { margin: 3px 0; }
+.museer li b { color: var(--text); font-weight: 600; }
+
+/* Stängknappen följer med när rutan scrollas (sticky i stället för absolut placering) */
+#detalj .stang, #tidsbild .stang {
+  position: sticky; top: 0; float: right; z-index: 5; margin: -10px -12px 0 8px;
+  width: 32px; height: 32px; padding: 0; border-radius: 50%;
+  background: var(--yta); border: 1px solid var(--kant); box-shadow: 0 2px 8px rgb(0 0 0 / .12);
+  font-size: 18px; line-height: 1;
+}
+#detalj .stang:hover, #tidsbild .stang:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Lager som hämtas när de slås på */
+.rad.laddar > label::after { content: 'laddar …'; margin-left: 6px; font-size: 11px; color: var(--text-2); }
+.rad.fel > label::after { content: 'kunde inte laddas'; margin-left: 6px; font-size: 11px; color: var(--accent); }

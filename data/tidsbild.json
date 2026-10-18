@@ -1,0 +1,1389 @@
+[
+  {
+    "id": "romersk",
+    "n": "Romersk järnålder och folkvandringstid",
+    "a": 150,
+    "b": 550,
+    "ingress": "Runorna föds, guldet strömmar in från ett sönderfallande romerskt rike, och i mossarna offras hela härars vapen. Kläderna här är bevarade i mossar; människorna möter vi i deras egna bilder.",
+    "grupper": [
+      {
+        "id": "se",
+        "n": "Hur såg de ut?"
+      },
+      {
+        "id": "bo",
+        "n": "Gårdar och borgar"
+      },
+      {
+        "id": "strid",
+        "n": "Skepp och offer"
+      },
+      {
+        "id": "skrift",
+        "n": "Runornas början"
+      },
+      {
+        "id": "myt",
+        "n": "Myt eller sanning?"
+      }
+    ],
+    "personer": {
+      "bild": "Tunic and trousers from Thorsberg moor in Schleswig-Holstein, Germany, approx. mid 4th century.png",
+      "rubrik": "Kläder som legat i mossen",
+      "text": "Tunika och byxor från Thorsbergs mosse i Sydslesvig, 300-talet (Schloss Gottorf). De offrades i mossen tillsammans med vapen och har bevarats i nästan 1 700 år.",
+      "punkter": [
+        {
+          "id": "hals",
+          "n": "Halsöppning",
+          "x": 28,
+          "y": 11,
+          "text": "Tunikan drogs över huvudet. Den är vävd av ull i ett tätt mönster (kypert) – ett skickligt arbete som tog veckor."
+        },
+        {
+          "id": "armar",
+          "n": "Långa ärmar",
+          "x": 6.5,
+          "y": 39,
+          "text": "Tunikan har långa, smala ärmar. Nordbor som tjänade i den romerska armén tog hem både vapen, mynt och modeidéer."
+        },
+        {
+          "id": "tunika",
+          "n": "Tunika",
+          "x": 26,
+          "y": 59,
+          "text": "Tunikan räckte till höfterna. Färgerna har bleknat i mossen; ursprungligen kan den ha varit färgad."
+        },
+        {
+          "id": "oglor",
+          "n": "Bältesöglor",
+          "x": 73,
+          "y": 11,
+          "text": "Byxorna har öglor för ett bälte i midjan – precis som i dag."
+        },
+        {
+          "id": "byxor",
+          "n": "Byxor",
+          "x": 66.7,
+          "y": 51,
+          "text": "Långa, åtsittande byxor av ull. Byxor bars av folken norr om Romarriket och sågs av romarna som ett tecken på barbarer."
+        },
+        {
+          "id": "fotter",
+          "n": "Fötter",
+          "x": 61.5,
+          "y": 82,
+          "text": "Byxbenen slutar i påsydda fötter, som strumpbyxor. Utanpå bar man skor av läder."
+        }
+      ],
+      "narbilder": [
+        {
+          "bild": "Huldremosekvindens dragt Huldremose-00002.tif",
+          "text": "Huldremosekvinnans dräkt från Djursland (Nationalmuseet, Köpenhamn): två skinnkappor, halsduk och rutig ullkjol. Hon dog någon gång kring vår tideräknings början."
+        },
+        {
+          "bild": "Grumpanbrakteaten - Historiska museet - 111180 HST.jpg",
+          "text": "Grumpanbrakteaten (Historiska museet): ett människohuvud över en häst, kanske en gud, och runraden i kanten. Så avbildade man människor på 500-talet."
+        }
+      ]
+    },
+    "kort": [
+      {
+        "id": "kragar",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Guldhalskragarna",
+        "bild": "Guldhalskragar - Historiska museet - 317483.jpg",
+        "fynd": "Ålleberg, Möne och Färjestaden (Historiska museet)",
+        "plats": {
+          "x": 13.6,
+          "y": 58.13
+        },
+        "ungefar": true,
+        "text": "De tre guldhalskragarna från 400- och 500-talen hör till Nordens främsta guldsmide. Mellan ringarna sitter hundratals små figurer av människor och djur i filigran. Kragen från Ålleberg har tre ringar, Mönekragen fem och Färjestadskragen sju. De bars troligen av stormän eller av gudabilder."
+      },
+      {
+        "id": "vallhagar",
+        "g": "bo",
+        "typ": "fynd",
+        "n": "Byn i Vallhagar",
+        "bild": "Vallhagar solnedgång Gotland Sverige.jpg",
+        "fynd": "Vallhagar, Gotland",
+        "plats": {
+          "x": 18.16,
+          "y": 57.37
+        },
+        "ungefar": true,
+        "text": "På ängen vid Vallhagar ligger grunderna till en by med ett tjugotal stenhusgrunder, stall och gärdesgårdar. Här bodde man under romersk järnålder och folkvandringstid, tills byn övergavs omkring 500-talet. I dag syns bara låga stenvallar i gräset."
+      },
+      {
+        "id": "eketorp",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Eketorps borg",
+        "bild": "Eketorps borg 15.JPG",
+        "fynd": "Eketorp, Öland (delvis rekonstruerad)",
+        "plats": {
+          "x": 16.486,
+          "y": 56.295
+        },
+        "text": "På Öland byggdes runda borgar av kalksten. Inne i Eketorp låg hus tätt intill muren, som ekrar i ett hjul, och här kunde bygdens folk och djur ta skydd. Borgen byggdes på 300-talet och användes i flera omgångar."
+      },
+      {
+        "id": "gene",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Långhuset i Gene",
+        "bild": "Långhuset vid Gene fornby från sydost.jpg",
+        "fynd": "Gene fornby, Örnsköldsvik (rekonstruktion)",
+        "plats": {
+          "x": 18.67,
+          "y": 63.31
+        },
+        "text": "Långhuset i Gene är byggt efter stolphålen från en gård som var bebodd under århundradena efter Kristi födelse. I ett sådant hus bodde människor och djur ofta under samma tak, med bostaden i ena änden och fähuset i den andra. Gården var en av de nordligaste bondgårdarna i sin tid."
+      },
+      {
+        "id": "lojsta",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Lojstahallen",
+        "bild": "Lojstahallen.JPG",
+        "fynd": "Lojsta, Gotland (rekonstruktion från 1930-talet)",
+        "plats": {
+          "x": 18.37,
+          "y": 57.31
+        },
+        "ungefar": true,
+        "text": "På Gotland finns hundratals stengrunder efter järnåldershus. I Lojsta byggde arkeologer på 1930-talet upp ett hus på en sådan grund, med låga väggar av sten och ett högt tak buret av stolpar inne i huset. Hur taket såg ut är en gissning; det är grunden som är bevarad."
+      },
+      {
+        "id": "nydam",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Nydambåten",
+        "bild": "Nydam-Boot 2015b.jpg",
+        "fynd": "Nydam mose, Sønderjylland (Schloss Gottorf)",
+        "plats": {
+          "x": 9.72,
+          "y": 54.96
+        },
+        "ungefar": true,
+        "text": "En 23 meter lång roddbåt av ek, byggd omkring 320 och sänkt i en mosse som offer tillsammans med vapen. Den roddes av omkring 30 man och hade inget segel – seglet kom till Norden först senare. Båten hittades 1863."
+      },
+      {
+        "id": "illerup",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "En hel här i mossen",
+        "bild": "Spear heads (Illerup).JPG",
+        "fynd": "Illerup ådal, Östjylland (Moesgaard museum)",
+        "plats": {
+          "x": 9.83,
+          "y": 56.07
+        },
+        "ungefar": true,
+        "text": "I Illerup ådal har man hittat över 15 000 föremål: vapen och utrustning från en besegrad här, offrade omkring år 200. Segrarna förstörde svärd, spjut och sköldar och sänkte dem i sjön. Fynden visar en armé med befäl och fotfolk – och att anfallarna troligen kom från Skandinavien."
+      },
+      {
+        "id": "kylver",
+        "g": "skrift",
+        "typ": "fynd",
+        "n": "Kylverstenen",
+        "bild": "Kylverstenen - Historiska museet - DIG 61030.jpg",
+        "fynd": "Kylver, Stånga socken, Gotland (Historiska museet)",
+        "plats": {
+          "x": 18.48,
+          "y": 57.28
+        },
+        "ungefar": true,
+        "text": "Kylverstenen från omkring 400 bär den äldsta bevarade fullständiga runraden: alla 24 runor i den äldre futharken. Den låg vänd inåt i en grav, som om runorna var till för den döde. De allra äldsta runorna i databasen, på en kam från Vimose på Fyn, är från omkring 160."
+      },
+      {
+        "id": "guldhorn",
+        "g": "skrift",
+        "typ": "rekonstruktion",
+        "n": "Guldhornen från Gallehus",
+        "bild": "Guldhornene DO-10765 original cropped.jpg",
+        "fynd": "Gallehus, Sønderjylland (kopior i Nationalmuseet)",
+        "plats": {
+          "x": 8.98,
+          "y": 54.97
+        },
+        "text": "Två horn av guld hittades 1639 och 1734. Det ena bar runinskriften ”ek hlewagastiR holtijaR horna tawido” – jag Lägäst, Holtes son, gjorde hornet. Originalen stals och smältes ner 1802; det vi ser i dag är kopior."
+      },
+      {
+        "id": "tacitus",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Skrev romarna om svearna?",
+        "bild": "Codex Aesinas.jpg",
+        "fynd": "Tacitus, Germania (år 98), avskrift i Codex Aesinas",
+        "dom": "Sanning",
+        "text": "Ja. Den romerske historikern Tacitus skrev år 98 om suionerna, som ”mäktiga genom sina flottor” bodde ute i havet. Det brukar räknas som det första omnämnandet av svearna. Tacitus hade själv aldrig varit där."
+      },
+      {
+        "id": "rom",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Levde Norden isolerat från Rom?",
+        "bild": "Guldhalskragar - Historiska museet - 317483.jpg",
+        "fynd": "Guldet i kragarna kom troligen från romerska mynt",
+        "dom": "Myt",
+        "text": "Nej. Romerska bronskärl, glas, vapen och tusentals mynt har hittats i Norden. På Öland och Gotland finns hundratals guldmynt, solidi, från 400-talet – kanske betalning till nordbor som tjänat som soldater i det romerska riket. Mycket av guldet smältes om till smycken som halskragarna."
+      },
+      {
+        "id": "runursprung",
+        "g": "myt",
+        "typ": "teckning",
+        "n": "Kom runorna från latinet?",
+        "bild": "Grumpan bracteate futhark highlight.png",
+        "fynd": "Runraden på Grumpanbrakteaten (markerad)",
+        "dom": "Omdiskuterat",
+        "text": "Kanske. Flera runor liknar latinska bokstäver – F, R och B till exempel – och runorna dyker upp just när kontakterna med Rom var som tätast. Andra forskare pekar på norditaliska alfabet. Säkert är att runorna skapades av någon som kände till ett sydeuropeiskt alfabet."
+      }
+    ]
+  },
+  {
+    "id": "vendeltid",
+    "n": "Vendeltid",
+    "a": 550,
+    "b": 800,
+    "ingress": "Stormän begravda i båtar med praktfulla hjälmar, kungsgårdar med stora hallar i Uppsala, och en ö i Mälaren dit föremål kom från Indien, Irland och Egypten. Fotona visar fynd och platser; inga dräkter är bevarade, så människorna möter vi i tidens egna bilder.",
+    "grupper": [
+      {
+        "id": "se",
+        "n": "Hur såg de ut?"
+      },
+      {
+        "id": "makt",
+        "n": "Hallar och högar"
+      },
+      {
+        "id": "handel",
+        "n": "Helgö och handeln"
+      },
+      {
+        "id": "strid",
+        "n": "Hjälmar och vapen"
+      },
+      {
+        "id": "myt",
+        "n": "Myt eller sanning?"
+      }
+    ],
+    "personer": {
+      "bild": "Torslundaplåtarna - Historiska museet - 618349 HST - 324349 (cropped).jpg",
+      "rubrik": "Möt krigarna",
+      "text": "En av Torslundaplåtarna från Öland (Historiska museet): en bronsform för att pressa bilder i tunn plåt till hjälmar som de i Vendel och Valsgärde. Så avbildade vendeltidens folk sig själva och sina myter.",
+      "punkter": [
+        {
+          "id": "horn",
+          "n": "Hjälm med horn",
+          "x": 29.2,
+          "y": 14.6,
+          "text": "Hjälmen kröns av två böjda horn som slutar i fågelhuvuden. Det är ingen stridshjälm utan en rituell – figuren brukar tolkas som en dansande krigare i kultdräkt, eller som Oden själv: i formen är ena ögat bortskuret."
+        },
+        {
+          "id": "har",
+          "n": "Långt hår",
+          "x": 19,
+          "y": 41,
+          "text": "Håret hänger långt på sidorna. Långt, välvårdat hår var ett tecken på fri man och krigare."
+        },
+        {
+          "id": "spjut",
+          "n": "Spjut",
+          "x": 12,
+          "y": 60.7,
+          "text": "Han håller två spjut. Spjutet var det vanligaste vapnet och var tillägnat Oden."
+        },
+        {
+          "id": "balte",
+          "n": "Bälte",
+          "x": 32.3,
+          "y": 58.3,
+          "text": "Ett brett bälte runt midjan – på riktiga bälten satt beslag av brons eller guld som visade ägarens rang."
+        },
+        {
+          "id": "svard",
+          "n": "Svärd",
+          "x": 44.8,
+          "y": 54.6,
+          "text": "Svärdet bärs på tvären vid midjan. Vendeltidens svärd hade ofta fästen med guld och granater, som de i båtgravarna."
+        },
+        {
+          "id": "varg",
+          "n": "Vargkrigaren",
+          "x": 66.7,
+          "y": 24.3,
+          "text": "Figuren till höger bär vargskinn och varghuvud. Sagorna berättar om ulvhednar – krigare som i strid blev som vargar. Plåten visar att föreställningen är mycket äldre än sagorna."
+        }
+      ],
+      "narbilder": [
+        {
+          "bild": "Guldgubbe.jpg",
+          "text": "Guldgubbe – ett par i tunn guldplåt, bara någon centimeter stor. Kvinnan bär lång dräkt med släp, mannen kort rock. Guldgubbar hittas vid stormännens hallar."
+        },
+        {
+          "bild": "Helmet from a 7th century boat grave, Vendel era brighter.jpg",
+          "text": "Hjälmen ur båtgrav I i Vendel (Historiska museet) – så mötte en storman världen: ögonbryn av brons och ansiktsskydd av järn."
+        }
+      ]
+    },
+    "kort": [
+      {
+        "id": "torslunda",
+        "g": "se",
+        "typ": "teckning",
+        "n": "Fyra bilder av krigare",
+        "bild": "Torslunda plates.jpg",
+        "fynd": "Torslunda, Björnhovda på Öland (hittade 1870); teckning av Knut Stjerna",
+        "plats": {
+          "x": 16.6,
+          "y": 56.63
+        },
+        "ungefar": true,
+        "text": "Torslundaplåtarna är fyra bronsformar. De visar en man mellan två björnar, två krigare med galthjälmar, vargkrigaren och den dansande mannen med hornhjälm. Med dem kunde en smed stansa ut pressbleck till hjälmar – samma motiv finns på hjälmarna i Vendel och Valsgärde."
+      },
+      {
+        "id": "kungshogar",
+        "g": "makt",
+        "typ": "fynd",
+        "n": "Kungshögarna i Uppsala",
+        "bild": "Gamla Uppsala August 2025 03.jpg",
+        "fynd": "Gamla Uppsala",
+        "plats": {
+          "x": 17.63,
+          "y": 59.898
+        },
+        "text": "De tre stora högarna byggdes under 500-talet över brända gravar med rika fynd. Bredvid låg en kungsgård med en hall som var omkring 50 meter lång. Uppsala var ett centrum för makt och kult långt innan runstenarnas tid."
+      },
+      {
+        "id": "batgravar",
+        "g": "makt",
+        "typ": "fynd",
+        "n": "Båtgravarna i Vendel och Valsgärde",
+        "bild": "Claw beaker from Valsgärde boat grave 8. 7th century AD.jpg",
+        "fynd": "Valsgärde, båtgrav 8 (Gustavianum, Uppsala)",
+        "plats": {
+          "x": 17.642,
+          "y": 59.906
+        },
+        "ungefar": true,
+        "text": "I Vendel och Valsgärde begravdes män i båtar, generation efter generation – 14 båtgravar i Vendel och 15 i Valsgärde. Med sig fick de hjälm, svärd, sköld, hästar, hundar, mat och dryckesglas som det här klobägaren, gjort i Rhenlandet."
+      },
+      {
+        "id": "helgo",
+        "g": "handel",
+        "typ": "fynd",
+        "n": "Buddha i Mälaren",
+        "bild": "Buddha - Historiska museet - DIG 55929.jpg",
+        "fynd": "Helgö i Mälaren (hittad 1954, Historiska museet)",
+        "plats": {
+          "x": 17.7,
+          "y": 59.28
+        },
+        "text": "Den lilla bronsbuddhan gjordes i norra Indien eller Kashmir omkring 500-talet och hamnade på Helgö i Mälaren. Hur den kom dit vet ingen – kanske genom många händer längs handelsvägarna österut. På Helgö arbetade smeder, och här har man hittat tusentals bitar av gjutformar."
+      },
+      {
+        "id": "varlden",
+        "g": "handel",
+        "typ": "fynd",
+        "n": "Världen på en ö",
+        "bild": "Holy objects from Helgö Island.jpg",
+        "fynd": "Helgö (Historiska museet)",
+        "plats": {
+          "x": 17.7,
+          "y": 59.28
+        },
+        "text": "Tre fynd från Helgö som berättar om en vid värld: buddhan från Indien, ett biskopsstavshuvud från Irland och en skopa från Egypten. Helgö var föregångaren till Birka, som växte upp några kilometer bort på 700-talet."
+      },
+      {
+        "id": "hjalm8",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Hjälmen från Valsgärde 8",
+        "bild": "The Vikings Begin 46 - warrior helmet, Valsgärde boat grave 8, 7th century.jpg",
+        "fynd": "Valsgärde, båtgrav 8, 600-talet (Gustavianum)",
+        "plats": {
+          "x": 17.642,
+          "y": 59.906
+        },
+        "ungefar": true,
+        "text": "Vendeltidens hjälmar är bland de förnämsta i Europa: en kupa av järn med kam, ögonbrynsskydd och ett halsskydd av ringbrynja eller järnband. De är släkt med den berömda hjälmen från Sutton Hoo i England."
+      },
+      {
+        "id": "skold",
+        "g": "strid",
+        "typ": "rekonstruktion",
+        "n": "Skölden",
+        "bild": "The Vikings Begin 62 - warrior shield, Valsgärde boat grave 8, 7th century.jpg",
+        "fynd": "Valsgärde, båtgrav 8 (rekonstruerad med originalbeslagen)",
+        "plats": {
+          "x": 17.642,
+          "y": 59.906
+        },
+        "ungefar": true,
+        "text": "En rund sköld av trä med en buckla av järn i mitten och förgyllda beslag. Trät har ruttnat bort, men beslagen låg kvar där de suttit, så att skölden kunde rekonstrueras."
+      },
+      {
+        "id": "horn",
+        "g": "myt",
+        "typ": "teckning",
+        "n": "Hade de horn på hjälmarna?",
+        "bild": "Torslunda plates.jpg",
+        "fynd": "Torslundaplåtarna, Öland; teckning av Knut Stjerna",
+        "dom": "Omdiskuterat",
+        "text": "I strid – nej. Men Torslundaplåtarna och några pressbleck visar en figur med en hjälm krönt av horn, och sådana hjälmar har burits vid ritualer. Hornhjälmarna i vikingafilmer kommer däremot från 1800-talets operakostymer."
+      },
+      {
+        "id": "kungar",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Ligger kungar i högarna?",
+        "bild": "July 2013 Gamla Uppsala museum 14.jpg",
+        "fynd": "Utgrävningen av en av högarna på 1800-talet (foto i Gamla Uppsala museum)",
+        "dom": "Omdiskuterat",
+        "text": "Östhögen grävdes ut 1846–47 och Västhögen 1874. I båda fanns brända ben och rika föremål, så de döda var mäktiga. Ynglingasagan nämner kungarna Aun, Egil och Adils, och högarna har fått deras namn – men vilka som verkligen ligger där går inte att veta."
+      },
+      {
+        "id": "ar536",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Var 536 ett katastrofår?",
+        "bild": "Timboholmsskatten.jpg",
+        "fynd": "Timboholmsskatten, Västergötland (Historiska museet)",
+        "dom": "Sanning",
+        "text": "Ja. Vulkanutbrott 536 och 539–540 gav år av kyla och missväxt över hela norra halvklotet. I Norden övergavs gårdar, och en del forskare kopplar stora guldoffer – som Timboholmsskatten på sju kilo – och myten om Fimbulvintern till krisen. Hur stora följderna var diskuteras fortfarande."
+      }
+    ]
+  },
+  {
+    "id": "vikingatid",
+    "n": "Vikingatid",
+    "a": 800,
+    "b": 1050,
+    "ingress": "Så kan man föreställa sig människorna bakom runstenarna. Fotona visar verkliga fynd; där bilden är en rekonstruktion eller en teckning står det på kortet.",
+    "grupper": [
+      {
+        "id": "se",
+        "n": "Hur såg de ut?"
+      },
+      {
+        "id": "bo",
+        "n": "Hur bodde de?"
+      },
+      {
+        "id": "fard",
+        "n": "Hur färdades de?"
+      },
+      {
+        "id": "strid",
+        "n": "Vapen"
+      },
+      {
+        "id": "myt",
+        "n": "Myt eller sanning?"
+      }
+    ],
+    "kort": [
+      {
+        "id": "spannbuckla",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Ovala spännbucklor",
+        "bild": "Oval Spännbuckla - Historiska museet - DIG 25595.jpg",
+        "fynd": "Birka, grav Bj 508",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Kvinnor bar ett par ovala spännbucklor högt upp på bröstet. De höll ihop axelbanden på hängselkjolen, ett plagg som bars ovanpå linnesärken. Spännbucklorna är vikingatidens vanligaste kvinnosmycke och fanns i nästan alla samhällsklasser."
+      },
+      {
+        "id": "parlor",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Pärlband",
+        "bild": "Pärla - Historiska museet - DIG 55407.jpg",
+        "fynd": "Birka",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Mellan spännbucklorna hängde band av pärlor i glas, bärnsten, karneol och bergkristall. Karneol och bergkristall kom långväga ifrån, via handeln österut. Ett rikt pärlband visade att familjen hade kontakter och silver."
+      },
+      {
+        "id": "treflik",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Treflikigt spänne",
+        "bild": "Treflikigt Spänne - Historiska museet - DIG 55396.jpg",
+        "fynd": "Svarta jorden, Birka",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Ett tredje spänne mitt på bröstet höll ihop en sjal eller kappa. Formen kommer från frankiska beslag till svärdsbälten, som nordiska smeder gjorde om till kvinnosmycken."
+      },
+      {
+        "id": "ringnal",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Mantelnål",
+        "bild": "Vårby silver pin (HST DIG55913).jpg",
+        "fynd": "Vårbyskatten, Huddinge",
+        "plats": {
+          "x": 17.885,
+          "y": 59.262
+        },
+        "ungefar": true,
+        "text": "Mannens mantel fästes med ett spänne eller en nål på höger axel, så att svärdsarmen var fri. Den här praktnålen i silver är gjord efter brittisk-irländsk förebild och hittades i en silverskatt i Vårby söder om Stockholm."
+      },
+      {
+        "id": "kam",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Kammen",
+        "bild": "Kam - Historiska museet - DIG 55322.jpg",
+        "fynd": "Birka, grav Bj 20",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Kammar av horn eller ben hör till de vanligaste fynden, både i mäns och kvinnors gravar. Många bar kammen i ett fodral vid bältet. Håret var viktigt för hur man såg ut."
+      },
+      {
+        "id": "torshammare",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Torshammare",
+        "bild": "Torshammare - Historiska museet - DIG 25722.jpg",
+        "fynd": "Birka, grav Bj 750",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Små hängen formade som Tors hammare bars som amuletter, främst under 900-talet. Det är samma tid som kristna kors började synas i Norden, och kanske var hammaren ett sätt att visa vilken tro man höll fast vid."
+      },
+      {
+        "id": "langhus",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Långhuset",
+        "bild": "Ribe Vikingecenter - Storgården.jpg",
+        "fynd": "Ribe VikingeCenter (rekonstruerad stormansgård)",
+        "plats": {
+          "x": 8.79,
+          "y": 55.31
+        },
+        "ungefar": true,
+        "text": "På landet bodde man på gårdar med ett långhus i centrum: en eldstad mitt i huset, breda bänkar längs väggarna att sitta och sova på, och rök som letade sig ut genom taket. Stormännens hallar kunde vara över 80 meter långa, som på Borg i Lofoten; vanliga gårdars hus var mycket mindre."
+      },
+      {
+        "id": "stad",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "I staden",
+        "bild": "Hedebyhouses003.jpg",
+        "fynd": "Hedeby (rekonstruerade hus)",
+        "plats": {
+          "x": 9.565,
+          "y": 54.49
+        },
+        "text": "I handelsstäder som Hedeby och Birka låg små hus tätt, på smala tomter ner mot vattnet. Väggarna var av flätverk med lerklining eller av plankor. Här bodde hantverkare och köpmän, och det luktade rök, gödsel och fisk."
+      },
+      {
+        "id": "birkamodell",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Birka – en stad vid vattnet",
+        "bild": "Plastic reconstruction Birka3.jpg",
+        "fynd": "Modell i Historiska museet, Stockholm",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Modellen visar hur Birka kan ha sett ut på 900-talet: tätt liggande hus på smala tomter ner mot stranden, bryggor och skepp i viken. Kanske bodde här upp mot tusen människor. Staden skyddades av en vall och av en borg på berget intill. De flesta människor bodde ändå inte i städer utan på gårdar i små byar."
+      },
+      {
+        "id": "borg",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Hövdingens hall på Borg",
+        "bild": "Viking longhouse - Borg 01.jpg",
+        "fynd": "Lofotr vikingmuseum, Borg i Lofoten (rekonstruktion)",
+        "plats": {
+          "x": 13.8,
+          "y": 68.24
+        },
+        "text": "På Borg i Lofoten har man grävt ut ett 83 meter långt hus, ett av de största kända från vikingatiden. Rekonstruktionen visar en hövdings hall med bostad, festsal och fähus under samma tak. I hallen hölls gästabud, där hövdingen visade sin rikedom och band sina män till sig."
+      },
+      {
+        "id": "trelleborghus",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Långhus i Trelleborg",
+        "bild": "Trelleborg Langhaus.JPG",
+        "fynd": "Trelleborg vid Slagelse, Själland (rekonstruktion)",
+        "plats": {
+          "x": 11.27,
+          "y": 55.39
+        },
+        "text": "I ringborgen Trelleborg, byggd omkring 980 under Harald Blåtand, stod husen i fyrkanter med svagt böjda långväggar. Huset utanför borgen byggdes 1942 och visar den båtlika formen. Senare forskning tror att väggar och tak såg annorlunda ut, så se det som ett förslag."
+      },
+      {
+        "id": "oseberg",
+        "g": "fard",
+        "typ": "fynd",
+        "n": "Osebergsskeppet",
+        "bild": "Oseberg ship - IMG 9186.jpg",
+        "fynd": "Oseberg, Vestfold (graven från 834)",
+        "plats": {
+          "x": 10.43,
+          "y": 59.3
+        },
+        "text": "Två kvinnor begravdes 834 i ett 21 meter långt praktskepp med segel och 30 åror. Med dem fanns vagn, slädar, sängar och vävredskap. Skeppet var byggt för lugnt vatten längs kusten och visar hur en mäktig familj ville bli ihågkommen."
+      },
+      {
+        "id": "skuldelev",
+        "g": "fard",
+        "typ": "fynd",
+        "n": "Lastskepp och långskepp",
+        "bild": "Skuldelev Viking ship at Vikingeskibsmuseet Roskilde, Denmark.jpg",
+        "fynd": "Skuldelev, Roskildefjorden",
+        "plats": {
+          "x": 12.03,
+          "y": 55.77
+        },
+        "text": "Omkring 1070 sänktes fem skepp i Roskildefjorden för att spärra farleden. De visar att man byggde olika skepp för olika uppgifter: smala, snabba långskepp för krig och breda lastskepp för handel. Skeppet på bilden, Skuldelev 3, är ett mindre handelsskepp från omkring 1040."
+      },
+      {
+        "id": "islagg",
+        "g": "fard",
+        "typ": "fynd",
+        "n": "Isläggar",
+        "bild": "Islägg - Historiska museet - DIG 55200.jpg",
+        "fynd": "Svarta jorden, Birka",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "På vintern blev isarna vägar. Man spände fast isläggar av hästben under skorna och stakade sig fram med en spetsig stav. Skidor och släde användes också. Vintern var en bra tid att resa på land."
+      },
+      {
+        "id": "gokstad",
+        "g": "fard",
+        "typ": "fynd",
+        "n": "Gokstadsskeppet",
+        "bild": "Gokstadskipet1.jpg",
+        "fynd": "Gokstad, Vestfold",
+        "plats": {
+          "x": 10.23,
+          "y": 59.13
+        },
+        "text": "Gokstadsskeppet begravdes med en man i en stor hög omkring år 900. Det är 23 meter långt och byggt för både åror och segel, sjödugligt nog för öppet hav: en kopia seglade över Atlanten till Chicago 1893. Det är den bild de flesta har av ett vikingaskepp."
+      },
+      {
+        "id": "ladby",
+        "g": "fard",
+        "typ": "rekonstruktion",
+        "n": "Ladbyskeppet",
+        "bild": "Rekonstruktion af Ladbyskibet.JPG",
+        "fynd": "Ladby, Fyn (kopia vid Vikingemuseet Ladby)",
+        "plats": {
+          "x": 10.62,
+          "y": 55.44
+        },
+        "text": "Vid Ladby begravdes en hövding på 900-talet i ett drygt 20 meter långt krigsskepp. Träet har förmultnat; kvar finns järnnitarna och skeppets avtryck i jorden. Efter dem har man byggt en kopia, som visar hur smalt och lågt ett krigsskepp var jämfört med ett lastskepp."
+      },
+      {
+        "id": "svard",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Svärdet",
+        "bild": "Ulfberht cropped.jpg",
+        "fynd": "Ulfberht-klinga (bildens fyndplats anges inte)",
+        "text": "Ett svärd var dyrt och ett tecken på rang. De bästa klingorna kom från Frankerriket, och omkring 170 bär smedsnamnet Ulfberht. Långt fler än svärd hade de flesta män spjut och yxa."
+      },
+      {
+        "id": "yxa",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Yxan",
+        "bild": "Yxa - Historiska museet - DIG 55023.jpg",
+        "fynd": "Birka, grav Bj 581",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "text": "Yxan var både verktyg och vapen och fanns på varje gård. Den här stridsyxan kommer från grav Bj 581 i Birka, den grav som brukar kallas krigarkvinnans (se Myt eller sanning)."
+      },
+      {
+        "id": "hjalm",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Hjälmen",
+        "bild": "Gjermundbu helmet - cropped.jpg",
+        "fynd": "Gjermundbu, Ringerike (900-talets andra hälft)",
+        "plats": {
+          "x": 10.27,
+          "y": 60.17
+        },
+        "ungefar": true,
+        "text": "Gjermundbuhjälmen är den enda nästan hela hjälmen från vikingatiden. Den är rund, av järn, med ett glasögonliknande skydd för ögonen. De flesta krigare hade ingen hjälm alls – och ingen hade horn."
+      },
+      {
+        "id": "horn",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Hade de horn på hjälmarna?",
+        "bild": "Gjermundbu helmet - cropped.jpg",
+        "dom": "Myt",
+        "text": "Nej. Hornhjälmarna blev kända genom kostymerna till Wagners operacykel Nibelungens ring 1876. Hjälmar med horn finns i Norden, men från bronsåldern, nästan 2000 år före vikingarna. Den enda nästan hela vikingahjälmen saknar horn."
+      },
+      {
+        "id": "smutsiga",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Var de smutsiga?",
+        "bild": "Kam - Historiska museet - DIG 49614.jpg",
+        "dom": "Myt",
+        "text": "Knappast. I gravarna finns kammar, öronskedar och pincetter. En engelsk krönika från 1200-talet klagar till och med på att danskarna kammade håret, badade varje lördag och bytte kläder ofta – för att imponera på engelska kvinnor. Krönikan är skriven långt senare, så den ska läsas med försiktighet."
+      },
+      {
+        "id": "krigarkvinna",
+        "g": "myt",
+        "typ": "teckning",
+        "n": "Fanns kvinnliga krigare?",
+        "bild": "Birka, Sweden Viking grave Bj 581 by Hjalmar Stolpe in 1889.jpg",
+        "fynd": "Birka, grav Bj 581 (Hjalmar Stolpes teckning, 1889)",
+        "plats": {
+          "x": 17.545,
+          "y": 59.335
+        },
+        "dom": "Omdiskuterat",
+        "text": "I grav Bj 581 låg en person med svärd, yxa, spjut, pilar, två hästar och ett spelbräde – en krigargrav. I över hundra år antogs det vara en man, men dna visade 2017 att den döda var en kvinna. Om hon själv var krigare eller begravdes med vapen av andra skäl diskuteras fortfarande."
+      }
+    ],
+    "personer": {
+      "bild": "Vikings costumes woman man Arkeologisk museum Stavanger, Norway 2015-05-27.jpg",
+      "rubrik": "Möt människorna",
+      "text": "Naturtrogna figurer i Arkeologisk museum i Stavanger. Dräkter, smycken och redskap bygger på fynd; ansikten och frisyrer är museets tolkning.",
+      "punkter": [
+        {
+          "kort": "spannbuckla",
+          "x": 33.3,
+          "y": 30.4
+        },
+        {
+          "kort": "parlor",
+          "x": 25.5,
+          "y": 37.2
+        },
+        {
+          "id": "sark",
+          "x": 10.5,
+          "y": 41
+        },
+        {
+          "id": "hangselkjol",
+          "x": 30,
+          "y": 66
+        },
+        {
+          "id": "nyckel",
+          "n": "Nycklar",
+          "x": 19.5,
+          "y": 44.6,
+          "text": "Nycklar i bältet förekommer i kvinnogravar. De brukar tolkas som ett tecken på husfruns ansvar för gården och dess förråd – men det är en tolkning."
+        },
+        {
+          "id": "slanda",
+          "n": "Slända",
+          "x": 20.5,
+          "y": 59,
+          "text": "Med sländan spann man garn av ull och lin. Allt tyg till kläder, segel och täcken spanns och vävdes för hand, och det tog en stor del av kvinnornas arbetstid."
+        },
+        {
+          "id": "sjal",
+          "n": "Sjal",
+          "x": 49,
+          "y": 46,
+          "text": "Över axlarna bars en sjal eller kappa av ull. Röda och blåa färger var dyra och visade status."
+        },
+        {
+          "id": "hange",
+          "n": "Hänge",
+          "x": 62.5,
+          "y": 27.8,
+          "text": "Ett hänge i snodd runt halsen – en amulett eller ett smycke. Torshammare och små kors bars på samma sätt."
+        },
+        {
+          "id": "kjortel",
+          "x": 76,
+          "y": 36
+        },
+        {
+          "id": "balte",
+          "x": 64,
+          "y": 45.4
+        },
+        {
+          "kort": "svard",
+          "x": 72,
+          "y": 62
+        },
+        {
+          "id": "byxor",
+          "x": 67.7,
+          "y": 78.4
+        },
+        {
+          "id": "skor",
+          "n": "Skor",
+          "x": 61.5,
+          "y": 92.5,
+          "text": "Skorna var sydda av läder med vända sömmar och band runt vristen. Sulorna var tunna – man kände marken."
+        }
+      ],
+      "narbilder": [
+        {
+          "bild": "02015 0050 Mittelalter Kleidung für Wikingerfrauen.JPG",
+          "text": "Nutida reenactor i dräkt efter vikingatida fynd: spännbucklor, pärlband och en kappa kantad med päls."
+        },
+        {
+          "bild": "Wolin festiwal 2019 05.jpg",
+          "text": "Nutida reenactor på vikingafestivalen i Wolin: kjortel med kantband, skägg och rundsköld."
+        }
+      ]
+    },
+    "drakt": {
+      "kvinna": [
+        {
+          "id": "sark",
+          "n": "Särk",
+          "text": "Underst en lång särk av linne eller ull, ibland veckad. Den syns sällan i fynden; linne bevaras dåligt."
+        },
+        {
+          "id": "hangselkjol",
+          "n": "Hängselkjol",
+          "text": "Ovanpå bars en hängselkjol med axelband som fästes med spännbucklorna. Exakt hur den var skuren är omdiskuterat, eftersom bara små tygbitar finns kvar på spännbucklornas baksida."
+        },
+        {
+          "kort": "spannbuckla"
+        },
+        {
+          "kort": "parlor"
+        },
+        {
+          "kort": "treflik"
+        }
+      ],
+      "man": [
+        {
+          "kort": "ringnal"
+        },
+        {
+          "id": "kjortel",
+          "n": "Kjortel",
+          "text": "En knälång kjortel av ull eller linne, ibland med band av siden från Bysans eller Mellanöstern längs kanterna hos de rikaste, som i Birka."
+        },
+        {
+          "id": "balte",
+          "n": "Bälte",
+          "text": "I bältet hängde kniv, kam och ibland en liten börs. Rika män hade bältesbeslag av brons eller silver."
+        },
+        {
+          "kort": "kam"
+        },
+        {
+          "id": "byxor",
+          "n": "Byxor",
+          "text": "Byxorna kunde vara smala eller vida och veckade. Nedtill lindade man ofta benlindor runt vaderna."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tidigmedeltid",
+    "n": "Tidig medeltid",
+    "a": 1050,
+    "b": 1250,
+    "ingress": "Kyrkor av sten, biskopar, skrivna lagar och de första städerna – men runorna lever kvar. Fotona visar fynd, platser och tidens egna bilder av människor; rekonstruktioner är märkta.",
+    "grupper": [
+      {
+        "id": "se",
+        "n": "Hur såg de ut?"
+      },
+      {
+        "id": "bo",
+        "n": "Kyrka och gård"
+      },
+      {
+        "id": "fard",
+        "n": "Hur färdades de?"
+      },
+      {
+        "id": "strid",
+        "n": "Vapen och försvar"
+      },
+      {
+        "id": "myt",
+        "n": "Myt eller sanning?"
+      }
+    ],
+    "personer": {
+      "bild": "LH-Wikinger-Foteviken.jpg",
+      "rubrik": "Möt människorna",
+      "text": "Reenactor på Fotevikens museum i Skåne, som återskapar en kuststad från sen vikingatid och tidig medeltid – vid Foteviken stod ett slag 1134. Dräkt och redskap är museets tolkning.",
+      "punkter": [
+        {
+          "id": "duk",
+          "n": "Huvudduk",
+          "x": 37.5,
+          "y": 27,
+          "text": "På bilder från 1100- och 1200-talen bär vuxna kvinnor nästan alltid något på huvudet – en duk, ett linne eller en hätta. Att täcka håret hörde ihop med att vara gift."
+        },
+        {
+          "id": "spanne",
+          "n": "Litet spänne",
+          "x": 33.3,
+          "y": 41.7,
+          "text": "Ett litet runt spänne höll ihop halsöppningen. De stora ovala spännbucklorna hade gått ur bruk under 1000-talet."
+        },
+        {
+          "id": "ok",
+          "n": "Ok",
+          "x": 24,
+          "y": 37.5,
+          "text": "Med ett ok över axlarna bar man vatten, mjölk och annat tungt. Vatten hämtades från brunn eller å varje dag."
+        },
+        {
+          "id": "balte",
+          "n": "Bälte",
+          "x": 34.4,
+          "y": 57,
+          "text": "I bältet hängde kniv, pung och nycklar – det man behövde för dagens arbete."
+        },
+        {
+          "id": "kjortel",
+          "n": "Kjortel",
+          "x": 32.3,
+          "y": 68,
+          "text": "En enkel kjortel av ull eller linne, kortare för arbete. Färgerna kom från växter; starka färger var dyra och visade status."
+        },
+        {
+          "id": "ambar",
+          "n": "Ämbar",
+          "x": 41.7,
+          "y": 80,
+          "text": "Ämbar av trä med band av järn eller vidjor. Trä var vardagens viktigaste material – till hus, kärl, skedar och skålar."
+        }
+      ],
+      "narbilder": [
+        {
+          "bild": "Rekonstruert kvinnedrakt fra middelalderen (\"kvinne med legende urter fra slaget på Stiklestad 1030\") Hodelin skaut kjortel draktspenne forkle Medieval women's clothing Bergenhus festningsmuseum Fortress Military Museum Bergen A.jpg",
+          "text": "Rekonstruerad kvinnodräkt i Bergenhus festningsmuseum: huvudlinne, kjortel, dräktspänne och förkläde (museets tolkning)."
+        },
+        {
+          "bild": "Foteviken2.jpg",
+          "text": "Gatuliv i den återskapade staden vid Foteviken."
+        }
+      ]
+    },
+    "kort": [
+      {
+        "id": "baldishol",
+        "g": "se",
+        "typ": "fynd",
+        "n": "April och maj",
+        "bild": "The Baldishol Tapestry - Baldisholteppet - OK-02862 - National Museum of Art, Architecture and Design.jpg",
+        "fynd": "Baldishol kyrka, Nes i Hedmark (Norge)",
+        "plats": {
+          "x": 11.0,
+          "y": 60.79
+        },
+        "ungefar": true,
+        "text": "Baldisholtäcket är en av Europas äldsta bevarade vävda bonader, från 1000- eller 1100-talet. Den visar månaderna april – en man i lång kjortel och mantel – och maj, en ryttare i ringbrynja med hjälm och sköld. Så såg man på sig själv."
+      },
+      {
+        "id": "biskop",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Biskopen på schackbrädet",
+        "bild": "Lewis chessmen (crop).jpg",
+        "fynd": "Uig på Lewis, Skottland (hittade 1831)",
+        "plats": {
+          "x": -6.98,
+          "y": 58.19
+        },
+        "ungefar": true,
+        "text": "Lewis-pjäserna är snidade i valrosstand, troligen i Norge under 1100-talets andra hälft. Biskopen bär mitra och kräkla – kyrkans män var en ny överklass. Schack var ett nytt spel i Norden och ersatte långsamt det äldre brädspelet."
+      },
+      {
+        "id": "dalby",
+        "g": "bo",
+        "typ": "fynd",
+        "n": "Kyrkor av sten",
+        "bild": "Dalby kyrka, heligakorskyrkan, skåne, sweden 2009.jpg",
+        "fynd": "Heligkorskyrkan i Dalby, Skåne",
+        "plats": {
+          "x": 13.348,
+          "y": 55.666
+        },
+        "text": "Heligkorskyrkan i Dalby påbörjades omkring 1060, när Dalby en kort tid var biskopssäte, och räknas till Nordens äldsta bevarade stenkyrkor. Under 1100- och 1200-talen byggdes tusentals sockenkyrkor – många står kvar och används än i dag."
+      },
+      {
+        "id": "hemse",
+        "g": "bo",
+        "typ": "fynd",
+        "n": "De första kyrkorna var av trä",
+        "bild": "Stavkyrka ornament - Historiska museet - DIG 53845.jpg",
+        "fynd": "Hemse stavkyrka, Gotland (Historiska museet)",
+        "plats": {
+          "x": 18.373,
+          "y": 57.237
+        },
+        "ungefar": true,
+        "text": "Före stenkyrkorna byggdes kyrkor av trä. Plankor från en stavkyrka hittades 1896 under golvet i Hemse kyrka på Gotland; kyrkan byggdes under 1000-talet eller omkring 1100. Ornamenten är i samma stil som runstenarnas djurslingor."
+      },
+      {
+        "id": "stong",
+        "g": "bo",
+        "typ": "rekonstruktion",
+        "n": "Gården Stöng på Island",
+        "bild": "Stöng Viking Longhouse.jpg",
+        "fynd": "Þjóðveldisbærinn, Island (rekonstruktion av gården Stöng)",
+        "plats": {
+          "x": -19.83,
+          "y": 64.09
+        },
+        "text": "Gården Stöng i Þjórsárdalur täcktes av aska från vulkanen Hekla och övergavs, troligen under 1100-talet. Efter husgrunden har man byggt upp den i närheten: tjocka väggar och tak av torv kring ett långt huvudhus med eldstad och flera rum i rad. Så kunde en storgård se ut under den isländska fristatstiden."
+      },
+      {
+        "id": "bayeux",
+        "g": "fard",
+        "typ": "fynd",
+        "n": "Skepp av nordisk typ",
+        "bild": "France-000687 - Tapestry - 38-39 (14994772181) (cropped).jpg",
+        "fynd": "Bayeuxtapeten, Normandie (broderad på 1070-talet)",
+        "plats": {
+          "x": -0.702,
+          "y": 49.275
+        },
+        "text": "Bayeuxtapeten visar Vilhelm Erövrarens flotta på väg mot England 1066: klinkbyggda skepp med råsegel och drakhuvuden, byggda i samma tradition som de nordiska. Normanderna härstammade delvis från vikingar som slagit sig ner i Frankrike."
+      },
+      {
+        "id": "havhingsten",
+        "g": "fard",
+        "typ": "rekonstruktion",
+        "n": "Ett långskepp seglar igen",
+        "bild": "VIKING LONGSHIP \"SEA STALLION\" ARRIVES IN DUBLIN.jpg",
+        "fynd": "Havhingsten, kopia av Skuldelev 2 (Roskilde)",
+        "plats": {
+          "x": 12.08,
+          "y": 55.65
+        },
+        "text": "Skuldelev 2 byggdes nära Dublin omkring 1042 och sänktes i Roskildefjorden omkring 1070. Kopian Havhingsten är 30 meter lång och kräver 60–70 roddare; 2007 seglade den från Roskilde till Dublin. Så färdades kungarnas krigsflottor."
+      },
+      {
+        "id": "jarnhatt",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Hjälm, svärd och spjut",
+        "bild": "Norwegian viking and medieval sword, spear, 12-c. helmet, tapestry c. 1150. (Vikingsverd, jernhatt, spyd, kastestein, Baldisholteppet). Armed Forces Museum of Norway (Forsvarsmuseet), Akershus Fortress, Oslo. Photo 2019-03-31 DSC01.jpg",
+        "fynd": "Forsvarsmuseet, Oslo (montern visar en kopia av Baldisholtäcket)",
+        "text": "Svärdens parerstång blev längre och rak, så att svärdet fick korsform. Hjälmen i montern dateras av museet till 1100-talet. Bönderna var skyldiga att ställa upp med vapen i ledungen, kungens flotta, och lagarna räknar upp vad var och en skulle ha."
+      },
+      {
+        "id": "kastal",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Kastaler",
+        "bild": "Sundre kastal, Gotland.jpg",
+        "fynd": "Sundre kastal, Gotland",
+        "plats": {
+          "x": 18.18,
+          "y": 56.94
+        },
+        "ungefar": true,
+        "text": "På Gotland och längs kusterna byggdes kastaler: höga runda eller fyrkantiga torn av sten, nära kyrkan eller hamnen. De var förråd och tillflykt vid anfall. Många byggdes under 1100- och 1200-talen."
+      },
+      {
+        "id": "mork",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Var medeltiden mörk?",
+        "bild": "Handskrift KB B 193 - Fragment av äldre Västgötalagen.pdf (pade 5).jpg",
+        "fynd": "Äldre Västgötalagen, fragment från omkring 1250 (Kungliga biblioteket)",
+        "dom": "Myt",
+        "text": "Nej. Lagarna skrevs ner – äldre Västgötalagen omkring 1220, och detta fragment är den äldsta bevarade boktexten på svenska. Vid domkyrkorna fanns skolor, och präster läste latin. Runorna levde vidare bredvid: dra i tidslinjen så ser du runinskrifter långt in på 1300-talet."
+      },
+      {
+        "id": "kristna",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Blev alla kristna på en gång?",
+        "bild": "Three kings or three gods.jpg",
+        "fynd": "Skogbonaden, Skogs kyrka i Hälsingland (Historiska museet)",
+        "dom": "Omdiskuterat",
+        "text": "Nej, kristnandet tog generationer. Adam av Bremen beskrev omkring 1075 ett hedniskt tempel i Uppsala – men han hade aldrig varit där. Skogbonaden, som oftast dateras till 1200-talet, visar tre figurer som tolkas antingen som Oden, Tor och Frö eller som helgonkungarna Olav, Knut och Erik."
+      },
+      {
+        "id": "rustning",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Bar riddarna plåtrustning?",
+        "bild": "The Baldishol Tapestry - Baldisholteppet - OK-02862 - National Museum of Art, Architecture and Design.jpg",
+        "fynd": "Baldisholtäcket (ryttaren till höger)",
+        "dom": "Myt",
+        "text": "Inte än. Ryttaren på Baldisholtäcket bär ringbrynja, hjälm och en lång droppformad sköld. Heltäckande plåtrustningar kom först på 1300- och 1400-talen, och ett svenskt frälse av riddare tog form först med Alsnö stadga omkring 1280."
+      }
+    ]
+  },
+  {
+    "id": "hogmedeltid",
+    "n": "Hög- och senmedeltid",
+    "a": 1250,
+    "b": 1551,
+    "ingress": "Städer med ringmurar, koggar fulla av hanseatiska varor, ett blodigt slag utanför Visby – och digerdöden, som tömde gård efter gård. Fotona visar fynd, platser och tidens egna bilder; rekonstruktioner och senare målningar är märkta. Tidsbilden gäller också de första åren av 1500-talet, fram till reformationen.",
+    "grupper": [
+      {
+        "id": "se",
+        "n": "Hur såg de ut?"
+      },
+      {
+        "id": "stad",
+        "n": "Städer och handel"
+      },
+      {
+        "id": "strid",
+        "n": "Visby 1361"
+      },
+      {
+        "id": "pest",
+        "n": "Digerdöden"
+      },
+      {
+        "id": "myt",
+        "n": "Myt eller sanning?"
+      }
+    ],
+    "personer": {
+      "bild": "Bockstensmannen - reconstruction.jpg",
+      "rubrik": "Möt Bockstensmannen",
+      "text": "Rekonstruktion i Hallands kulturhistoriska museum i Varberg. Kläderna är kopior av dem han hittades i; ansiktet är en tolkning byggd på skallen.",
+      "punkter": [
+        {
+          "id": "har",
+          "n": "Håret",
+          "x": 57,
+          "y": 16,
+          "text": "Bockstensmannen hittades 1936 i en mosse i Halland, så välbevarad att hans lockiga hår fanns kvar. Han var en ung vuxen man och levde under 1300-talet."
+        },
+        {
+          "id": "luva",
+          "n": "Luva",
+          "x": 40.5,
+          "y": 27.5,
+          "text": "En kapuschong med axelkrage och en lång strut baktill – en luva. Struten var modern på 1300-talet och kunde lindas runt halsen eller huvudet."
+        },
+        {
+          "id": "kappa",
+          "n": "Kappa",
+          "x": 61,
+          "y": 40,
+          "text": "Över axlarna en rund kappa av vadmal, ett tätt och slitstarkt ylletyg. Kappan var både regnrock och filt."
+        },
+        {
+          "id": "kniv",
+          "n": "Bälte och kniv",
+          "x": 38,
+          "y": 52.7,
+          "text": "I bältet bar han en kniv i skida. En kniv hade alla – till mat, arbete och försvar."
+        },
+        {
+          "id": "kjortel",
+          "n": "Kjortel",
+          "x": 46,
+          "y": 60,
+          "text": "Kjorteln är sydd av många kilformade stycken, så att den vidgar sig nedåt. Snittet visar att även en vanlig man följde tidens mode."
+        },
+        {
+          "id": "hosor",
+          "n": "Hosor",
+          "x": 38,
+          "y": 74,
+          "text": "På benen hosor – separata strumpor av ylle som hölls uppe med band – och lindor runt vaderna."
+        },
+        {
+          "kort": "skor",
+          "x": 37,
+          "y": 81
+        }
+      ],
+      "narbilder": [
+        {
+          "bild": "Bockstensmann-Kleidungsrekonstruktion.jpg",
+          "text": "En kopia av Bockstensmannens dräkt, buren av en levande människa: luva med strut, kappa, kjortel och hosor."
+        },
+        {
+          "bild": "Dancing peasants by Albertus Pictor 1480.jpg",
+          "text": "Män i 1400-talets kläder – korta rockar och breda hattar – målade av Albertus Pictor omkring 1480 i ett bibliskt motiv."
+        }
+      ]
+    },
+    "kort": [
+      {
+        "id": "drakt",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Europas bäst bevarade mansdräkt",
+        "bild": "The Bocksten man clothing.jpg",
+        "fynd": "Bockstens mosse, Rolfstorp i Halland",
+        "plats": {
+          "x": 12.55,
+          "y": 57.15
+        },
+        "ungefar": true,
+        "text": "Bockstensmannens kläder – luva, kappa, kjortel, hosor och skor – är den mest kompletta medeltida mansdräkten som hittats i Europa. Mossen bevarade ylle och läder som annars förmultnar."
+      },
+      {
+        "id": "skor",
+        "g": "se",
+        "typ": "fynd",
+        "n": "Skorna",
+        "bild": "Bockstensmannen - shoes 2.jpg",
+        "fynd": "Bockstens mosse (montern i Hallands kulturhistoriska museum)",
+        "plats": {
+          "x": 12.55,
+          "y": 57.15
+        },
+        "ungefar": true,
+        "text": "Lågskor av läder, sydda med vända sömmar och knutna med remmar. Skorna var tunna och lagades om och om igen. I montern visas både bevarade delar och kopior."
+      },
+      {
+        "id": "ringmur",
+        "g": "stad",
+        "typ": "fynd",
+        "n": "Visby ringmur",
+        "bild": "Visby ringmur August 2020 01.jpg",
+        "fynd": "Visby, Gotland",
+        "plats": {
+          "x": 18.295,
+          "y": 57.638
+        },
+        "text": "Muren byggdes från slutet av 1200-talet och blev 3,4 kilometer lång, med ett trettiotal torn. Den skyddade de rika köpmännen i Visby – inte bara mot utländska fiender utan också mot Gotlands egna bönder, som de låg i strid med 1288."
+      },
+      {
+        "id": "kogg",
+        "g": "stad",
+        "typ": "fynd",
+        "n": "Koggen",
+        "bild": "Bremer Kogge, Deutsches Schiffahrtsmuseum, 2016 (01).jpg",
+        "fynd": "Bremenkoggen från 1380, Deutsches Schiffahrtsmuseum, Bremerhaven",
+        "plats": {
+          "x": 8.577,
+          "y": 53.54
+        },
+        "text": "Koggen var Hansans lastfartyg: flat botten, höga sidor och roder i aktern. Den rymde mycket mer än vikingarnas skepp och förde salt, tyg, öl och spannmål till Östersjön och fisk, järn och smör därifrån. Bremenkoggen sjönk 1380 innan den blivit klar och hittades 1962."
+      },
+      {
+        "id": "massgrav",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Massgravarna",
+        "bild": "Oscar Wilhelm Wennersten during the first excavation of the mass graves from the Battle of Visby in 1361. Gotland, Sweden, 29 May 1905 (cropped).jpg",
+        "fynd": "Korsbetningen utanför Visby (utgrävningen 1905)",
+        "plats": {
+          "x": 18.305,
+          "y": 57.632
+        },
+        "ungefar": true,
+        "text": "Den 27 juli 1361 besegrade den danske kungen Valdemar Atterdag Gotlands bondehär utanför Visbys mur; stadsborna öppnade inte portarna. I massgravarna har man funnit omkring 1 800 döda, många begravda i sina rustningar. Skeletten visar att unga, gamla och sjuka män också fick strida."
+      },
+      {
+        "id": "brynja",
+        "g": "strid",
+        "typ": "fynd",
+        "n": "Skallen med brynjehuva",
+        "bild": "Fornsalen - Invasion 1361 - Schädel mit Kettenhaube 1.jpg",
+        "fynd": "Korsbetningen (Gotlands museum, Fornsalen)",
+        "plats": {
+          "x": 18.305,
+          "y": 57.632
+        },
+        "ungefar": true,
+        "text": "En av de stupade begravdes med huvudet kvar i sin ringbrynjehuva. Det var högsommar och de döda måste i jorden fort – ingen tog sig tid att plundra dem på rustningarna."
+      },
+      {
+        "id": "schack",
+        "g": "pest",
+        "typ": "fynd",
+        "n": "Döden spelar schack",
+        "bild": "TäbySchack2201.jpg",
+        "fynd": "Täby kyrka, målad av Albertus Pictor omkring 1480",
+        "plats": {
+          "x": 18.062,
+          "y": 59.497
+        },
+        "ungefar": true,
+        "text": "Digerdöden nådde Norden 1349–1350 och dödade kanske en tredjedel till hälften av befolkningen; pesten kom sedan tillbaka gång på gång. Döden blev ett vanligt motiv i kyrkorna: här spelar han schack om en mans liv – ett spel ingen kan vinna."
+      },
+      {
+        "id": "odegard",
+        "g": "pest",
+        "typ": "fynd",
+        "n": "Döden och ödegårdarna",
+        "bild": "Sollentuna kyrka, Döden (Pictor).jpg",
+        "fynd": "Sollentuna kyrka, målad av Albertus Pictor i slutet av 1400-talet",
+        "text": "Efter pesten stod många gårdar tomma – ödegårdar. Det fanns mer jord än folk, så de som överlevde kunde ofta få bättre villkor. Ortnamn som börjar på Öde- minner om de övergivna gårdarna. I kyrkorna målades Döden som ett skelett, ständigt närvarande."
+      },
+      {
+        "id": "brandskatt",
+        "g": "myt",
+        "typ": "malning",
+        "n": "Fyllde Visby tre ölkar med silver?",
+        "bild": "Valdemar Atterdag brandskattar Visby (1882).jpg",
+        "fynd": "Carl Gustaf Hellqvist, Valdemar Atterdag brandskattar Visby (1882, Nationalmuseum)",
+        "dom": "Omdiskuterat",
+        "text": "Hellqvists målning från 1882 visar sägnen om hur Visbyborna fick fylla tre stora ölkar med silver och guld. Slaget 1361 är verkligt, men brandskattningen berättas först i senare krönikor, och dräkter och byggnader i målningen är 1800-talets föreställning om medeltiden."
+      },
+      {
+        "id": "pesta",
+        "g": "myt",
+        "typ": "malning",
+        "n": "Kom pesten som en gumma med räfsa?",
+        "bild": "Theodor Kittelsen - Pesta i trappen, 1896 (Pesta on the Stairs).jpg",
+        "fynd": "Theodor Kittelsen, Pesta i trappen (1896)",
+        "dom": "Myt",
+        "text": "I folktron vandrade pesten som en gumma, Pesta: där hon räfsade överlevde några, där hon sopade med kvasten dog alla. I själva verket orsakades pesten av bakterien Yersinia pestis, som spreds med loppor och mellan människor – det har man kunnat bevisa med dna från pestoffrens tänder."
+      },
+      {
+        "id": "pala",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Pålades Bockstensmannen för att inte gå igen?",
+        "bild": "Bockstensmannen - stake.jpg",
+        "fynd": "Bockstens mosse (Hallands kulturhistoriska museum)",
+        "plats": {
+          "x": 12.55,
+          "y": 57.15
+        },
+        "ungefar": true,
+        "dom": "Omdiskuterat",
+        "text": "Bockstensmannen dödades med slag mot huvudet och fästes sedan i mossen med pålar. Det brukar tolkas som ett sätt att hindra den döde från att gå igen – men pålarna kan också ha hållit kroppen kvar under ytan. Vem han var och varför han dödades vet vi inte."
+      },
+      {
+        "id": "trolldom",
+        "g": "myt",
+        "typ": "fynd",
+        "n": "Trodde man på trolldom?",
+        "bild": "Mjölkhare från 1400-talet i Härkeberga kyrka 0718.jpg",
+        "fynd": "Härkeberga kyrka, Uppland (1400-talet)",
+        "dom": "Sanning",
+        "text": "Ja. Mjölkharen i Härkeberga kyrka är en trollkunnig kvinnas hjälpreda som stal mjölk från grannarnas kor och spydde ut den som smör hemma. Kyrkan målade sådana bilder som varning. De stora häxprocesserna kom dock först på 1600-talet."
+      }
+    ]
+  }
+]

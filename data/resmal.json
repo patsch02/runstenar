@@ -1,0 +1,18 @@
+{
+  "england":       {"n": "England",        "x": -1.2,   "y": 52.6},
+  "london":        {"n": "London",         "x": -0.1,   "y": 51.5},
+  "bath":          {"n": "Bath",           "x": -2.36,  "y": 51.38},
+  "grekland":      {"n": "Grekland (Bysans)", "x": 28.98, "y": 41.01},
+  "sarkland":      {"n": "Särkland",       "x": 50.0,   "y": 40.5},
+  "gardarike":     {"n": "Gårdarike",      "x": 31.4,   "y": 57.3},
+  "holmgard":      {"n": "Holmgård",       "x": 31.275, "y": 58.52},
+  "jerusalem":     {"n": "Jerusalem",      "x": 35.23,  "y": 31.78},
+  "langbardaland": {"n": "Langbardaland",  "x": 16.0,   "y": 41.0},
+  "saxland":       {"n": "Saxland",        "x": 9.5,    "y": 52.6},
+  "danmark":       {"n": "Danmark",        "x": 10.3,   "y": 56.0},
+  "hedeby":        {"n": "Hedeby",         "x": 9.565,  "y": 54.49},
+  "gotland":       {"n": "Gotland",        "x": 18.5,   "y": 57.45},
+  "finland":       {"n": "Finland",        "x": 23.8,   "y": 60.9},
+  "estland":       {"n": "Estland",        "x": 25.5,   "y": 59.0},
+  "livland":       {"n": "Livland",        "x": 24.3,   "y": 57.3}
+}

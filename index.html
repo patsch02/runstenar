@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Runstenar i tid och rum</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css?v=49">
+</head>
+<body>
+  <div id="karta" aria-label="Karta över runinskrifter"></div>
+
+  <aside id="panel" class="ruta">
+    <p class="kicker">Interaktiv karta · år 150–1550</p>
+    <h1>Runstenar i tid och rum</h1>
+    <p class="ingress">Följ tusen år av människor, resor och tro genom 6 590 runinskrifter. Välj en berättelse eller dra i tidslinjen.</p>
+    <div id="berattelser">
+      <div class="mellan">Berättelser</div>
+      <ul id="turlista"></ul>
+    </div>
+    <section id="tur" aria-live="polite" hidden></section>
+
+    <div class="sokruta">
+      <input id="sok" type="search" placeholder="Sök signum, plats eller ristare" aria-label="Sök signum, plats eller ristare" autocomplete="off">
+      <ul id="traffar" hidden></ul>
+      <div id="markering" hidden>
+        <div><b id="markering-text"></b><small id="markering-ar"></small></div>
+        <button id="avmarkera" type="button" aria-label="Ta bort markeringen">×</button>
+      </div>
+    </div>
+
+    <p class="lagertips">Slå på fler lager nedan. <span class="i-tecken">i</span> berättar hur lagret är daterat. Lager märkta <span class="alltid">alltid</span> följer inte tidslinjen.</p>
+
+    <div class="lager" aria-live="polite">
+      <details class="grupp" open>
+        <summary>Runinskrifter</summary>
+
+        <div class="mellan">Föremål</div>
+        <div class="rad"><label><input type="checkbox" data-typ="R" checked> Runstenar och hällar</label><small id="n-R"></small></div>
+        <div class="rad"><label><input type="checkbox" data-typ="G"> Gravmonument</label><small id="n-G"></small></div>
+        <div class="rad"><label><input type="checkbox" data-typ="O"> Lösföremål</label><small id="n-O"></small></div>
+
+        <div class="mellan">Ålder</div>
+        <div class="rad"><label><span class="tom"></span><span class="prick nu"></span> <span class="namn">Ristade kring <span class="valt-ar">1030</span></span></label><b id="antal-nu">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-datering" aria-expanded="false" aria-label="Om dateringen">i</button></div>
+        <p class="info" id="info-datering" hidden>Varje inskrift har ett tidigaste och ett senaste möjliga år. Är spannet högst 120 år räknas den som
+          <em>snävt daterad</em> och lyser orange under sitt spann. Övriga är bara daterade till en hel period
+          (t.ex. vikingatid, 725–1100); de räknas som ungefärligt daterade och visas grå tills perioden är slut. Svenska stenar med
+          ornamentik i stil Rak, Fp eller Pr 1–Pr 5 som saknar snäv datering i databasen har daterats med Gräslunds stilkronologi.
+          Danska stenar följer i stället den danska periodindelningen (Helnæs-Gørlev, för-Jelling, Jelling, efter-Jelling),
+          och Jellingstenarna är daterade efter kungarna Gorm och Harald. Det anges på respektive sten.
+          Utzoomad slås täta stenar ihop till ringar med antal; den röda kärnan visar hur stor andel som ristades
+          kring det valda året. Klicka på en ring eller zooma in för att se stenarna.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-sedan" checked><span class="prick sedan"></span> <span class="namn">Ristade före <span class="valt-ar">1030</span></span></label><b id="antal-sedan">0</b></div>
+        <div class="rad"><label><input type="checkbox" id="visa-grov" checked><span class="prick grov"></span> Ungefärligt daterade</label><b id="antal-grov">0</b></div>
+
+        <div class="mellan">Finns i dag</div>
+        <div class="rad"><label><input type="checkbox" id="visa-bevarade" checked><span class="prick fylld"></span> Bevarade</label></div>
+        <div class="rad"><label><input type="checkbox" id="visa-forsvunna" checked><span class="prick ring"></span> Försvunna</label><b id="antal-borta">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-forsvunna" aria-expanded="false" aria-label="Om försvunna inskrifter">i</button></div>
+        <p class="info" id="info-forsvunna" hidden>Försvunna inskrifter ritas som ringar på sin äldsta kända plats. Många är kända genom träsnitten i Bautil,
+          som bygger på 1600-talets inventeringar, eller genom Liljegrens förteckning 1833. Flyttade stenar visas också på
+          sin äldsta kända plats; klicka på en för att se var den står i dag.</p>
+
+        <div class="fargval">
+          <label for="farg">Färg visar</label>
+          <select id="farg">
+            <option value="tid">Ålder</option>
+            <option value="stil">Ornamentikstil</option>
+            <option value="ristare">Ristare</option>
+          </select>
+          <button class="info-knapp" type="button" aria-controls="info-farg" aria-expanded="false" aria-label="Om färgerna">i</button>
+        </div>
+        <p class="info" id="info-farg" hidden>När färgen visar stil eller ristare syns tiden i stället i storlek och styrka: det som ristades kring
+          det valda året är störst och starkast. Har en inskrift flera stilar eller ristare gäller den först angivna.
+          Ristarlistan visar de åtta med flest inskrifter. Klicka på en kategori för att markera dess inskrifter.</p>
+        <ul id="farglegend" hidden></ul>
+      </details>
+
+      <details class="grupp">
+        <summary>Var bodde man? <small class="aktiva"></small></summary>
+
+        <div class="rad"><label><input type="checkbox" id="visa-bygd"><span class="prick bygd"></span> Byar efter ortnamnens ålder</label><b id="antal-bygd">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-bygd" aria-expanded="false" aria-label="Om byarna">i</button></div>
+        <p class="info" id="info-bygd" hidden>Bygger på svenska ortnamn: ändelser som -inge, -sta, -by, -torp och -ryd hör till olika
+          perioder. Färgen visar namntypens period: de äldsta namnen har starkast färg (mörkast i ljust läge, ljusast i
+          mörkt), och varje namntyp tonas in över sin period. Listan under visar vilka namntyper som redan fanns det valda
+          året och vilka som bildades just då. Periodgränserna är ungefärliga och bygger på forskningens tumregler. Det visar hur bygder växte fram, inte när en enskild gård
+          grundades. Många -torp är i själva verket torp från 1600–1800-talen, så lagret överdriver medeltiden.</p>
+        <ul id="namnlegend" hidden></ul>
+        <div class="rad"><label><input type="checkbox" id="visa-gravar"><span class="prick grav"></span> Gravfält</label><b id="antal-gravar">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-gravar" aria-expanded="false" aria-label="Om gravfälten">i</button></div>
+        <p class="info" id="info-gravar" hidden>Gravfälten kommer ur fornlämningsregistret; prickens storlek följer antalet gravar. Ett gravfält
+          hörde i regel till en gård. De är inte daterade var för sig, så åldern är en tumregel: gravfält med högar visas
+          under yngre järnålder, gravfält med resta stenar eller domarringar men utan högar under äldre järnålder, och
+          övriga under hela järnåldern.</p>
+      </details>
+
+      <details class="grupp">
+        <summary>Hur färdades man? <small class="aktiva"></small></summary>
+
+        <div class="rad"><label><input type="checkbox" id="visa-strand" checked><span class="strand-symbol"></span> <span class="namn">Strandlinjen år <span id="strand-ar">–</span></span></label>
+          <button class="info-knapp" type="button" aria-controls="info-strand" aria-expanded="false" aria-label="Om strandlinjen">i</button></div>
+        <p class="info" id="info-strand" hidden>Visar i mörkare blått det som var hav eller sjö det valda året men är land i dag, enligt SGU:s
+          strandförskjutningsmodell, som finns för vart hundrade år. Tidslinjens år avrundas därför till närmaste hundratal.
+          Lagret täcker Sverige och syns från zoomnivå 5. Modellen bygger på dagens markhöjd, så sjöar
+          som dikats ut och mark som fyllts igen i sen tid kan bli fel.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-leder" checked><span class="led-symbol"></span> Leder till sjöss och land (urval)</label><b id="antal-leder">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-leder" aria-expanded="false" aria-label="Om lederna">i</button></div>
+        <p class="info" id="info-leder" hidden>Ett handplockat urval av viktiga leder. Farleder till sjöss är prickade, landvägar heldragna.
+          Sträckningarna är schematiska och årtalen ungefärliga.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-vagar"><span class="vag-symbol"></span> Vägar, broar och vadställen <span class="alltid">alltid</span></label>
+          <button class="info-knapp" type="button" aria-controls="info-vagar" aria-expanded="false" aria-label="Om vägarna">i</button></div>
+        <p class="info" id="info-vagar" hidden>Hålvägar, vägbankar, broar och vad ur fornlämningsregistret. De är odaterade och visas därför hela tiden.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-sjofart"><span class="sjo-symbol">⚓</span> Hamnar <span class="alltid">alltid</span></label><b id="antal-hamnar">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-sjofart" aria-expanded="false" aria-label="Om hamnarna">i</button></div>
+        <p class="info" id="info-sjofart" hidden>Hamnområden ur fornlämningsregistret. De är odaterade och visas därför hela tiden.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-resor"><span class="res-symbol"></span> Resor som runtexterna nämner</label><b id="antal-resor">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-resor" aria-expanded="false" aria-label="Om resorna">i</button></div>
+        <p class="info" id="info-resor" hidden>Linjer från stenar vars text nämner ett resmål, till exempel England, Grekland eller Särkland.
+          Resmålen är utlästa genom ordmatchning i texten och placerade ungefärligt.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-broar"><span class="tom-symbol"></span> Ringa in brostenar</label>
+          <button class="info-knapp" type="button" aria-controls="info-broar" aria-expanded="false" aria-label="Om brostenarna">i</button></div>
+        <p class="info" id="info-broar" hidden>Stenar vars text berättar att någon lät bygga en bro eller vägbank, ofta för en avlidens själ.
+          De är utpekade genom ordmatchning i den engelska översättningen.</p>
+      </details>
+
+      <details class="grupp">
+        <summary>Makt och tro <small class="aktiva"></small></summary>
+
+        <div class="rad"><label><input type="checkbox" id="visa-orter" checked><span class="ort-symbol"></span> Städer och maktcentra (urval)</label><b id="antal-orter">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-orter" aria-expanded="false" aria-label="Om städerna och maktcentra">i</button></div>
+        <p class="info" id="info-orter" hidden>Städer, handelsplatser, kungsgårdar och ringborgar i ett handplockat urval. Årtalen är ungefärliga.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-forsvar"><span class="borg-symbol"></span> Fornborgar</label><b id="antal-borgar">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-forsvar" aria-expanded="false" aria-label="Om fornborgarna">i</button></div>
+        <p class="info" id="info-forsvar" hidden>Fornborgar ur fornlämningsregistret. De är odaterade var för sig; de flesta som
+          undersökts är från 300–600-talen, och lagret tonas bort 1050–1150.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-mynt"><span class="mynt-symbol"></span> Mynt per fyndplats</label><b id="antal-mynt">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-mynt" aria-expanded="false" aria-label="Om mynten">i</button></div>
+        <ul id="myntlegend" hidden></ul>
+        <p class="info" id="info-mynt" hidden>Vikingatida mynt i Historiska museets och Myntkabinettets samlingar.
+          Cirkelns storlek följer antalet mynt på fyndplatsen och färgen det vanligaste ursprunget. Fyndplatser utan
+          fornlämningsnummer är samlade i socknens mitt och ritas blekare. Mynten visas under hela vikingatiden.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-kult"><span class="tri fylld"></span> Hedniska kultnamn</label><b id="antal-kult">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-kult" aria-expanded="false" aria-label="Om kultnamnen">i</button></div>
+        <p class="info" id="info-kult" hidden>Svenska ortnamn där ett gudanamn är sammansatt med ett ord för helgedom,
+          som Odensvi, Torsharg eller Ullevi. De är utpekade enbart på namnformen och tonas bort 1000–1150.</p>
+        <div class="rad"><label><input type="checkbox" id="visa-kyrkor"><span class="kors-symbol">✝</span> Kyrkor</label><b id="antal-kyrkor">0</b>
+          <button class="info-knapp" type="button" aria-controls="info-kyrkor" aria-expanded="false" aria-label="Om kyrkorna">i</button></div>
+        <p class="info" id="info-kyrkor" hidden>Kyrkorna kommer från Wikidata och visas från sitt angivna tillkomstår; bara kyrkor med årtal finns med,
+          så lagret är långt ifrån fullständigt.</p>
+      </details>
+    </div>
+
+    <details class="om museer">
+      <summary>Museer och platser att besöka</summary>
+      <p>Ett urval för den som vill se fynden och platserna på riktigt. Kontrollera öppettider innan besöket; flera är bara öppna sommartid.</p>
+      <h3>Sverige</h3>
+      <ul>
+        <li><b>Vikingaliv, Stockholm</b> – vikingamuseet på Djurgården, med en utställning om vardagslivet och en åktur genom berättelsen om Ragnfrid.</li>
+        <li><b>Historiska museet, Stockholm</b> – vikingautställningen, Guldrummet med halskragarna och modellen av Birka.</li>
+        <li><b>Birka, Björkö</b> – världsarv med museum och rekonstruerade hus; båt från Stockholm på sommaren.</li>
+        <li><b>Gamla Uppsala museum</b> – kungshögarna och fynden från de stora gravarna.</li>
+        <li><b>Sigtuna museum</b> – staden som tog över efter Birka, med runstenar i gatorna.</li>
+        <li><b>Runriket kring Vallentunasjön</b> – runstensled med Jarlabankes bro och stenar på sina platser.</li>
+        <li><b>Rökstenen, Rök</b> – världens längsta runinskrift, med besökscentrum.</li>
+        <li><b>Gotlands museum, Visby</b> – bildstenarna och silverskatterna; Visby ringmur strax utanför.</li>
+        <li><b>Eketorps borg, Öland</b> – en järnåldersborg uppbyggd där den stod.</li>
+        <li><b>Fotevikens museum, Höllviken</b> – rekonstruerad vikingatida stad vid stranden.</li>
+      </ul>
+      <h3>Övriga Norden</h3>
+      <ul>
+        <li><b>Vikingeskibsmuseet, Roskilde</b> – Skuldelevskeppen och kopior som seglar.</li>
+        <li><b>Kongernes Jelling</b> – Jellingstenarna, högarna och ett museum om Harald Blåtand.</li>
+        <li><b>Nationalmuseet, Köpenhamn</b> – Danmarks forntid, guldhornen (kopior) och runstenar.</li>
+        <li><b>Ribe</b> – Museet Ribes Vikinger i en av Nordens äldsta städer och VikingeCenter utanför.</li>
+        <li><b>Trelleborg vid Slagelse</b> och <b>Ladby på Fyn</b> – ringborgen och skeppsgraven.</li>
+        <li><b>Vikingskipshuset, Oslo</b> – Oseberg- och Gokstadsskeppen; byggs om till ett nytt vikingatidsmuseum, kontrollera om det är öppet.</li>
+        <li><b>Lofotr vikingmuseum, Borg</b> – hövdingens långhus i full skala.</li>
+        <li><b>Bryggens museum, Bergen</b> – hundratals runpinnar med vardagens meddelanden från medeltiden.</li>
+        <li><b>Þjóðminjasafn, Reykjavík</b> och <b>Þjóðveldisbærinn</b> – Islands historia och gården Stöng.</li>
+      </ul>
+      <h3>Utanför Norden</h3>
+      <ul>
+        <li><b>Wikinger Museum Haithabu, Tyskland</b> – Hedeby med rekonstruerade hus.</li>
+        <li><b>Saaremaa museum, Kuressaare, Estland</b> – fynden från Salmeskeppen.</li>
+        <li><b>Jorvik Viking Centre, York</b> – det vikingatida York byggt efter utgrävningarna.</li>
+        <li><b>British Museum, London</b> – Lewisschackpjäserna och vikingatida skatter.</li>
+        <li><b>Bayeuxtapeten, Bayeux</b> – erövringen av England 1066, sydd några år efter.</li>
+        <li><b>L’Anse aux Meadows, Kanada</b> – nordbornas boplats på Newfoundland omkring år 1000.</li>
+        <li><b>Hagia Sofia, Istanbul</b> och <b>Pireuslejonet, Venedig</b> – runor ristade av nordbor i Miklagård och Grekland.</li>
+      </ul>
+    </details>
+
+    <details class="om">
+      <summary>Ordlista</summary>
+      <dl id="ordlista" class="ordlista"></dl>
+    </details>
+
+    <details class="om">
+      <summary>Om kartan och källorna</summary>
+      <p>Många lager har tidsgränser eller klassningar som är antaganden, inte uppgifter i källorna. Dra därför inga
+        slutsatser av det som syns tona in eller ut – läs i-texten vid lagret.</p>
+      <p class="kalla">Inskrifter: Samnordisk runtextdatabas via <a href="https://app.raa.se/open/runor/" target="_blank" rel="noopener">Riksantikvarieämbetets Runor</a>.
+        Vägar, gravfält, sjöfart, försvar, skatter och offerplatser: Riksantikvarieämbetets fornlämningsregister via K-samsök.
+        Ortnamn: © OpenStreetMaps bidragsgivare. Kyrkor: Wikidata (CC0). Mynt: Statens historiska museer (CC0).
+        Strandlinje: SGU.</p>
+    </details>
+  </aside>
+
+  <aside id="detalj" class="ruta" hidden></aside>
+  <aside id="tidsbild" class="ruta" aria-label="Tidsbild" hidden></aside>
+
+  <footer id="tidslinje" class="ruta">
+    <div class="styrning">
+      <button id="spela" type="button" aria-label="Spela upp">▶</button>
+      <div class="ar"><output id="ar-tal">1030</output><span id="ar-epok"></span></div>
+      <label class="fart">Fart
+        <select id="fart">
+          <option value="1">Långsam</option>
+          <option value="3" selected>Normal</option>
+          <option value="8">Snabb</option>
+        </select>
+      </label>
+      <button id="visa-tidsbild" type="button" aria-controls="tidsbild" aria-expanded="false" title="Kläder, smycken, hus, skepp och vapen under den valda perioden">Tidsbild</button>
+    </div>
+    <div class="spar">
+      <span class="histotext">Snävt daterade inskrifter per årtionde</span>
+      <svg id="histogram" role="img" aria-label="Antal snävt daterade inskrifter per årtionde"></svg>
+      <input id="ar" type="range" min="150" max="1550" step="1" value="1030" aria-label="År">
+      <div class="skala" id="skala"></div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+  <script src="app.js?v=52"></script>
+</body>
+</html>
