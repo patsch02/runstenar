@@ -16,7 +16,7 @@ när de ändras, annars kan webbläsaren visa gamla versioner.
 
 Före publicering (commit och push till `main`, som GitHub Pages publicerar på https://patsch02.github.io/runstenar/):
 
-    ruby scripts/kontroll.rb           # JSON, signum i berättelser, filer, dubbla namn i js/, Commons-bilder, start i Chrome
+    ruby scripts/kontroll.rb           # JSON, signum i berättelser, filer, dubbla namn i js/, ordbok och egna sidor aktuella, Commons-bilder, start i Chrome
     ruby scripts/kontroll.rb --snabb   # utan nätet och Chrome
 
 ## Filer
@@ -29,8 +29,9 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 - Panelen har också utfällbara rutor med museitips ("Museer och platser att besöka", handskrivna i index.html) och ordlista.
 - Välkomstrutan (`visaValkommen()` i js/panel.js) visas en gång per besök. Bilder från Commons hämtas med
   `hamtaCommons()` och fylls i med `fyllCommons()` (upphov och licens visas alltid).
-- `js/*.js` – all logik, tio vanliga skript (inte ES-moduler) som laddas i ordning i index.html och delar globalt
-  omfång: grund (konstanter, `lage`, `meddela()`), karta, lager, tidslinje (inkl. Uppdatering), sok, detalj, berattelser,
+- `js/*.js` – all logik, elva vanliga skript (inte ES-moduler) som laddas i ordning i index.html och delar globalt
+  omfång: grund (konstanter, `lage`, `meddela()`), karta, lager, tidslinje (inkl. Uppdatering), sok, lasning (läs ord för ord;
+  fristående, laddas också av sten/*.html), detalj, berattelser,
   tidsbild (inkl. Commons), panel (välkomst, ordlista, adress, panel), start (sist). Inom filerna avsnitt med rubriker
   `// ---------- … ----------`. Två toppnivånamn får aldrig heta likadant i olika filer (en funktion skriver tyst över
   den andra); `scripts/kontroll.rb` letar efter det.
@@ -48,6 +49,14 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
   klickhanterare som ska ge stenen företräde frågar `STENLAGER`.
   Facktermer förklaras via `ORDLISTA` (avsnittet Ordlista): `ordKnapp(text, nyckel)` ger en klickbar term, och
   hela listan visas under "Ordlista" i panelen.
+- `sten/*.html` – en egen sida per inskrift (`sten/u-344.html`), register (`sten/index.html`, `sten/landskap-*.html`) och
+  `sitemap.xml`, så att sökmotorer och länkar hittar inskrifterna. Byggs av `scripts/bygg-sidor.rb` ur runor.json; redigera
+  aldrig sidorna för hand. `sten/sten.css` och `sten/sten.js` är handskrivna; sidorna återanvänder `#detalj`-reglerna i style.css.
+  Texterna (status, dateringsförbehåll, personer, AI-märkning) ska säga samma sak som `visaInskrift()` i js/detalj.js, och
+  filnamnet räknas ut likadant i `slug()` (Ruby) och `stenSida()` (JS). Kör `ruby scripts/bygg-sidor.rb` när runor.json,
+  bilder.json eller skriptet ändras, och `ruby scripts/bygg-ordbok.rb` när `scripts/glosor.json` eller runor.json ändras.
+- "Läs ord för ord" (`js/lasning.js`, i detaljrutan och på de egna sidorna): varje ord som kolumn med runor,
+  translitterering, normaliserad text och ordförklaring. Orden paras ett och ett när de är lika många, annars efter ljudlikhet.
 - `data/*.json` – byggda datafiler, se nedan.
 - `scripts/bygg-*.sh|rb` – hämtar och bygger datafilerna; rådata cachas i `.cache/` (rör inte i onödan).
 - `scripts/analys-strand.js` – mäter avstånd till dåtida strand, körs i webbläsaren (se README).
@@ -63,6 +72,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 | kyrkor.json (med bild på Commons) | Wikidata | bygg-tro.sh |
 | bilder.json (signum → bild, ca 2 750 inskrifter) | Wikidata/Commons (sträng, fotograf och licens live från Commons API), annars RAÄ:s arkivbilder via K-samsök (objekt) | bygg-bilder.sh |
 | mynt.json | CSV-export från samlingar.shm.se (CC0), fornlämningsnr → koordinater via K-samsök | bygg-mynt.rb |
+| ordbok.json (`ord`: ordform → betydelse, `namn`: former som står med stor bokstav inne i en mening) | handskrivna `scripts/glosor.json` + namnformer ur runor.json | bygg-ordbok.rb |
 | orter.json, leder.json, resmal.json | handskrivna, ungefärliga | – |
 | tidsbild.json (hela tidslinjen: romersk järnålder och folkvandringstid 150–550, vendeltid 550–800, vikingatid 800–1050, tidig medeltid 1050–1250, hög- och senmedeltid 1250–1550; sorterad efter `a`, `b` är exklusivt) | handskrivna kort med foton på Commons (fynd, platser, tidens egna bilder; rekonstruktioner märkta), `personer` = foto av människor med siffror; schematiska figurer (`TB_FIGURER`) bara som reserv | – |
 | turer.json (berättelser: Salme, Rök, Jelling, England, Ingvar, Jarlabanke, Hillersjö, kvinnor som reste stenar, kristnandet, väringar i Grekland) | handskrivna; `bild` per tur, steg med `ar`, `s` (signum att markera), `vy`, `oppna`, `platser`, `linjer`, `bild`, `lager` | – |
@@ -75,7 +85,9 @@ Rak/Fp/Pr 1–5 enligt Gräslund (fält `e` = 1, ej för danska stenar), årtal 
 Helnæs-Gørlev–efter-Jelling (`e` = 2) och historisk datering av Jellingstenarna (`e` = 3), alla satta i
 `scripts/datering.jq`, gravfältens ålder efter gravtyp, kultnamn och fornborgar som
 tonas bort 1050–1150, ortnamnsperioder, ordmatchning i beskrivningar (resmål, "tidiga" båtar,
-skatternas period), personnamn och släktband som tolkats automatiskt ur översättningarna, svenska AI-översättningar (märkta, med databasens engelska under). Var tydlig med sådant i texter och svar, och dra inte slutsatser av det som
+skatternas period), personnamn och släktband som tolkats automatiskt ur översättningarna, svenska AI-översättningar (märkta, med databasens engelska under), runorna i "Läs ord för ord" (återskapade ur
+translittereringen med standardformer, inte ristarens egna), ordparningen (automatisk) och ordförklaringarna (en handskriven
+betydelse per ordform, ingen grammatisk analys). Var tydlig med sådant i texter och svar, och dra inte slutsatser av det som
 är inbyggt i animationen.
 
 ## Arbetssätt

@@ -185,15 +185,14 @@ a { color: var(--sedan); }
 @media (max-width: 760px) {
   #panel { width: auto; right: 12px; max-height: 38%; }
   #panel .om, #panel .ingress, #panel .lagertips { display: none; }
-  #detalj { top: auto; bottom: 150px; left: 12px; right: 12px; width: auto; max-height: 45%; }
+  #detalj { top: auto; bottom: calc(var(--tidslinje-h, 138px) + 24px); left: 12px; right: 12px; width: auto; max-height: 45%; }
   #tidslinje { flex-direction: column; align-items: stretch; gap: 6px; }
   .styrning { justify-content: space-between; }
   .spar { flex: none; }
 }
 
 /* Kartans egna knappar läggs ovanför tidslinjen */
-.maplibregl-ctrl-bottom-right { bottom: 112px; right: 4px; }
-@media (max-width: 760px) { .maplibregl-ctrl-bottom-right { bottom: 168px; } }
+.maplibregl-ctrl-bottom-right { bottom: calc(var(--tidslinje-h, 100px) + 18px); right: 4px; }
 
 /* Försvunna inskrifter, leder */
 .prick.ring { background: none; border: 2px solid var(--sedan); }
@@ -362,7 +361,7 @@ body:not([data-farg="tid"])[data-farg] .prick.ring { border-color: var(--text); 
   .tb-figurer { position: static; max-width: 320px; }
 }
 @media (max-width: 760px) {
-  #tidsbild { left: 12px; top: 12px; bottom: 170px; }
+  #tidsbild { left: 12px; top: 12px; bottom: calc(var(--tidslinje-h, 158px) + 24px); }
 }
 
 /* ---------- Formgivning: museum i kvällsljus ----------
@@ -542,6 +541,9 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 @media (max-width: 760px) {
   .tb-personer .hot { width: 20px; height: 20px; font-size: 10.5px; border-width: 1.5px; }
   .epokband span:not(.aktiv) { font-size: 0; }
+  .skala span.udda { display: none; }
+  /* Formgivningens #panel-regel ovan tar annars bort den lägre höjden på mobil */
+  #panel:not(.turlage) { max-height: min(38%, calc(100% - var(--tidslinje-h, 230px) - 40px)); }
 }
 
 /* Delbar länk och lagerräknare */
@@ -613,3 +615,22 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 #meddelanden li span { flex: 1; }
 #meddelanden button { border: 0; background: none; color: var(--text-2); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px; }
 .bildfel { margin: 0 0 10px; font-style: italic; }
+
+/* ---------- Läs ord för ord ----------
+   Varje ord är en liten kolumn: runor, translitterering, normaliserad text, ordförklaring
+   (js/lasning.js). Används i detaljrutan och på inskrifternas egna sidor (sten/). */
+#detalj details.lasning { margin: 0 0 12px; }
+#detalj details.lasning > summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--accent); padding: 4px 0; }
+#detalj details.lasning[open] > summary { margin-bottom: 6px; }
+.las-rader { margin: 0 0 8px; font-size: 12px; color: var(--text-2); }
+.las-ord { display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: flex-start; margin: 0 0 10px; }
+.las-ord .lo { display: flex; flex-direction: column; gap: 1px; padding: 6px 8px; border-radius: 8px; background: var(--yta-2); min-width: 2.2em; }
+.las-ord .lo.namn { background: color-mix(in srgb, var(--accent) 12%, var(--yta-2)); }
+.las-ord .ru { font-family: "Noto Sans Runic", "Segoe UI Historic", "Segoe UI Symbol", sans-serif; font-size: 19px; line-height: 1.25; letter-spacing: .04em; color: var(--text); }
+.las-ord .tr { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--text-2); }
+.las-ord .no { font-family: var(--serif); font-style: italic; font-size: 14.5px; color: var(--text); }
+.las-ord .gl { font-size: 11.5px; font-weight: 600; color: var(--accent); max-width: 11em; line-height: 1.25; }
+.las-ord .lo.namn .gl { font-weight: 500; color: var(--text-2); }
+.las-ord .sida { flex-basis: 100%; font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
+#detalj .lasning .not { margin: 0; }
+#detalj .las-ord span { text-decoration: none; }

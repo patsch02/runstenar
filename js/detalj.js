@@ -45,6 +45,7 @@ function visaInskrift(r) {
     ${oversattningHtml(r)}
     ${r.n ? `<p class="norm"><span class="sprak">${ordKnapp(r.nl, ORD_FOR_SPRAK[r.nl])}</span> ${esc(r.n)}</p>` : ''}
     ${r.r ? `<p class="runor"><span class="sprak">${ordKnapp('Translitterering', 'translitterering')}</span>${esc(r.r)}</p>` : ''}
+    ${r.r ? '<details class="lasning"><summary>Läs ord för ord</summary><div class="las-yta"><p class="not">Hämtar ordförklaringar …</p></div></details>' : ''}
     ${personerITexten(r)}
     <dl>
       ${rad('Datering', datering(r) + (r.d ? ` (${r.d})` : ''))}
@@ -59,8 +60,10 @@ function visaInskrift(r) {
     </dl>
     ${not ? `<p class="not">${not}</p>` : ''}
     <p class="lankar"><a href="${esc(r.u)}" target="_blank" rel="noopener">Öppna posten i runtextdatabasen</a>
+      <a href="${stenSida(r.s)}">Egen sida</a>
       <button type="button" class="dela">Kopiera länk</button></p>`);
   kopplaDela();
+  kopplaLasning(r);
   lage.vald = r.s;
   skrivAdress(true);
   $('detalj').querySelectorAll('.person').forEach((knapp) => knapp.addEventListener('click', () => {
@@ -68,6 +71,20 @@ function visaInskrift(r) {
     markera(sokindex.personer.find(([n]) => n === namn)[1], `Namnet ${namn}`);
   }));
   if (typeof bilder[r.s.toUpperCase()] === 'string') visaBild(r.s, bilder[r.s.toUpperCase()], 'Bilden är vald i Wikidata och visar ibland platsen snarare än inskriften.');
+}
+
+// Inskriftens egen sida (sten/u-344.html), byggd av scripts/bygg-sidor.rb; filnamnet räknas ut likadant i slug() där.
+const stenSida = (signum) => `sten/${signum.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.html`;
+
+// "Läs ord för ord" (js/lasning.js) byggs först när rutan fälls ut, eftersom ordboken då hämtas.
+function kopplaLasning(r) {
+  const las = $('detalj').querySelector('details.lasning');
+  las?.addEventListener('toggle', async () => {
+    if (!las.open || las.dataset.klar) return;
+    las.dataset.klar = '1';
+    const html = lasningHtml(r.r, r.n, r.p, await hamtaOrdbok());
+    if (las.isConnected) las.querySelector('.las-yta').innerHTML = html || '<p class="not">Texten går inte att dela upp i ord.</p>';
+  });
 }
 
 // Översättningen. Saknar runtextdatabasen svensk översättning visas en svensk AI-översättning
