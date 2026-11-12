@@ -185,15 +185,14 @@ a { color: var(--sedan); }
 @media (max-width: 760px) {
   #panel { width: auto; right: 12px; max-height: 38%; }
   #panel .om, #panel .ingress, #panel .lagertips { display: none; }
-  #detalj { top: auto; bottom: 150px; left: 12px; right: 12px; width: auto; max-height: 45%; }
+  #detalj { top: auto; bottom: calc(var(--tidslinje-h, 138px) + 24px); left: 12px; right: 12px; width: auto; max-height: 45%; }
   #tidslinje { flex-direction: column; align-items: stretch; gap: 6px; }
   .styrning { justify-content: space-between; }
   .spar { flex: none; }
 }
 
 /* Kartans egna knappar läggs ovanför tidslinjen */
-.maplibregl-ctrl-bottom-right { bottom: 112px; right: 4px; }
-@media (max-width: 760px) { .maplibregl-ctrl-bottom-right { bottom: 168px; } }
+.maplibregl-ctrl-bottom-right { bottom: calc(var(--tidslinje-h, 100px) + 18px); right: 4px; }
 
 /* Försvunna inskrifter, leder */
 .prick.ring { background: none; border: 2px solid var(--sedan); }
@@ -362,7 +361,7 @@ body:not([data-farg="tid"])[data-farg] .prick.ring { border-color: var(--text); 
   .tb-figurer { position: static; max-width: 320px; }
 }
 @media (max-width: 760px) {
-  #tidsbild { left: 12px; top: 12px; bottom: 170px; }
+  #tidsbild { left: 12px; top: 12px; bottom: calc(var(--tidslinje-h, 158px) + 24px); }
 }
 
 /* ---------- Formgivning: museum i kvällsljus ----------
@@ -542,6 +541,9 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 @media (max-width: 760px) {
   .tb-personer .hot { width: 20px; height: 20px; font-size: 10.5px; border-width: 1.5px; }
   .epokband span:not(.aktiv) { font-size: 0; }
+  .skala span.udda { display: none; }
+  /* Formgivningens #panel-regel ovan tar annars bort den lägre höjden på mobil */
+  #panel:not(.turlage) { max-height: min(38%, calc(100% - var(--tidslinje-h, 230px) - 40px)); }
 }
 
 /* Delbar länk och lagerräknare */
