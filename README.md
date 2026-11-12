@@ -16,6 +16,11 @@ Sidan läser `data/*.json` med `fetch` och måste därför servas över http:
 - `index.html`, `style.css`, `js/*.js` – själva sajten (ingen byggkedja); MapLibre ligger i `vendor/`.
 - `scripts/kontroll.rb` – kontroller före publicering (se CLAUDE.md).
 - `data/runor.json` – 6 590 inskrifter, byggd av `scripts/bygg-data.sh`.
+- `data/ordbok.json` – ordförklaringar och namnformer till "Läs ord för ord", byggd av `scripts/bygg-ordbok.rb` ur den
+  handskrivna `scripts/glosor.json` (ordform → betydelse) och de normaliserade texterna i `runor.json`.
+- `sten/` och `sitemap.xml` – en egen sida per inskrift, register per landskap och land samt sitemap, byggda av
+  `scripts/bygg-sidor.rb`. Sidorna är färdig HTML (text, översättning, datering, personer, närliggande inskrifter) så att
+  sökmotorer kan läsa dem; bild och läsning ord för ord fylls i av `sten/sten.js`.
 - `data/orter.json` – handplockade orter med ungefärliga årtal. Redigeras för hand.
 - `data/leder.json` – farleder och landvägar som schematiska linjer med ungefärliga årtal. Redigeras för hand.
 - `data/resmal.json` – koordinater för resmål som nämns i runstenstexterna. Redigeras för hand.
@@ -103,6 +108,19 @@ Fält i `runor.json`: `s` signum, `x`/`y` longitud/latitud (äldsta kända plats
 `jq -c -f scripts/datering.jq data/runor.json`.
 `fs` = 1 om inskriften är försvunnen, `bn`/`ln` nummer i Bautil (1750) respektive
 Liljegren (1833), `cx`/`cy` nuvarande plats om stenen flyttats, `pm` placeringstext.
+
+## Läs ord för ord
+
+`js/lasning.js` ställer upp varje ord som en kolumn: runor, translitterering, normaliserad text och ordförklaring.
+
+- Runorna är återskapade ur translittereringen: den äldre runraden för urnordiska inskrifter, den yngre (som
+  långkvistrunor) för vikingatida och medeltida runor för medeltida. Vilka runformer ristaren använde står inte i
+  databasen, och skiljetecken och radbrytningar visas inte.
+- Translittereringens och normaliseringens ord paras ett och ett när de är lika många (71 % av de 5 000 inskrifter som har
+  båda). Annars paras ord med liknande ljudbild i ordning och resten står ensamma; sammanlagt får 98 % av orden ett par.
+- Ordförklaringarna är en handskriven lista (`scripts/glosor.json`, drygt 500 former) med en betydelse per ordform, utan
+  grammatisk analys. Den täcker 64 % av orden; ytterligare 19 % märks som namn. Ord som också är vanliga personnamn
+  (Svæinn, Biorn, Karl) står inte i listan. Översättningen i databasen är den som gäller.
 
 ## Analyser
 

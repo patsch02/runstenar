@@ -615,3 +615,22 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 #meddelanden li span { flex: 1; }
 #meddelanden button { border: 0; background: none; color: var(--text-2); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px; }
 .bildfel { margin: 0 0 10px; font-style: italic; }
+
+/* ---------- Läs ord för ord ----------
+   Varje ord är en liten kolumn: runor, translitterering, normaliserad text, ordförklaring
+   (js/lasning.js). Används i detaljrutan och på inskrifternas egna sidor (sten/). */
+#detalj details.lasning { margin: 0 0 12px; }
+#detalj details.lasning > summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--accent); padding: 4px 0; }
+#detalj details.lasning[open] > summary { margin-bottom: 6px; }
+.las-rader { margin: 0 0 8px; font-size: 12px; color: var(--text-2); }
+.las-ord { display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: flex-start; margin: 0 0 10px; }
+.las-ord .lo { display: flex; flex-direction: column; gap: 1px; padding: 6px 8px; border-radius: 8px; background: var(--yta-2); min-width: 2.2em; }
+.las-ord .lo.namn { background: color-mix(in srgb, var(--accent) 12%, var(--yta-2)); }
+.las-ord .ru { font-family: "Noto Sans Runic", "Segoe UI Historic", "Segoe UI Symbol", sans-serif; font-size: 19px; line-height: 1.25; letter-spacing: .04em; color: var(--text); }
+.las-ord .tr { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--text-2); }
+.las-ord .no { font-family: var(--serif); font-style: italic; font-size: 14.5px; color: var(--text); }
+.las-ord .gl { font-size: 11.5px; font-weight: 600; color: var(--accent); max-width: 11em; line-height: 1.25; }
+.las-ord .lo.namn .gl { font-weight: 500; color: var(--text-2); }
+.las-ord .sida { flex-basis: 100%; font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
+#detalj .lasning .not { margin: 0; }
+#detalj .las-ord span { text-decoration: none; }
