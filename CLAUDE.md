@@ -29,10 +29,10 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 - Panelen har också utfällbara rutor med museitips ("Museer och platser att besöka", handskrivna i index.html) och ordlista.
 - Välkomstrutan (`visaValkommen()` i js/panel.js) visas en gång per besök. Bilder från Commons hämtas med
   `hamtaCommons()` och fylls i med `fyllCommons()` (upphov och licens visas alltid).
-- `js/*.js` – all logik, elva vanliga skript (inte ES-moduler) som laddas i ordning i index.html och delar globalt
+- `js/*.js` – all logik, tolv vanliga skript (inte ES-moduler) som laddas i ordning i index.html och delar globalt
   omfång: grund (konstanter, `lage`, `meddela()`), karta, lager, tidslinje (inkl. Uppdatering), sok, lasning (läs ord för ord;
   fristående, laddas också av sten/*.html), detalj, berattelser,
-  tidsbild (inkl. Commons), panel (välkomst, ordlista, adress, panel), start (sist). Inom filerna avsnitt med rubriker
+  tidsbild (inkl. Commons), plats ("Här är jag"), panel (välkomst, ordlista, adress, panel), start (sist). Inom filerna avsnitt med rubriker
   `// ---------- … ----------`. Två toppnivånamn får aldrig heta likadant i olika filer (en funktion skriver tyst över
   den andra); `scripts/kontroll.rb` letar efter det.
   Mönster per lager: `laggTillX()` (källa + kartlager; tunga lager hämtas först när de slås på, via `LATA_LAGER`/`laddaLager()`, och flyttas in under runstenarna),
@@ -49,6 +49,9 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
   klickhanterare som ska ge stenen företräde frågar `STENLAGER`.
   Facktermer förklaras via `ORDLISTA` (avsnittet Ordlista): `ordKnapp(text, nyckel)` ger en klickbar term, och
   hela listan visas under "Ordlista" i panelen.
+- "Här är jag" (`js/plats.js`, knapp ovanför zoomknapparna): visar besökarens plats (`navigator.geolocation`), slår på väglagret
+  och listar de närmaste väglämningarna, broarna, vaden och bevarade runstenarna med avstånd och väderstreck. Platsen stannar i
+  webbläsaren: den sparas inte och skickas ingenstans (adressen innehåller bara kartvyn, som vanligt). Kräver https eller localhost.
 - `sten/*.html` – en egen sida per inskrift (`sten/u-344.html`), register (`sten/index.html`, `sten/landskap-*.html`) och
   `sitemap.xml`, så att sökmotorer och länkar hittar inskrifterna. Byggs av `scripts/bygg-sidor.rb` ur runor.json; redigera
   aldrig sidorna för hand. `sten/sten.css` och `sten/sten.js` är handskrivna; sidorna återanvänder `#detalj`-reglerna i style.css.

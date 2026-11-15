@@ -109,6 +109,14 @@ Fält i `runor.json`: `s` signum, `x`/`y` longitud/latitud (äldsta kända plats
 `fs` = 1 om inskriften är försvunnen, `bn`/`ln` nummer i Bautil (1750) respektive
 Liljegren (1833), `cx`/`cy` nuvarande plats om stenen flyttats, `pm` placeringstext.
 
+## Här är jag
+
+Knappen "Här är jag" (`js/plats.js`) visar besökarens plats på kartan, slår på lagret med vägar, broar och vad och listar
+de närmaste väglämningarna och bevarade runstenarna med avstånd (fågelvägen) och väderstreck. Avståndet till en väg mäts
+till närmaste punkt på dess sträckning. Väglämningarna är bevarade bitar ur fornlämningsregistret, inte hela sträckningar,
+och odaterade; registret täcker bara Sverige. Flyttade runstenar räknas på sin nuvarande plats och försvunna tas inte med.
+Platsen stannar i webbläsaren och sparas inte. På smal skärm göms panelen och tidslinjen medan läget är på.
+
 ## Läs ord för ord
 
 `js/lasning.js` ställer upp varje ord som en kolumn: runor, translitterering, normaliserad text och ordförklaring.
