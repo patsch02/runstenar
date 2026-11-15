@@ -1,0 +1,46 @@
+/* Inskrifternas egna sidor och registret (sten/*.html, byggda av scripts/bygg-sidor.rb).
+   Färger, typsnitt och detaljrutans regler (#detalj) kommer från ../style.css; här görs rutan om
+   till en vanlig sida som går att rulla. */
+
+html, body.stensida { height: auto; }
+body.stensida { overflow: auto; padding: 0 16px 56px; font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+.stensida .stig, .stensida .fot, .stensida #detalj { max-width: 760px; margin-left: auto; margin-right: auto; }
+.stensida .stig { padding: 20px 4px 14px; font-size: 13px; color: var(--text-2); }
+.stensida a { color: var(--accent); text-underline-offset: 2px; }
+.stensida .stig a { color: var(--text-2); }
+.stensida .stig span { color: var(--text); }
+
+.stensida #detalj { position: static; width: auto; max-height: none; overflow: visible; padding: 28px 32px; }
+.stensida h1 { font-family: var(--serif); font-size: 40px; line-height: 1.05; margin: 0 0 8px; }
+.stensida #detalj h2 { font-family: var(--serif); font-size: 22px; margin: 28px 0 10px; }
+.stensida #detalj blockquote { font-size: 20px; }
+.stensida #detalj .norm { font-size: 15px; }
+.stensida #detalj .runor { font-size: 13px; }
+.stensida #detalj .not { font-size: 13px; }
+.stensida #detalj .personer h2 { margin: 0 0 6px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); font-family: inherit; }
+.stensida #detalj .bild { margin: 0 0 16px; }
+.stensida #detalj .bild img { display: block; max-width: 100%; height: auto; border-radius: 12px; }
+.stensida #detalj .bild.raa img { width: 200px; }
+.stensida #detalj .bild[data-commons] .ram { min-height: 120px; background: var(--yta-2); border-radius: 12px; }
+.stensida .lasning .las-yta > .not:only-child { margin: 0; }
+
+.stensida #detalj .lankar { margin: 18px 0 0; }
+.stensida .knapp { display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; }
+.stensida .knapp:hover { filter: brightness(1.08); }
+
+.stensida .nara ul, .stensida .register { list-style: none; margin: 0; padding: 0; }
+.stensida .nara li, .stensida .register li { padding: 6px 0; border-top: 1px solid var(--kant); display: flex; gap: 12px; align-items: baseline; }
+.stensida .nara li a, .stensida .register li a { flex: none; min-width: 7.5em; font-weight: 600; text-decoration: none; }
+.stensida .nara li a:hover, .stensida .register li a:hover { text-decoration: underline; }
+.stensida .nara li span, .stensida .register li span { color: var(--text-2); font-size: 13.5px; }
+.stensida .register.kort { columns: 2; column-gap: 32px; }
+.stensida .register.kort li { break-inside: avoid; justify-content: space-between; }
+
+.stensida .fot { padding: 22px 4px 0; font-size: 12.5px; color: var(--text-2); }
+
+@media (max-width: 760px) {
+  .stensida #detalj { padding: 20px 18px; top: auto; bottom: auto; left: auto; right: auto; }
+  .stensida h1 { font-size: 32px; }
+  .stensida #detalj blockquote { font-size: 18px; }
+  .stensida .register.kort { columns: 1; }
+}

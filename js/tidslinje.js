@@ -41,6 +41,7 @@ function ritaSkala() {
     const s = document.createElement('span');
     s.style.left = `${((ar - AR_MIN) / (AR_MAX - AR_MIN)) * 100}%`;
     s.textContent = ar;
+    if (ar % 200) s.className = 'udda';   // döljs på smal skärm så att årtalen inte flyter ihop
     skala.appendChild(s);
   }
   const markor = document.createElement('div');
@@ -70,6 +71,11 @@ function ritaSkala() {
 }
 
 function kopplaTidslinje() {
+  // Tidslinjens höjd varierar (särskilt på mobil, där den bryts i två rader); kartknapparna,
+  // detaljrutan och tidsbilden läggs ovanför den via --tidslinje-h.
+  const tidslinje = $('tidslinje');
+  new ResizeObserver(() => document.documentElement.style
+    .setProperty('--tidslinje-h', `${Math.ceil(tidslinje.getBoundingClientRect().height)}px`)).observe(tidslinje);
   const spar = document.querySelector('.spar');
   const arVid = (e) => {
     const b = spar.getBoundingClientRect();

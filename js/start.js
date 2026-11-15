@@ -37,6 +37,7 @@ async function start() {
   laggTillBroringar();
   kopplaSok();
   laggTillOrter();
+  laggTillHar();
   ritaSkala();
   ritaHistogram();
   kopplaTidslinje();

@@ -9,8 +9,10 @@
 # 3. Filerna som index.html hänvisar till finns.
 # 4. Inget namn deklareras två gånger på toppnivå i js/*.js. Filerna delar globalt omfång,
 #    så en dubbel funktion skriver tyst över den första (som personerHtml en gång gjorde).
-# 5. Bilderna på Wikimedia Commons som berättelser, tidsbild och välkomstruta använder finns kvar.
-# 6. Sidan startar i Chrome utan fönster utan JavaScript-fel (html får data-start="klar").
+# 5. Ordboken (data/ordbok.json) och inskrifternas egna sidor (sten/, sitemap.xml) är byggda ur de data som
+#    ligger i projektet nu, dvs. bygg-ordbok.rb och bygg-sidor.rb har körts efter senaste ändringen.
+# 6. Bilderna på Wikimedia Commons som berättelser, tidsbild och välkomstruta använder finns kvar.
+# 7. Sidan startar i Chrome utan fönster utan JavaScript-fel (html får data-start="klar").
 #
 # Avslutar med kod 1 om något fel hittas, så att skriptet kan stoppa en publicering.
 require 'json'
@@ -89,8 +91,27 @@ dubbla = namn.select { |_, filer| filer.size > 1 }
 dubbla.each { |n, filer| fel("#{n} deklareras flera gånger: #{filer.uniq.map { |f| (k = filer.count(f)) > 1 ? "#{f} (#{k} ggr)" : f }.join(', ')}") }
 ok("#{namn.size} namn, inga dubbla") if dubbla.empty?
 
+puts '5. Ordbok och egna sidor'
+require_relative 'bygg-ordbok'
+require_relative 'bygg-sidor'
+fore = $fel.size
+begin
+  unless File.exist?('data/ordbok.json') && JSON.parse(File.read('data/ordbok.json')) == bygg_ordbok
+    fel('data/ordbok.json stämmer inte med glosor.json och runor.json: kör ruby scripts/bygg-ordbok.rb')
+  end
+  sidor, sitemap = bygg_sidor
+  gamla = sidor.reject { |fil, html| File.exist?("sten/#{fil}") && File.read("sten/#{fil}") == html }.keys
+  over = Dir['sten/*.html'].map { |f| File.basename(f) } - sidor.keys
+  if gamla.any? || over.any? || !File.exist?('sitemap.xml') || File.read('sitemap.xml') != sitemap
+    fel("sidorna i sten/ är inte aktuella (#{gamla.size} saknas eller är ändrade, #{over.size} ska bort): kör ruby scripts/bygg-sidor.rb")
+  end
+  ok("ordboken och #{sidor.size} sidor är aktuella") if $fel.size == fore
+rescue StandardError => e
+  fel("sidorna gick inte att bygga: #{e.message[0, 160]}")
+end
+
 unless SNABB
-  puts '5. Bilder på Wikimedia Commons'
+  puts '6. Bilder på Wikimedia Commons'
   filer = []
   (data['turer'] || []).each { |t| filer << t['bild']; t['steg'].each { |s| filer << s['bild'] } }
   (data['tidsbild'] || []).each do |p|
@@ -120,7 +141,7 @@ unless SNABB
   saknas.each { |f| fel("bilden finns inte på Commons: #{f}") }
   ok("#{filer.size} bilder finns") if saknas.empty? && $varningar.empty?
 
-  puts '6. Sidan startar i Chrome'
+  puts '7. Sidan startar i Chrome'
   if File.exist?(CHROME)
     port = TCPServer.open('127.0.0.1', 0) { |s| s.addr[1] }
     server = spawn('ruby', '-run', '-e', 'httpd', '.', '-p', port.to_s, out: File::NULL, err: File::NULL)
