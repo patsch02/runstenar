@@ -95,7 +95,7 @@ visas under.
 Fält i `runor.json`: `s` signum, `x`/`y` longitud/latitud (äldsta kända plats),
 `a`/`b` tidigaste/senaste år, `k` typ (R runsten, G gravmonument, O övrigt),
 `f` föremål, `p` period, `d` dateringstext, `st` stil, `c` ristare, `pl` plats,
-`so` socken, `la` landskap, `co` land, `t` översättning (`tl` språk),
+`so` socken, `la` landskap (för Norge fylket, indelningen före 2020), `co` land, `t` översättning (`tl` språk),
 `r` translitterering, `u` länk, `e` = 1 om åren är härledda ur stilgruppen (Gräslund),
 2 om de följer den danska periodindelningen i `d` (Helnæs-Gørlev 750–900, för-Jelling 900–950, Jelling
 950–1000, efter-Jelling 1000–1050; ungefärligt), 3 om de bygger på historiska uppgifter (Jellingstenarna DR 41

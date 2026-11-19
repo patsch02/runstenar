@@ -310,6 +310,145 @@
     ]
   },
   {
+    "id": "norge",
+    "n": "Norge i runor",
+    "kort": "Från Tunestenen till vardagens runpinnar på Bryggen i Bergen",
+    "bild": "Runepinne med skipsgrafitti.jpg",
+    "steg": [
+      {
+        "rubrik": "Wiwaz ristar för sin herre",
+        "ar": 450,
+        "s": [
+          "N KJ72"
+        ],
+        "oppna": "N KJ72",
+        "vy": {
+          "c": [
+            11.0834,
+            59.2921
+          ],
+          "z": 8
+        },
+        "bild": "Tune stone I.JPG",
+        "bildtext": "Tunestenen i Kulturhistorisk museum, Oslo",
+        "text": "Tunestenen från Østfold är en av Nordens äldsta runstenar, ristad med den äldre runraden någon gång mellan 400 och 530. Wiwaz gjorde runorna efter Woduridaz, ”min herre”. Enligt en vanlig tolkning nämner stenens andra sida tre döttrar och ett arvsöl, alltså att ett arv skulle fördelas. Språket är urnordiska, en förfader till både norska och svenska."
+      },
+      {
+        "rubrik": "Eggjastenen och havet",
+        "ar": 680,
+        "s": [
+          "N KJ101"
+        ],
+        "oppna": "N KJ101",
+        "vy": {
+          "c": [
+            6.7742,
+            61.1878
+          ],
+          "z": 8
+        },
+        "bild": "N KJ101.jpg",
+        "bildtext": "Eggjastenen",
+        "text": "Eggjastenen hittades 1917 när en åker plöjdes i Sogn. Den låg med runorna nedåt över en grav, och texten var alltså inte till för de levande. Det är den längsta inskriften med den äldre runraden, från andra hälften av 600-talet, och handlar om havet, en drunkning och vem som för de döda över till ”det andra landet”. Tolkningarna går isär på många punkter."
+      },
+      {
+        "rubrik": "Död i Knuts här i England",
+        "ar": 1015,
+        "s": [
+          "N 184"
+        ],
+        "oppna": "N 184",
+        "vy": {
+          "c": [
+            7.8384,
+            58.576
+          ],
+          "z": 8
+        },
+        "bild": "Galtelandssteinen på Evje.jpg",
+        "bildtext": "Kopia av Galtelandsstenen nära fyndplatsen",
+        "text": "På Galtelandsstenen i Agder minns Arnstein sin son Bjór, som dog i hirden när Knut anföll England. Knut den store erövrade England 1015–1016, så stenen är troligen ristad strax efter. Den slutar med en kort trosbekännelse: ”Gud är en.” Norrmän stred alltså i den danske kungens här, samma krig som många svenska Englandsstenar minns."
+      },
+      {
+        "rubrik": "Tolv vintrar av kristendom",
+        "ar": 1034,
+        "s": [
+          "N 449"
+        ],
+        "oppna": "N 449",
+        "vy": {
+          "c": [
+            8.0881,
+            63.2966
+          ],
+          "z": 8
+        },
+        "bild": "Kulisteinen.jpg",
+        "bildtext": "Platsen på Kuli, Smøla",
+        "text": "Kulistenen från Smøla på Nordmøre säger att kristendomen hade funnits tolv vintrar i Norge. Det är första gången namnet Norge står i en inhemsk text. En träbro på platsen har daterats till omkring 1034 genom årsringarna, och räknar man tolv år bakåt hamnar man kanske vid Mostertinget 1024, då kristen lag antogs. Runtextdatabasen daterar själv stenen något tidigare, så sambandet är en tolkning."
+      },
+      {
+        "rubrik": "Gunnvor bygger en bro",
+        "ar": 1040,
+        "s": [
+          "N 68"
+        ],
+        "oppna": "N 68",
+        "vy": {
+          "c": [
+            10.6029,
+            60.3228
+          ],
+          "z": 8
+        },
+        "bild": "Dynna stone.JPG",
+        "bildtext": "Dynnastenen i Kulturhistorisk museum, Oslo",
+        "text": "Gunnvor, Trydriks dotter, lät bygga en bro efter sin dotter Astrid, ”den skickligaste mön i Hadeland”. Att bygga en bro eller en väg över sank mark var en kristen gärning för den dödas själ. Bilderna på Dynnastenen visar Betlehemsstjärnan, de tre vise männen och Kristusbarnet. Liksom på många svenska stenar är det här en kvinna som står för minnesmärket."
+      },
+      {
+        "rubrik": "Vardagen på Bryggen",
+        "ar": 1250,
+        "s": [
+          "N B149",
+          "N B390",
+          "N 687",
+          "N 650",
+          "N B448"
+        ],
+        "oppna": "N B390",
+        "vy": {
+          "c": [
+            5.32,
+            60.398
+          ],
+          "z": 9
+        },
+        "text": "Efter branden på Bryggen i Bergen 1955 hittade arkeologerna omkring 600 runinskrifter, de flesta på trästickor från 1100–1400-talen. Här skriver vanligt folk: märklappar som ”Eyjulfr äger denna säck”, en påminnelse om vad Eindridi är skyldig, ett brev om spjut och vapensmide från en Sigurd Lavard och kärleksord som ”Ingibjǫrg älskade mig när jag var i Stavanger”. ”Gyda säger att du ska gå hem” brukar läsas som en hälsning från en hustru. Runor var långt in på medeltiden ett vardagsskrift, inte bara minnesstenar. Pinnarna är dåligt daterade i databasen (ofta 1100–1500)."
+      },
+      {
+        "rubrik": "Pilgrimer vid Olavs grav",
+        "ar": 1300,
+        "s": [
+          "N 478"
+        ],
+        "oppna": "N 478",
+        "vy": {
+          "c": [
+            10.3969,
+            63.4269
+          ],
+          "z": 9
+        },
+        "bild": "Nidaros Cathedral.jpg",
+        "bildtext": "Nidarosdomen i Trondheim i dag",
+        "lager": [
+          "kyrkor"
+        ],
+        "text": "Olav Haraldsson stupade vid Stiklestad 1030 och räknades snart som helgon. Över hans grav i Nidaros växte domkyrkan fram, och pilgrimer kom från hela Norden. I murarna finns runor ristade av besökare och byggare, som den här bönen: ”Gud och den helige kung Olav med sina heliga förböner hjälpe den man som ristade dessa runor.” Pilgrimslederna till Nidaros finns med bland lederna på kartan."
+      }
+    ]
+  },
+  {
     "id": "england",
     "n": "Englandsfararna",
     "kort": "Danagäld och Knut den stores här",

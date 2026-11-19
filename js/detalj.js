@@ -54,7 +54,7 @@ function visaInskrift(r) {
       ${rad(ordKnapp('Ristare', 'ristare'), r.c)}
       ${rad('Plats', r.pl)}
       ${rad('Socken', r.so)}
-      ${rad('Landskap', [r.la, r.co].filter(Boolean).join(', '))}
+      ${rad(r.co === 'Norge' ? 'Fylke' : 'Landskap', [r.la, r.co].filter(Boolean).join(', '))}
       ${rad('Äldre nr', r.bn || r.ln, [r.bn && ordKnapp(r.bn, 'bautil'), r.ln && ordKnapp(r.ln, 'liljegren')].filter(Boolean).join(', '))}
       ${rad('Nämner', [...(r.rs || []).map((k) => resmal[k]?.n || RIKTNINGAR[k]), r.br ? 'brobygge' : null].filter(Boolean).join(', '))}
     </dl>
