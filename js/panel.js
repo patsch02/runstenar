@@ -59,7 +59,7 @@ function visaValkommen() {
 // Facktermer förklaras i en liten ruta när man klickar på dem (knappar med klassen "ord"),
 // och hela listan står i panelen under "Ordlista".
 const ORDLISTA = {
-  ai: ['AI-översättning', 'Runtextdatabasen har svensk översättning för bara omkring 1 400 inskrifter. För övriga har vi låtit en AI-modell (Claude) översätta databasens engelska översättning till svenska. Den är alltså inte gjord från runtexten och inte granskad av en runolog; namnen står i databasens fornnordiska form. Jämför gärna med den engelska under texten och med posten i runtextdatabasen.'],
+  ai: ['AI-översättning', 'Runtextdatabasen har svensk översättning för bara omkring 1 400 inskrifter. För övriga har vi låtit en AI-modell (Claude) översätta databasens engelska översättning till svenska (för sex stenar vid Hedeby den danska). Den är alltså inte gjord från runtexten och inte granskad av en runolog; namnen står i databasens form. Jämför gärna med databasens översättning under texten och med posten i runtextdatabasen.'],
   signum: ['Signum', 'Inskriftens beteckning: landskap eller land och ett löpnummer, t.ex. U 344 (Uppland), Sö 179 (Södermanland), Ög (Östergötland), Vg (Västergötland), DR (Danmark), N (Norge). Numren kommer ur de stora utgåvorna av runinskrifterna.'],
   translitterering: ['Translitterering', 'Runorna återgivna bokstav för bokstav med latinska tecken. ʀ är den yngre r-runan, - står för en oläslig runa, … för en skadad bit och bokstäver inom parentes är osäkra.'],
   runsvenska: ['Runsvenska', 'Det svenska språket under vikingatiden, som det skrevs med runor. Texten är normaliserad: forskarnas tolkning av hur orden lät, med vanliga bokstäver och ordgränser.'],

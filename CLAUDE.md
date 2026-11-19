@@ -65,7 +65,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 | mynt.json | CSV-export från samlingar.shm.se (CC0), fornlämningsnr → koordinater via K-samsök | bygg-mynt.rb |
 | orter.json, leder.json, resmal.json | handskrivna, ungefärliga | – |
 | tidsbild.json (hela tidslinjen: romersk järnålder och folkvandringstid 150–550, vendeltid 550–800, vikingatid 800–1050, tidig medeltid 1050–1250, hög- och senmedeltid 1250–1550; sorterad efter `a`, `b` är exklusivt) | handskrivna kort med foton på Commons (fynd, platser, tidens egna bilder; rekonstruktioner märkta), `personer` = foto av människor med siffror; schematiska figurer (`TB_FIGURER`) bara som reserv | – |
-| turer.json (berättelser: Salme, Rök, Jelling, Norge i runor, England, Ingvar, Jarlabanke, Hillersjö, kvinnor som reste stenar, kristnandet, väringar i Grekland) | handskrivna; `bild` per tur, steg med `ar`, `s` (signum att markera), `vy`, `oppna`, `platser`, `linjer`, `bild`, `lager` | – |
+| turer.json (berättelser: Salme, Rök, Jelling, Norge i runor, Danernas rike, England, Ingvar, Jarlabanke, Hillersjö, kvinnor som reste stenar, kristnandet, väringar i Grekland) | handskrivna; `bild` per tur, steg med `ar`, `s` (signum att markera), `vy`, `oppna`, `platser`, `linjer`, `bild`, `lager` | – |
 | strandlinje | SGU:s strandförskjutningsmodell, WMS live (en karta per 100 år BP) | – |
 
 ## Förbehåll som ska stå kvar på sajten

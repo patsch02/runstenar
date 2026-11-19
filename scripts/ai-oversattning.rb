@@ -15,9 +15,13 @@ FIL = File.join(ROT, 'data', 'runor.json')
 ai = JSON.parse(File.read(File.join(ROT, 'scripts', 'ai-oversattningar.json')))
 runor = JSON.parse(File.read(FIL))
 antal = 0
+# Några inskrifter från Hedeby har en dansk översättning (med källhänvisning till DK) som databasen
+# märkt som svensk. De får tl = "da" och översätts till svenska på samma sätt som de engelska.
+DANSK = /\[Källa: DK nr\.:[^\]]*\]\s*\z/
 runor.each do |r|
   r.delete('ts')
-  next unless r['tl'] == 'en' && ai[r['t']]
+  r['tl'] = 'da' if r['tl'] == 'sv' && r['t'] =~ DANSK
+  next unless %w[en da].include?(r['tl']) && ai[r['t']]
   r['ts'] = ai[r['t']]
   antal += 1
 end

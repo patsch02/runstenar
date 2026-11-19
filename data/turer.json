@@ -449,6 +449,143 @@
     ]
   },
   {
+    "id": "danmark",
+    "n": "Danernas rike",
+    "kort": "Från hedniska skeppssättningar till kungens runmynt i Lund",
+    "bild": "Glavendrup 1.jpg",
+    "steg": [
+      {
+        "rubrik": "Ragnhild och Alli på Fyn",
+        "ar": 925,
+        "s": [
+          "DR 209"
+        ],
+        "oppna": "DR 209",
+        "vy": {
+          "c": [
+            10.293,
+            55.5097
+          ],
+          "z": 8
+        },
+        "bild": "Glavendrup 1.jpg",
+        "bildtext": "Glavendrupstenen och skeppssättningen",
+        "text": "Glavendrupstenen står vid en stor skeppssättning på norra Fyn. Ragnhild reste den efter sin make Alli, ”vigdens gode”, alltså föreståndare för en helig plats, och sönerna gjorde minnesmärken efter sin far. Runristaren Soti ber Tor viga runorna och förbannar den som skadar stenen. Det är en av Danmarks längsta runinskrifter, ristad före Jellingkungarnas kristnande."
+      },
+      {
+        "rubrik": "Samma Ragnhild på Själland?",
+        "ar": 935,
+        "s": [
+          "DR 230"
+        ],
+        "oppna": "DR 230",
+        "vy": {
+          "c": [
+            12.2964,
+            55.354
+          ],
+          "z": 8
+        },
+        "bild": "Kbh Mus Run Tryggevelde 1.jpg",
+        "bildtext": "Tryggevældestenen i Nationalmuseet, Köpenhamn",
+        "text": "Vid Tryggevælde på Själland lät Ragnhild, Ulfs syster, göra en sten, en hög och en skeppssättning efter maken Gunnulf. Förbannelsen är nästan ordagrant densamma som på Glavendrupstenen, och många har därför tänkt sig att det är samma kvinna, gift två gånger. Det går inte att bevisa, men stenarna visar att en kvinna kunde stå bakom de mest påkostade minnesmärkena."
+      },
+      {
+        "rubrik": "En kung i Hedeby",
+        "ar": 945,
+        "s": [
+          "DR 4",
+          "DR 2"
+        ],
+        "oppna": "DR 4",
+        "vy": {
+          "c": [
+            9.56,
+            54.495
+          ],
+          "z": 9
+        },
+        "bild": "Hedeby Museum, Small Sigtrygg Stone.jpg",
+        "bildtext": "Den lilla Sigtryggstenen i Hedeby museum",
+        "text": "Vid Hedeby, Danmarks stora handelsstad vid Slien, gjorde Asfrid, Odinkars dotter, två stenar efter kung Sigtryg, hennes och Gnupas son. Enligt den sachsiske krönikören Widukind besegrades kung Gnupa år 934 av den tyske kungen Henrik. Adam av Bremen skrev hundra år senare att ätten hade kommit från Svitjod; hur det var vet vi inte. Strax efter tog Gorm och Harald i Jelling makten."
+      },
+      {
+        "rubrik": "Harald Blåtands ringborgar",
+        "ar": 980,
+        "s": [
+          "DR 133"
+        ],
+        "oppna": "DR 133",
+        "vy": {
+          "c": [
+            10.4,
+            56.0
+          ],
+          "z": 6.5
+        },
+        "bild": "Trelleborg airphoto.JPG",
+        "bildtext": "Trelleborg vid Slagelse från luften",
+        "text": "Omkring 980 byggdes ringborgarna Trelleborg, Fyrkat och Aggersborg efter samma exakta plan; årsringarna i Trelleborgs timmer visar att träden fälldes 980–981. De brukar knytas till Harald Blåtand och hans makt över hela riket. Samtidigt minns en mor och två söner i Skivum, inte långt från Aggersborg, en man som var ”den förste och bäste av jordägare i Danmark”."
+      },
+      {
+        "rubrik": "Han flydde inte vid Uppsala",
+        "ar": 1005,
+        "s": [
+          "DR 295",
+          "DR 279"
+        ],
+        "oppna": "DR 295",
+        "vy": {
+          "c": [
+            13.53,
+            55.56
+          ],
+          "z": 8.5
+        },
+        "bild": "Hällestadstenen 1 runestone, Hällestad church, Scania, Sweden - May 2018.jpg",
+        "bildtext": "Hällestadstenen 1 vid Hällestads kyrka",
+        "text": "Skåne hörde till det danska riket, och här finns runstenar över män som stred vid Uppsala. Eskil reste en sten efter Toke, Gorms son, ”han flydde icke vid Uppsala”, och Saxe en efter Åsbjörn, som kämpade så länge han hade vapen. Slaget brukar knytas till Fyrisvallarna på 980-talet, där Styrbjörn enligt sagorna föll mot Erik Segersäll, men inskrifterna själva säger inget om när det var."
+      },
+      {
+        "rubrik": "Skåningar i London",
+        "ar": 1030,
+        "s": [
+          "DR 337"
+        ],
+        "oppna": "DR 337",
+        "vy": {
+          "c": [
+            14.1424,
+            55.4369
+          ],
+          "z": 8.5
+        },
+        "text": "Sven och Torgöt gjorde minnesmärken i Valleberga efter Måne och Svene: ”Gud hjälpe deras själ väl, men de ligger i London.” Under Sven Tveskägg och Knut den store var England en del av det danska väldet, och män från hela riket, Skåne inräknat, for västerut. Mer om dem finns i berättelsen om Englandsfararna."
+      },
+      {
+        "rubrik": "Kungens mynt i Lund",
+        "ar": 1070,
+        "s": [
+          "DR 314",
+          "DR M1",
+          "DR M10",
+          "DR M100"
+        ],
+        "oppna": "DR M100",
+        "vy": {
+          "c": [
+            13.1936,
+            55.7096
+          ],
+          "z": 10
+        },
+        "bild": "Exterior of Lunds domkyrka (09).jpg",
+        "bildtext": "Lunds domkyrka i dag",
+        "text": "Lund anlades omkring år 990 som kungens stad och fick tidigt ett myntverk. Under Sven Estridsen på 1060- och 70-talen präglades mynt med runor, ofta med myntmästarens namn och staden: ”Þorgautr, Lund”. Den stora klungan av mynt i Lund på kartan är alltså präglingsorten, inte fyndplatser. Några decennier senare, omkring 1103, blev Lund ärkesäte för hela Norden."
+      }
+    ]
+  },
+  {
     "id": "england",
     "n": "Englandsfararna",
     "kort": "Danagäld och Knut den stores här",
