@@ -184,7 +184,7 @@ a { color: var(--sedan); }
 
 @media (max-width: 760px) {
   #panel { width: auto; right: 12px; max-height: 38%; }
-  #panel .om, #panel .ingress, #panel .lagertips { display: none; }
+  #panel .om, #panel .ingress, #lagerpanel .lagertips { display: none; }
   #detalj { top: auto; bottom: 150px; left: 12px; right: 12px; width: auto; max-height: 45%; }
   #tidslinje { flex-direction: column; align-items: stretch; gap: 6px; }
   .styrning { justify-content: space-between; }
@@ -288,7 +288,7 @@ body:not([data-farg="tid"])[data-farg] .prick.ring { border-color: var(--text); 
 #turlista button:hover, #turlista button:focus-visible { background: var(--yta-2); outline: none; }
 #turlista b { display: block; font-weight: 600; }
 #turlista small { display: block; color: var(--text-2); font-size: 12px; line-height: 1.3; }
-#panel.turlage > :not(h1):not(#tur) { display: none; }
+#panel.turlage > .kicker, #panel.turlage #panel-innehall > :not(#tur) { display: none; }
 #tur .tillbaka { font: inherit; font-size: 12px; color: var(--text-2); background: none; border: 0; padding: 0; cursor: pointer; }
 #tur .tillbaka:hover { color: var(--text); }
 #tur h2 { font-size: 16px; margin: 6px 0 0; }
@@ -613,3 +613,36 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 #meddelanden li span { flex: 1; }
 #meddelanden button { border: 0; background: none; color: var(--text-2); font-size: 18px; line-height: 1; cursor: pointer; padding: 0 4px; }
 .bildfel { margin: 0 0 10px; font-style: italic; }
+
+/* ---------- Två hopfällbara rutor ----------
+   Berättelserna till vänster och sök och kartlager till höger fälls ihop var för sig (js/panel.js,
+   avsnittet Hopfällbara rutor). --panel-h och --lager-h är rutornas höjd, satta från skriptet. */
+.fall-knapp { position: absolute; top: 16px; right: 16px; display: grid; place-items: center; width: 30px; height: 30px; padding: 0;
+  border: 1px solid var(--kant); border-radius: 50%; background: var(--yta-2); color: var(--text-2); font-size: 12px; line-height: 1; cursor: pointer; }
+.fall-knapp::before { content: '▴'; }
+.fall-knapp:hover { color: var(--text); border-color: var(--text-2); }
+#panel.hopfalld .fall-knapp::before { content: '▾'; }
+#panel .kicker, #panel h1 { margin-right: 40px; }
+#panel.hopfalld #panel-innehall { display: none; }
+#panel.hopfalld h1 { font-size: 21px; margin-bottom: 0; }
+#panel.hopfalld { padding-bottom: 18px; }
+
+#lagerpanel { top: 12px; right: 12px; width: 320px; max-height: calc(100% - 200px); overflow: auto; padding: 14px; }
+#lagerpanel .sokruta { margin-bottom: 6px; }
+.lagerknapp { display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 6px; border: 0; border-radius: 10px; background: none;
+  color: var(--text); font: 600 15px/1.2 var(--serif); text-align: left; cursor: pointer; }
+.lagerknapp:hover { background: var(--yta-2); }
+.lagerknapp small { margin-left: auto; font: 400 12px/1 var(--sans); color: var(--accent); }
+.lagerknapp i { font-style: normal; color: var(--text-2); font-size: 12px; }
+.lagerknapp i::before { content: '▾'; }
+.lagerknapp[aria-expanded="true"] i::before { content: '▴'; }
+#lager-innehall { margin-top: 8px; }
+#lagerpanel.turlage #markering { display: none; }
+
+@media (min-width: 761px) {
+  #detalj { top: calc(var(--lager-h, 0px) + 24px); max-height: calc(100% - 212px - var(--lager-h, 0px)); }
+}
+@media (max-width: 760px) {
+  #lagerpanel { top: calc(var(--panel-h, 0px) + 20px); left: 12px; right: 12px; width: auto; max-height: 40%; padding: 10px 12px; }
+  #panel.hopfalld h1 { font-size: 18px; }
+}

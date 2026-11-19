@@ -21,7 +21,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 
 ## Filer
 
-- `index.html` – panel (berättelser överst; en vald tur tar över panelen via klassen `turlage`. Sök, lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i js/grund.js).
+- `index.html` – två hopfällbara rutor: `#panel` till vänster (berättelser, museer, ordlista, källor; en vald tur tar över rutan via klassen `turlage`) och `#lagerpanel` till höger (sök och, under knappen "Kartlager", lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i js/grund.js).
 - Borttagna ur panelen för tydlighetens skull (kod och data finns kvar, se kommentaren vid `lage` i js/grund.js): Öde-namn, husgrunder och ödetomter, färdnamn, sjöspärrar och båtar, vårdkasar, skattfynd, offerplatser.
 - `style.css` – färger som CSS-variabler, ljust och mörkt läge (`--nu`, `--sedan`, `--accent` …). Formgivningen
   "museum i kvällsljus" (pergament/natt, rödockra som accent, Fraunces för rubriker och Inter för text från Google Fonts)

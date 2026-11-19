@@ -11,6 +11,7 @@ function visaRuta(html) {
   ruta.innerHTML = `<button class="stang" aria-label="Stäng">×</button>${html}`;
   ruta.hidden = false;
   ruta.scrollTop = 0;
+  if (!$('lager-innehall').hidden) sattLagerOppna(false, false);   // detaljrutan ställer sig under kartlagren
   lage.vald = null;
   ruta.querySelector('.stang').addEventListener('click', () => { ruta.hidden = true; visaFlytt(null); skrivAdress(true); });
 }

@@ -242,7 +242,7 @@ function kopplaAdress() {
 
 // i-knapparna fäller ut lagrets förbehåll; gruppernas rubriker visar hur många lager som är påslagna.
 function kopplaPanel() {
-  const panel = $('panel');
+  const panel = $('lagerpanel');
   panel.addEventListener('click', (e) => {
     const knapp = e.target.closest('.info-knapp');
     if (!knapp) return;
@@ -252,16 +252,71 @@ function kopplaPanel() {
   });
   panel.addEventListener('change', raknaLager);
   raknaLager();
+  kopplaFallning();
 }
 
-// Grupperna är hopfällda från start; rubriken visar hur många av gruppens lager som är på.
+// Grupperna är hopfällda från start; rubriken visar hur många av gruppens lager som är på,
+// och knappen "Kartlager" hur många som är på sammanlagt.
 function raknaLager() {
-  for (const grupp of $('panel').querySelectorAll('.grupp')) {
+  let summa = 0;
+  for (const grupp of $('lagerpanel').querySelectorAll('.grupp')) {
     const aktiva = grupp.querySelector('.aktiva');
     if (!aktiva) continue;   // runinskrifternas kryssrutor är filter, inte lager
     const alla = grupp.querySelectorAll('.rad:not(.under) > label > input');
     const n = [...alla].filter((ruta) => ruta.checked).length;
     aktiva.textContent = `${n} av ${alla.length} på`;
     aktiva.classList.toggle('pa', n > 0);
+    summa += n;
   }
+  $('lager-antal').textContent = `${summa} på`;
+}
+
+// ---------- Hopfällbara rutor ----------
+
+// Berättelserna (vänster) och sök och kartlager (höger) fälls ihop var för sig. Läget sparas i
+// webbläsaren som en bekvämlighet; utan sparat läge är berättelserna öppna (hopfällda på smal
+// skärm) och kartlagren hopfällda. Rutornas höjd läggs i CSS-variabler så att detaljrutan kan
+// ställa sig under kartlagren och, på smal skärm, kartlagren under berättelserna.
+const FALL_NYCKEL = 'runstenar-rutor';
+
+function kopplaFallning() {
+  let sparat = null;
+  try { sparat = JSON.parse(localStorage.getItem(FALL_NYCKEL)); } catch { /* privat läge e.d. */ }
+  sattBerattelserOppna(sparat?.berattelser ?? innerWidth > 760, false);
+  sattLagerOppna(sparat?.lager ?? false, false);
+  $('fall-panel').addEventListener('click', () => sattBerattelserOppna($('panel').classList.contains('hopfalld')));
+  $('fall-lager').addEventListener('click', () => {
+    const oppna = $('lager-innehall').hidden;
+    if (oppna && !$('detalj').hidden) $('detalj').querySelector('.stang')?.click();
+    sattLagerOppna(oppna);
+  });
+  const rot = document.documentElement.style;
+  const matt = new ResizeObserver(() => {
+    rot.setProperty('--panel-h', `${$('panel').offsetHeight}px`);
+    rot.setProperty('--lager-h', `${$('lagerpanel').offsetHeight}px`);
+  });
+  matt.observe($('panel'));
+  matt.observe($('lagerpanel'));
+}
+
+function sparaFallning() {
+  try {
+    localStorage.setItem(FALL_NYCKEL, JSON.stringify({
+      berattelser: !$('panel').classList.contains('hopfalld'), lager: !$('lager-innehall').hidden }));
+  } catch { /* sparas inte, men allt fungerar ändå */ }
+}
+
+function sattBerattelserOppna(oppna, spara = true) {
+  $('panel').classList.toggle('hopfalld', !oppna);
+  const knapp = $('fall-panel');
+  knapp.setAttribute('aria-expanded', oppna);
+  knapp.title = oppna ? 'Fäll ihop berättelserna' : 'Visa berättelserna';
+  knapp.setAttribute('aria-label', knapp.title);
+  if (spara) sparaFallning();
+}
+
+function sattLagerOppna(oppna, spara = true) {
+  $('lager-innehall').hidden = !oppna;
+  $('fall-lager').setAttribute('aria-expanded', oppna);
+  if (spara) sparaFallning();
 }

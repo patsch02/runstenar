@@ -32,7 +32,7 @@ function laggTillTurer() {
     const knapp = e.target.closest('button');
     if (!knapp) return;
     if (knapp.dataset.steg) gaTillSteg(+knapp.dataset.steg);
-    else if (knapp.dataset.sten) gaTillInskrift(runor[signumIndex.get(knapp.dataset.sten)]);
+    else if (knapp.dataset.sten) gaTillInskrift(runor[signumIndex.get(knapp.dataset.sten)], true);
     else if (knapp.classList.contains('tillbaka')) avslutaTur();
   });
 }
@@ -40,6 +40,8 @@ function laggTillTurer() {
 function startaTur(t) {
   tur = t;
   $('panel').classList.add('turlage');
+  $('lagerpanel').classList.add('turlage');   // turens markering hör till turen, inte till sökningen
+  sattBerattelserOppna(true, false);
   $('tur').hidden = false;
   gaTillSteg(0);
 }
@@ -112,5 +114,6 @@ function avslutaTur() {
   $('detalj').hidden = true;
   $('tur').hidden = true;
   $('panel').classList.remove('turlage');
+  $('lagerpanel').classList.remove('turlage');
   skrivAdress(true);
 }

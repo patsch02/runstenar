@@ -68,8 +68,10 @@ function valjSoktraff(typ, nyckel) {
   markera(index, typ === 'ristare' ? `Ristare: ${namn}` : typ === 'person' ? `Namnet ${namn}` : namn);
 }
 
-// Flyttar kartan och tidslinjen så att inskriften syns, och öppnar dess ruta.
-function gaTillInskrift(r) {
+// Flyttar kartan och tidslinjen så att inskriften syns, och öppnar dess ruta. Från en berättelse
+// zoomas bara till landskapsnivå (5–6) så att stenen syns bland sina grannar; från sökningen och
+// kartan går man närmare (minst 11).
+function gaTillInskrift(r, iBerattelse = false) {
   if (!lage.typer.has(r.k)) {
     lage.typer.add(r.k);
     document.querySelector(`[data-typ="${r.k}"]`).checked = true;
@@ -81,7 +83,8 @@ function gaTillInskrift(r) {
   stoppa();
   if (lage.ar < r.a || lage.ar > AR_MAX) lage.ar = Math.min(AR_MAX, Math.max(AR_MIN, Math.round((r.a + r.b) / 2)));
   uppdatera();
-  karta.flyTo({ center: [r.x, r.y], zoom: Math.max(karta.getZoom(), 11), duration: 800 });
+  const zoom = iBerattelse ? Math.min(6, Math.max(5, karta.getZoom())) : Math.max(karta.getZoom(), 11);
+  karta.flyTo({ center: [r.x, r.y], zoom, duration: 800 });
   visaInskrift(r);
 }
 
