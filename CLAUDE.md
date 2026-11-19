@@ -59,6 +59,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 |---|---|---|
 | runor.json (6 590 inskrifter) | RAÄ Runor-API (Samnordisk runtextdatabas) | bygg-data.sh + datering.jq (kan köras ensam på runor.json) + bygg-namn.rb (normaliserad text, personnamn och släktband ur cachen) + ai-oversattning.rb (fält `ts`: svensk AI-översättning ur `scripts/ai-oversattningar.json`, engelsk → svensk) |
 | vagar.json, gravfalt.json, odegardar.json, sjofart.json, forsvar.json, skatter.json, kult.json (offerplatser) | RAÄ fornlämningsregister via K-samsök | bygg-vagar/bebyggelse/sjofart/forsvar/skatter/tro |
+| norska poster (id `no:…`) i gravfalt.json, forsvar.json, sjofart.json, vagar.json (registrets ytor gjorda till mittlinjer där de är avlånga, annars ytor i fältet `y`) | Riksantikvarens Askeladden, OGC API på api.ra.no (NLOD 2.0) | bygg-askeladden.rb, körs efter de svenska |
 | ortnamn.json, fardnamn.json, kult.json (sakrala namn) | OpenStreetMap via Overpass (ofta överbelastad: frågorna är uppdelade och har omförsök) | bygg-ortnamn/fardnamn/tro |
 | kyrkor.json (med bild på Commons) | Wikidata | bygg-tro.sh |
 | bilder.json (signum → bild, ca 2 750 inskrifter) | Wikidata/Commons (sträng, fotograf och licens live från Commons API), annars RAÄ:s arkivbilder via K-samsök (objekt) | bygg-bilder.sh |
@@ -73,7 +74,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 Många lager har tidsgränser eller klassningar som är våra antaganden, inte data: stildatering
 Rak/Fp/Pr 1–5 enligt Gräslund (fält `e` = 1, ej för danska stenar), årtal för de danska perioderna
 Helnæs-Gørlev–efter-Jelling (`e` = 2) och historisk datering av Jellingstenarna (`e` = 3), alla satta i
-`scripts/datering.jq`, gravfältens ålder efter gravtyp, kultnamn och fornborgar som
+`scripts/datering.jq`, gravfältens ålder efter gravtyp (norska gravar efter Askeladdens datering, odaterade som förhistoriska med okänd ålder; norska vägar som mittlinjer genom registrets ytor), kultnamn och fornborgar som
 tonas bort 1050–1150, ortnamnsperioder, ordmatchning i beskrivningar (resmål, "tidiga" båtar,
 skatternas period), personnamn och släktband som tolkats automatiskt ur översättningarna, svenska AI-översättningar (märkta, med databasens engelska under). Var tydlig med sådant i texter och svar, och dra inte slutsatser av det som
 är inbyggt i animationen.

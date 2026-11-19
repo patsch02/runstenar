@@ -63,6 +63,11 @@ Sidan läser `data/*.json` med `fetch` och måste därför servas över http:
 - `data/skatter.json` – depåfynd ur fornlämningsregistret, klassade efter period, byggd av `scripts/bygg-skatter.sh`.
 - `data/mynt.json` – vikingatida mynt i Statens historiska museers samlingar, summerade per fyndplats,
   byggd av `scripts/bygg-mynt.rb` (kräver Ruby; exporten från samlingar.shm.se är ca 22 MB och CC0).
+- Norska poster i `data/gravfalt.json`, `data/forsvar.json`, `data/sjofart.json` och `data/vagar.json` (id `no:…`) – gravfält och
+  gravminnen, bygdeborgar, automatiskt fredade hamnområden och automatiskt fredade hålvägar, vägfar, vägar, ridvägar, broar och vadställen ur Riksantikvarens kulturminnesregister Askeladden
+  (OGC API på api.ra.no, NLOD 2.0), inlagda av `scripts/bygg-askeladden.rb`. Skriptet körs efter de svenska
+  byggskripten, som skriver om filerna utan de norska posterna. Gravarnas ålder bygger på registrets datering av
+  de enskilda gravarna; de flesta är bara daterade till järnålder, och odaterade visas som förhistoriska med okänd ålder. Registret anger vägarna som ytor; en avlång yta görs om till en mittlinje (ringen delas vid de två punkter som ligger längst isär och sidorna medelvärdesbildas), övriga behålls som ytor (fältet `y`).
 - `scripts/bygg-data.sh` – hämtar från RAÄ:s Runor-API och bygger om `runor.json`
   (kräver `curl` och `jq`; första körningen tar cirka fem minuter).
 

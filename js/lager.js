@@ -49,6 +49,8 @@ function laggTillVagar() {
   const linjer = [], punkter = [];
   vagar.forEach((v, i) => {
     if (v.l) linjer.push({ type: 'Feature', geometry: { type: 'MultiLineString', coordinates: v.l }, properties: { i } });
+    // Norska poster som inte gick att göra om till en mittlinje ritas som registrets yta
+    if (v.y) linjer.push({ type: 'Feature', geometry: { type: 'MultiPolygon', coordinates: v.y }, properties: { i, yta: 1 } });
     punkter.push({ type: 'Feature', geometry: { type: 'Point', coordinates: v.m }, properties: { i, t: v.t } });
   });
   karta.addSource('vag-linjer', { type: 'geojson', data: { type: 'FeatureCollection', features: linjer } });
@@ -58,14 +60,17 @@ function laggTillVagar() {
   karta.addLayer({ id: 'vag-prick', type: 'circle', source: 'vag-punkter', maxzoom: 10, filter: ['==', ['get', 't'], 'väg'],
     paint: { 'circle-color': css('--led-land'), 'circle-opacity': 0.55,
       'circle-radius': ['interpolate', ['linear'], ['zoom'], 4, 0.8, 9, 2.2] } }, under);
-  karta.addLayer({ id: 'vag-linje', type: 'line', source: 'vag-linjer', minzoom: 8,
+  karta.addLayer({ id: 'vag-yta', type: 'fill', source: 'vag-linjer', minzoom: 8, filter: ['has', 'yta'],
+    paint: { 'fill-color': css('--led-land'), 'fill-opacity': 0.35, 'fill-outline-color': css('--led-land') } }, under);
+  karta.addLayer({ id: 'vag-linje', type: 'line', source: 'vag-linjer', minzoom: 8, filter: ['!', ['has', 'yta']],
     layout: { 'line-cap': 'round', 'line-join': 'round' },
     paint: { 'line-color': css('--led-land'), 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 1.2, 14, 3.5] } }, under);
   karta.addLayer({ id: 'vag-bro', type: 'circle', source: 'vag-punkter', minzoom: 7, filter: ['!=', ['get', 't'], 'väg'],
     paint: { 'circle-color': css('--yta'), 'circle-stroke-color': css('--led-land'), 'circle-stroke-width': 1.5,
       'circle-radius': ['interpolate', ['linear'], ['zoom'], 7, 1.5, 12, 4.5] } }, under);
-  karta.addLayer({ id: 'vag-traff', type: 'line', source: 'vag-linjer', minzoom: 8, paint: { 'line-width': 12, 'line-opacity': 0 } }, under);
-  for (const id of ['vag-traff', 'vag-bro']) {
+  karta.addLayer({ id: 'vag-traff', type: 'line', source: 'vag-linjer', minzoom: 8, filter: ['!', ['has', 'yta']],
+    paint: { 'line-width': 12, 'line-opacity': 0 } }, under);
+  for (const id of ['vag-traff', 'vag-yta', 'vag-bro']) {
     karta.on('click', id, (e) => {
       if (karta.queryRenderedFeatures(e.point, { layers: STENLAGER }).length) return;
       visaVag(vagar[e.features[0].properties.i]);
@@ -77,20 +82,26 @@ function laggTillVagar() {
 }
 
 function ritaVagar() {
-  for (const id of ['vag-prick', 'vag-linje', 'vag-bro', 'vag-traff']) {
+  for (const id of ['vag-prick', 'vag-yta', 'vag-linje', 'vag-bro', 'vag-traff']) {
     if (karta.getLayer(id)) karta.setLayoutProperty(id, 'visibility', lage.vagar ? 'visible' : 'none');
   }
 }
 
 function visaVag(v) {
   visaFlytt(null);
-  const typ = { väg: 'Färdväg', bro: 'Bro', vad: 'Vadställe' }[v.t];
+  const typ = v.typ || { väg: 'Färdväg', bro: 'Bro', vad: 'Vadställe' }[v.t];
+  const norsk = arNorsk(v.id);
+  const not = norsk
+    ? `${kallaNamn(v.id)} Automatiskt fredad, alltså i regel äldre än 1537, men sällan närmare daterad, och visas därför oberoende av tidslinjen. ${v.l ? 'Registret anger lämningen som en yta; kartan visar en förenklad mittlinje genom den.' : 'Registret anger lämningen som en yta, och den visas så.'}`
+    : 'Ur fornlämningsregistret. Lämningen är odaterad: den kan vara förhistorisk, medeltida eller yngre, och visas därför oberoende av tidslinjen.';
+  const lank = norsk ? kallaHtml(v.id)
+    : v.u ? `<p><a href="${esc(v.u)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>` : '';
   visaRuta(`
     <h2>${esc(v.n || typ)}</h2>
-    <p class="under">${typ}${v.nr ? ` · ${esc(v.nr)}` : ''} · ${esc([v.so, v.la].filter(Boolean).join(', '))}</p>
+    <p class="under">${esc(typ)}${v.nr ? ` · ${esc(v.nr)}` : ''} · ${esc([v.so, v.la, norsk ? 'Norge' : ''].filter(Boolean).join(', '))}</p>
     ${v.d ? `<p>${esc(v.d)}${v.d.length >= 400 ? '…' : ''}</p>` : ''}
-    <p class="not">Ur fornlämningsregistret. Lämningen är odaterad: den kan vara förhistorisk, medeltida eller yngre, och visas därför oberoende av tidslinjen.</p>
-    ${v.u ? `<p><a href="${esc(v.u)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>` : ''}`);
+    <p class="not">${not}</p>
+    ${lank}`);
 }
 
 // ---------- Bebyggelse enligt ortnamn ----------
@@ -148,15 +159,31 @@ function ritaBygd() {
   satt('antal-ode', Math.round(ortnamn.filter((o) => o[3] === 6).length * andel(6, Y)).toLocaleString('sv-SE'));
 }
 
+// ---------- Källa för registerposter ----------
+
+// Posterna kommer ur RAÄ:s fornlämningsregister eller, med id "no:…", ur Riksantikvarens
+// Askeladden (Norge, se scripts/bygg-askeladden.rb).
+const arNorsk = (id) => String(id || '').startsWith('no:');
+const kallaNamn = (id) => (arNorsk(id) ? 'Ur Riksantikvarens kulturminnesregister Askeladden (Norge).' : 'Ur fornlämningsregistret.');
+function kallaHtml(id) {
+  if (!id) return '';
+  if (!arNorsk(id)) return `<p><a href="https://kulturarvsdata.se/raa/lamning/${esc(id)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>`;
+  const nr = String(id).slice(3).split('-')[0];
+  return `<p><a href="https://kulturminnesok.no/ra/lokalitet/${esc(nr)}" target="_blank" rel="noopener">Öppna lokaliteten i Kulturminnesøk</a></p>`;
+}
+
 // ---------- Gravfält och övergivna bosättningar ur fornlämningsregistret ----------
 
 // Ett järnåldersgravfält hörde i regel till en gård eller by, så gravfälten
 // visar var folk bodde före kristnandet. Åldern (g) är en tumregel utifrån
-// gravtyperna: "a" äldre järnålder, "y" yngre järnålder, "o" okänt.
+// gravtyperna: "a" äldre järnålder, "y" yngre järnålder, "o" okänt. De norska
+// gravarna (Askeladden) dateras efter registrets egen datering av gravarna, och
+// odaterade får "u": förhistoriska men av okänd ålder (de kan också vara från bronsåldern).
 const GRAVALDER = {
   a: { n: 'troligen äldre järnålder (resta stenar, domarringar)', fran: -500, in: 0, ut: 550, till: 700 },
   y: { n: 'troligen yngre järnålder (högar)', fran: 400, in: 600, ut: 1050, till: 1150 },
   o: { n: 'järnålder, inte närmare bestämd', fran: -500, in: 0, ut: 1050, till: 1150 },
+  u: { n: 'förhistorisk, ålder okänd', fran: -500, in: 0, ut: 1050, till: 1150 },
 };
 // Hur starkt ett gravfält i åldersgruppen g ska synas år Y (0–1)
 function gravstyrka(g, Y) {
@@ -195,8 +222,8 @@ function laggTillGravfalt() {
 function ritaGravfalt() {
   if (!karta.getLayer('gravfalt')) return;
   const Y = lage.ar;
-  const styrka = ['match', ['get', 'g'], 'a', gravstyrka('a', Y), 'y', gravstyrka('y', Y), gravstyrka('o', Y)];
-  const aktiva = ['a', 'y', 'o'].filter((g) => gravstyrka(g, Y) > 0);
+  const styrka = ['match', ['get', 'g'], 'a', gravstyrka('a', Y), 'y', gravstyrka('y', Y), 'u', gravstyrka('u', Y), gravstyrka('o', Y)];
+  const aktiva = Object.keys(GRAVALDER).filter((g) => gravstyrka(g, Y) > 0);
   karta.setLayoutProperty('gravfalt', 'visibility', lage.gravar && aktiva.length ? 'visible' : 'none');
   karta.setFilter('gravfalt', ['in', ['get', 'g'], ['literal', aktiva]]);
   karta.setPaintProperty('gravfalt', 'circle-opacity', ['*', 0.6, styrka]);
@@ -205,17 +232,22 @@ function ritaGravfalt() {
     ? Math.round(gravfalt.reduce((s, g) => s + gravstyrka(g[3], Y), 0)).toLocaleString('sv-SE') : 0;
 }
 
+// Registrets datering av gravarna; "järnålder" är ofta bara en bedömning utifrån gravformen
+const GRAVALDER_NORGE = { a: 'äldre järnålder', y: 'yngre järnålder eller vikingatid', o: 'järnålder (eller brons–järnålder), ofta bedömd efter gravformen', u: 'odaterad i registret' };
 function visaGravfalt([, , n, g, namn, nr, id]) {
   visaFlytt(null);
+  const norsk = arNorsk(id);
   visaRuta(`
-    <h2>${esc(namn || 'Gravfält')}</h2>
-    <p class="under">Gravfält${nr ? ` · ${esc(nr)}` : ''}</p>
+    <h2>${esc(namn || (norsk ? 'Gravar' : 'Gravfält'))}</h2>
+    <p class="under">${norsk ? 'Gravar, Norge' : 'Gravfält'}${nr ? ` · ${esc(nr)}` : ''}</p>
     <dl>
-      <dt>Gravar</dt><dd>${n || 'antal anges inte'}</dd>
-      <dt>Ålder</dt><dd>${GRAVALDER[g].n}</dd>
+      <dt>${norsk ? 'Gravminnen' : 'Gravar'}</dt><dd>${n || 'antal anges inte'}</dd>
+      <dt>Ålder</dt><dd>${norsk ? GRAVALDER_NORGE[g] : GRAVALDER[g].n}</dd>
     </dl>
-    <p class="not">Ur fornlämningsregistret. Åldern är en tumregel utifrån vilka gravtyper som ingår, inte en datering av just det här gravfältet.</p>
-    ${id ? `<p><a href="https://kulturarvsdata.se/raa/lamning/${esc(id)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>` : ''}`);
+    <p class="not">${kallaNamn(id)} ${norsk
+      ? 'Åldern bygger på registrets datering av de enskilda gravarna; de flesta är bara grovt daterade eller odaterade, och odaterade gravar kan också vara från bronsåldern.'
+      : 'Åldern är en tumregel utifrån vilka gravtyper som ingår, inte en datering av just det här gravfältet.'}</p>
+    ${kallaHtml(id)}`);
 }
 
 // Övergivna gårdar, byar och husgrunder. Registret anger inte när de övergavs,
@@ -383,15 +415,16 @@ function ritaSjofart() {
 
 function visaSjofart(p) {
   visaFlytt(null);
-  const not = p.t !== 'bat' ? 'Lämningen är odaterad i registret och visas därför oberoende av tidslinjen.'
+  const not = arNorsk(p.id) ? 'Automatiskt fredat, alltså i regel äldre än 1537, men inte närmare daterat; visas oberoende av tidslinjen.'
+    : p.t !== 'bat' ? 'Lämningen är odaterad i registret och visas därför oberoende av tidslinjen.'
     : p.ald ? 'Visas eftersom beskrivningen nämner förhistorisk tid eller medeltid. Det är en ordmatchning, inte en datering, så läs beskrivningen.'
     : 'Lämningen är odaterad. De flesta odaterade fartygslämningar i registret är från nyare tid.';
   visaRuta(`
     <h2>${esc(p.n || SJOFART[p.t][0])}</h2>
     <p class="under">${SJOFART[p.t][0]}${p.nr ? ` · ${esc(p.nr)}` : ''} · ${esc([p.so, p.la].filter(Boolean).join(', '))}</p>
     ${p.d ? `<p>${esc(p.d)}${p.d.length >= 280 ? '…' : ''}</p>` : ''}
-    <p class="not">Ur fornlämningsregistret. ${not}</p>
-    ${p.id ? `<p><a href="https://kulturarvsdata.se/raa/lamning/${esc(p.id)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>` : ''}`);
+    <p class="not">${kallaNamn(p.id)} ${not}</p>
+    ${kallaHtml(p.id)}`);
 }
 
 // ---------- Fornborgar och vårdkasar ----------
@@ -446,10 +479,10 @@ function visaForsvar(p) {
     <h2>${esc(p.n || (borg ? 'Fornborg' : 'Vårdkase'))}</h2>
     <p class="under">${borg ? 'Fornborg' : 'Vårdkase'}${p.nr ? ` · ${esc(p.nr)}` : ''} · ${esc([p.so, p.la].filter(Boolean).join(', '))}</p>
     ${p.d ? `<p>${esc(p.d)}${p.d.length >= 280 ? '…' : ''}</p>` : ''}
-    <p class="not">Ur fornlämningsregistret. ${borg
+    <p class="not">${kallaNamn(p.id)} ${borg
       ? 'Fornborgar är sällan daterade var för sig. De flesta som undersökts är från 300–600-talen, så borgen kan ha varit övergiven långt före runstenarnas tid.'
       : 'Vårdkasar är eldar som tändes för att varna längs kusten. Systemet är belagt från medeltiden och användes in på 1700-talet; platsen är odaterad och visas oberoende av tidslinjen.'}</p>
-    ${p.id ? `<p><a href="https://kulturarvsdata.se/raa/lamning/${esc(p.id)}" target="_blank" rel="noopener">Öppna posten hos Riksantikvarieämbetet</a></p>` : ''}`);
+    ${kallaHtml(p.id)}`);
 }
 
 // ---------- Skattfynd ----------

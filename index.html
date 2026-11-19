@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="style.css?v=55">
+  <link rel="stylesheet" href="style.css?v=56">
 </head>
 <body>
   <div id="karta" aria-label="Karta över runinskrifter"></div>
@@ -72,14 +72,17 @@
 
       <details class="om">
         <summary>Om kartan och källorna</summary>
-        <p>Inskrifterna täcker hela Norden, men gravfält, ödegårdar, borgar, skatter, mynt, sjöfart, vägar, ortnamn,
-          offerplatser och strandlinjen kommer ur svenska register och visar bara Sverige. Kyrkorna finns för Sverige,
-          Danmark och Norge, och orterna och lederna är handplockade för hela området. Att kartan är tom i Norge, Danmark
-          och Finland betyder alltså oftast att uppgifterna saknas här, inte att det inte fanns något.</p>
+        <p>Inskrifterna täcker hela Norden. Gravfält, fornborgar, hamnar och vägar finns för Sverige och Norge (ur Riksantikvarens
+          register Askeladden), kyrkorna för Sverige, Danmark och Norge, medan ödegårdar, skatter, mynt, båtar, ortnamn,
+          offerplatser och strandlinjen kommer ur svenska register och bara visar Sverige. Orterna och lederna är handplockade
+          för hela området. Att kartan är tom i Danmark och Finland betyder alltså oftast att uppgifterna saknas här, inte att
+          det inte fanns något.</p>
         <p>Många lager har tidsgränser eller klassningar som är antaganden, inte uppgifter i källorna. Dra därför inga
           slutsatser av det som syns tona in eller ut – läs i-texten vid lagret.</p>
         <p class="kalla">Inskrifter: Samnordisk runtextdatabas via <a href="https://app.raa.se/open/runor/" target="_blank" rel="noopener">Riksantikvarieämbetets Runor</a>.
           Vägar, gravfält, sjöfart, försvar, skatter och offerplatser: Riksantikvarieämbetets fornlämningsregister via K-samsök.
+          Norska gravar, bygdeborgar, hamnområden och vägar: Riksantikvarens kulturminnesregister Askeladden
+          (<a href="https://data.norge.no/nlod/no/2.0" target="_blank" rel="noopener">NLOD 2.0</a>).
           Ortnamn: © OpenStreetMaps bidragsgivare. Kyrkor: Wikidata (CC0). Mynt: Statens historiska museer (CC0).
           Strandlinje: SGU.</p>
       </details>
@@ -100,7 +103,7 @@
     </button>
     <div id="lager-innehall" hidden>
       <p class="lagertips">Slå på fler lager nedan. <span class="i-tecken">i</span> berättar hur lagret är daterat. Lager märkta <span class="alltid">alltid</span> följer inte tidslinjen.
-        De flesta lagren bygger på svenska register och visar bara Sverige; tomt i Norge, Danmark och Finland betyder att uppgifter saknas.</p>
+        De flesta lagren bygger på svenska register; gravfält, fornborgar och hamnar finns också för Norge. Tomt i Danmark och Finland betyder att uppgifter saknas.</p>
 
       <div class="lager" aria-live="polite">
         <details class="grupp" open>
@@ -164,7 +167,9 @@
           <p class="info" id="info-gravar" hidden>Gravfälten kommer ur fornlämningsregistret; prickens storlek följer antalet gravar. Ett gravfält
             hörde i regel till en gård. De är inte daterade var för sig, så åldern är en tumregel: gravfält med högar visas
             under yngre järnålder, gravfält med resta stenar eller domarringar men utan högar under äldre järnålder, och
-            övriga under hela järnåldern.</p>
+            övriga under hela järnåldern. I Norge visas gravfält och enskilda gravar ur Riksantikvarens register Askeladden,
+            daterade efter registrets egen datering av gravarna; de flesta är odaterade och visas under hela järnåldern,
+            fast en del kan vara från bronsåldern.</p>
         </details>
 
         <details class="grupp">
@@ -182,10 +187,11 @@
             Sträckningarna är schematiska och årtalen ungefärliga.</p>
           <div class="rad"><label><input type="checkbox" id="visa-vagar"><span class="vag-symbol"></span> Vägar, broar och vadställen <span class="alltid">alltid</span></label>
             <button class="info-knapp" type="button" aria-controls="info-vagar" aria-expanded="false" aria-label="Om vägarna">i</button></div>
-          <p class="info" id="info-vagar" hidden>Hålvägar, vägbankar, broar och vad ur fornlämningsregistret. De är odaterade och visas därför hela tiden.</p>
+          <p class="info" id="info-vagar" hidden>Hålvägar, vägbankar, broar och vad ur fornlämningsregistret, och för Norge automatiskt fredade hålvägar, vägfar, vägar, broar och vadställen ur Askeladden (alltså i regel äldre än 1537). De är odaterade och visas därför hela tiden. Askeladden anger lämningarna som ytor: avlånga ytor visas som en förenklad mittlinje, övriga som ytor.</p>
           <div class="rad"><label><input type="checkbox" id="visa-sjofart"><span class="sjo-symbol">⚓</span> Hamnar <span class="alltid">alltid</span></label><b id="antal-hamnar">0</b>
             <button class="info-knapp" type="button" aria-controls="info-sjofart" aria-expanded="false" aria-label="Om hamnarna">i</button></div>
-          <p class="info" id="info-sjofart" hidden>Hamnområden ur fornlämningsregistret. De är odaterade och visas därför hela tiden.</p>
+          <p class="info" id="info-sjofart" hidden>Hamnområden ur fornlämningsregistret och, i Norge, automatiskt fredade (i regel äldre än 1537)
+            hamnområden ur Askeladden. De är odaterade och visas därför hela tiden.</p>
           <div class="rad"><label><input type="checkbox" id="visa-resor"><span class="res-symbol"></span> Resor som runtexterna nämner</label><b id="antal-resor">0</b>
             <button class="info-knapp" type="button" aria-controls="info-resor" aria-expanded="false" aria-label="Om resorna">i</button></div>
           <p class="info" id="info-resor" hidden>Linjer från stenar vars text nämner ett resmål, till exempel England, Grekland eller Särkland.
@@ -204,7 +210,7 @@
           <p class="info" id="info-orter" hidden>Städer, handelsplatser, kungsgårdar och ringborgar i ett handplockat urval. Årtalen är ungefärliga.</p>
           <div class="rad"><label><input type="checkbox" id="visa-forsvar"><span class="borg-symbol"></span> Fornborgar</label><b id="antal-borgar">0</b>
             <button class="info-knapp" type="button" aria-controls="info-forsvar" aria-expanded="false" aria-label="Om fornborgarna">i</button></div>
-          <p class="info" id="info-forsvar" hidden>Fornborgar ur fornlämningsregistret. De är odaterade var för sig; de flesta som
+          <p class="info" id="info-forsvar" hidden>Fornborgar ur fornlämningsregistret och norska bygdeborgar ur Askeladden. De är odaterade var för sig; de flesta som
             undersökts är från 300–600-talen, och lagret tonas bort 1050–1150.</p>
           <div class="rad"><label><input type="checkbox" id="visa-mynt"><span class="mynt-symbol"></span> Mynt per fyndplats</label><b id="antal-mynt">0</b>
             <button class="info-knapp" type="button" aria-controls="info-mynt" aria-expanded="false" aria-label="Om mynten">i</button></div>
@@ -250,15 +256,15 @@
   </footer>
 
   <script src="vendor/maplibre-gl-5.6.0/maplibre-gl.js"></script>
-  <script src="js/grund.js?v=58"></script>
-  <script src="js/karta.js?v=58"></script>
-  <script src="js/lager.js?v=58"></script>
-  <script src="js/tidslinje.js?v=58"></script>
-  <script src="js/sok.js?v=58"></script>
-  <script src="js/detalj.js?v=58"></script>
-  <script src="js/berattelser.js?v=58"></script>
-  <script src="js/tidsbild.js?v=58"></script>
-  <script src="js/panel.js?v=58"></script>
-  <script src="js/start.js?v=58"></script>
+  <script src="js/grund.js?v=60"></script>
+  <script src="js/karta.js?v=60"></script>
+  <script src="js/lager.js?v=60"></script>
+  <script src="js/tidslinje.js?v=60"></script>
+  <script src="js/sok.js?v=60"></script>
+  <script src="js/detalj.js?v=60"></script>
+  <script src="js/berattelser.js?v=60"></script>
+  <script src="js/tidsbild.js?v=60"></script>
+  <script src="js/panel.js?v=60"></script>
+  <script src="js/start.js?v=60"></script>
 </body>
 </html>
