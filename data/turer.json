@@ -586,6 +586,111 @@
     ]
   },
   {
+    "id": "finland",
+    "n": "Österut till Finland",
+    "kort": "Ledung, korståg och runor på laggkärl i Åbo",
+    "bild": "Turun tuomiokirkko 20091011.jpg",
+    "steg": [
+      {
+        "rubrik": "Över Ålands hav",
+        "ar": 900,
+        "vy": {
+          "c": [
+            21.4,
+            60.6
+          ],
+          "z": 6.5
+        },
+        "bild": "Luistari archaeological site 01.jpg",
+        "bildtext": "Gravfältet i Luistari, Eura",
+        "text": "Österleden gick från Roslagen över Ålands hav och vidare längs Finlands sydkust. Åland var tätt bebott under vikingatiden, med hundratals gravhögar kring Saltvik, och i Satakunta har över tusen gravar grävts ut på gravfältet i Luistari i Eura. Runstenar reste man däremot nästan aldrig på andra sidan havet, så kartan blir tom här. Det betyder inte att landet var tomt."
+      },
+      {
+        "rubrik": "Dräpt i Finland",
+        "ar": 1040,
+        "s": [
+          "U 582",
+          "Gs 13"
+        ],
+        "oppna": "Gs 13",
+        "vy": {
+          "c": [
+            20.8,
+            60.6
+          ],
+          "z": 5.4
+        },
+        "platser": [
+          {
+            "n": "Tavastland",
+            "x": 24.6,
+            "y": 61.25,
+            "liten": true
+          }
+        ],
+        "bild": "Gs 13, Gävle.jpg",
+        "bildtext": "Gs 13, i dag i Gävle",
+        "text": "Två svenska stenar minns män som dog öster om havet. Björn och Igulfrid i Uppland reste en sten efter sonen Otrygg: ”Han dräptes i Finland.” I Gästrikland lät Brusi resa en sten efter brodern Egil, som dog i Tavastland när Brusi ledde landets ledung. Finland betydde då troligen bara sydvästra delen, och Tavastland inlandet. Stenarna säger inte om männen var där för handel, plundring eller krig."
+      },
+      {
+        "rubrik": "Runor på finsk mark",
+        "ar": 1050,
+        "s": [
+          "FI NOR1998;14",
+          "FI SAO1987;38"
+        ],
+        "oppna": "FI SAO1987;38",
+        "vy": {
+          "c": [
+            24.6,
+            60.9
+          ],
+          "z": 5.8
+        },
+        "text": "I Finland finns bara några få runinskrifter från vikingatiden. Ett fragment av en runsten från Stora Ängesön i Åbolands skärgård bär namnet Þorfastr. Ett spänne från Tuukkala i Södra Savolax, långt inne i landet, har två namn: ”Bótvé, Hegvé äger mig.” Föremålet kan ha kommit dit genom handel eller giftermål; runorna visar kontakterna över havet, inte vem som bar spännet."
+      },
+      {
+        "rubrik": "Korståg och legender",
+        "ar": 1240,
+        "s": [
+          "G 319"
+        ],
+        "oppna": "G 319",
+        "vy": {
+          "c": [
+            22.0,
+            60.5
+          ],
+          "z": 5.4
+        },
+        "bild": "Hame Castle 2019-08.jpg",
+        "bildtext": "Tavastehus slott i dag",
+        "text": "Enligt legenden förde Erik den helige och biskop Henrik ett korståg till Finland på 1150-talet, men legenden skrevs långt senare och hur mycket som hände är omstritt. Säkrare är Birger jarls tåg till Tavastland, som Erikskrönikan berättar om och som brukar dateras till 1240-talet. Borgen i Tavastehus byggdes troligen något senare. På Gotland minns en gravhäll i Rute från samma tid en man ”som dog i Finland”."
+      },
+      {
+        "rubrik": "Ave Maria i Åbo",
+        "ar": 1400,
+        "s": [
+          "FI Harjula2016;220",
+          "FI Harjula2016;218",
+          "FI Harjula2016;222",
+          "FI Harjula2019;247"
+        ],
+        "oppna": "FI Harjula2016;220",
+        "vy": {
+          "c": [
+            22.273,
+            60.451
+          ],
+          "z": 9
+        },
+        "bild": "Turun tuomiokirkko 20091011.jpg",
+        "bildtext": "Åbo domkyrka i dag",
+        "text": "Åbo blev biskopsstad på 1200-talet och Finlands största stad. Vid utgrävningar i den medeltida stadskärnan, bland annat där museet Aboa Vetus ligger i dag, har man hittat bottnar av laggkärl och en kam med runor från 1300- och 1400-talen: ”Ave Maria” och ”Lev väl!”. Runorna levde alltså kvar som vardagsskrift även här, i en stad där svenska, finska och tyska hördes."
+      }
+    ]
+  },
+  {
     "id": "england",
     "n": "Englandsfararna",
     "kort": "Danagäld och Knut den stores här",
