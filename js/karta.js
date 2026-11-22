@@ -8,6 +8,9 @@
 // Svarar OpenFreeMap inte inom åtta sekunder används en enfärgad reservbakgrund,
 // så att inskrifterna och lagren ändå syns (utan kustlinjer).
 const KARTSTIL = `https://tiles.openfreemap.org/styles/${mork ? 'dark' : 'positron'}`;
+// Kartans typsnitt (glyfer) kommer också från OpenFreeMap. Utan dem kan MapLibre inte rita en källas
+// kartrutor alls, så med reservbakgrunden tas texten bort ur textlagren (se skapaKarta).
+let utanTypsnitt = false;
 async function hamtaStil(farg) {
   try {
     const stopp = new AbortController();
@@ -19,7 +22,8 @@ async function hamtaStil(farg) {
   } catch (fel) {
     console.warn('Bakgrundskartan:', fel);
     meddela('karta', 'Bakgrundskartan kunde inte hämtas från OpenFreeMap. Inskrifterna visas ändå, på en enkel bakgrund utan kustlinjer.');
-    return { version: 8, glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf', sources: {},
+    utanTypsnitt = true;
+    return { version: 8, sources: {},
       layers: [{ id: 'background', type: 'background', paint: { 'background-color': farg.land } }] };
   }
 }
@@ -45,6 +49,13 @@ async function skapaKarta() {
     maxZoom: 16,
     attributionControl: false,
   });
+  if (utanTypsnitt) {
+    // Lager med text behåller sina punkter och linjer men tappar texten (namn längs leder, resmål, ×).
+    const laggTill = karta.addLayer.bind(karta);
+    const utanText = (o) => o && Object.fromEntries(Object.entries(o).filter(([k]) => !k.startsWith('text-')));
+    karta.addLayer = (lager, fore) => laggTill(lager.layout?.['text-field']
+      ? { ...lager, layout: utanText(lager.layout), paint: utanText(lager.paint) } : lager, fore);
+  }
   karta.addControl(new maplibregl.AttributionControl({
     compact: true,
     customAttribution: 'Inskrifter: Samnordisk runtextdatabas / RAÄ',
@@ -99,8 +110,10 @@ function laggTillInskrifter() {
     paint: { 'circle-color': css('--nu'), 'circle-opacity': 0.9,
       'circle-radius': ['*', radie, ['sqrt', ['/', ['get', 'nu'], ['get', 'point_count']]]] } });
   karta.addLayer({ id: 'kluster-tal', type: 'symbol', source: 'runor-kluster', maxzoom: KLUSTER_ZOOM, filter: ['has', 'point_count'],
-    layout: { 'text-field': ['to-string', ['get', 'point_count']], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-allow-overlap': true },
-    paint: { 'text-color': css('--text'), 'text-halo-color': css('--yta'), 'text-halo-width': 1.4 } });
+    layout: { 'icon-image': ['concat', 'tal-', ['to-string', ['get', 'point_count']]], 'icon-allow-overlap': true } });
+  // Antalet ritas som bild på canvas först när kartan behöver det, så att klustren inte hänger på
+  // typsnitt från OpenFreeMap (och får sajtens eget typsnitt).
+  karta.on('styleimagemissing', (e) => { if (e.id.startsWith('tal-')) talBild(e.id); });
   karta.on('zoomend', () => { if (karta.getZoom() < KLUSTER_ZOOM) ritaKluster(); });
 
   tips = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
@@ -129,6 +142,19 @@ function laggTillInskrifter() {
     const zoom = await karta.getSource('runor-kluster').getClusterExpansionZoom(f.properties.cluster_id);
     karta.easeTo({ center: f.geometry.coordinates, zoom: Math.max(zoom, karta.getZoom() + 1), duration: 600 });
   });
+}
+
+function talBild(namn) {
+  if (karta.hasImage(namn)) return;
+  const text = Number(namn.slice(4)).toLocaleString('sv-SE'), r = 2;   // r = pixeltäthet
+  const typsnitt = `600 ${11 * r}px ${css('--sans') || 'sans-serif'}`;
+  const c = document.createElement('canvas'), g = c.getContext('2d');
+  g.font = typsnitt;
+  c.width = Math.ceil(g.measureText(text).width) + 6 * r; c.height = 16 * r;
+  g.font = typsnitt; g.textAlign = 'center'; g.textBaseline = 'middle'; g.lineJoin = 'round';
+  g.lineWidth = 2.8 * r; g.strokeStyle = css('--yta'); g.strokeText(text, c.width / 2, c.height / 2);
+  g.fillStyle = css('--text'); g.fillText(text, c.width / 2, c.height / 2);
+  karta.addImage(namn, g.getImageData(0, 0, c.width, c.height), { pixelRatio: r });
 }
 
 // Klustren byggs bara om när något som påverkar dem har ändrats och kartan är utzoomad.

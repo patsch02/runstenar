@@ -185,15 +185,14 @@ a { color: var(--sedan); }
 @media (max-width: 760px) {
   #panel { width: auto; right: 12px; max-height: 38%; }
   #panel .om, #panel .ingress, #lagerpanel .lagertips { display: none; }
-  #detalj { top: auto; bottom: 150px; left: 12px; right: 12px; width: auto; max-height: 45%; }
+  #detalj { top: auto; bottom: calc(var(--tidslinje-h, 138px) + 24px); left: 12px; right: 12px; width: auto; max-height: 45%; }
   #tidslinje { flex-direction: column; align-items: stretch; gap: 6px; }
   .styrning { justify-content: space-between; }
   .spar { flex: none; }
 }
 
 /* Kartans egna knappar läggs ovanför tidslinjen */
-.maplibregl-ctrl-bottom-right { bottom: 112px; right: 4px; }
-@media (max-width: 760px) { .maplibregl-ctrl-bottom-right { bottom: 168px; } }
+.maplibregl-ctrl-bottom-right { bottom: calc(var(--tidslinje-h, 100px) + 18px); right: 4px; }
 
 /* Försvunna inskrifter, leder */
 .prick.ring { background: none; border: 2px solid var(--sedan); }
@@ -362,7 +361,7 @@ body:not([data-farg="tid"])[data-farg] .prick.ring { border-color: var(--text); 
   .tb-figurer { position: static; max-width: 320px; }
 }
 @media (max-width: 760px) {
-  #tidsbild { left: 12px; top: 12px; bottom: 170px; }
+  #tidsbild { left: 12px; top: 12px; bottom: calc(var(--tidslinje-h, 158px) + 24px); }
 }
 
 /* ---------- Formgivning: museum i kvällsljus ----------
@@ -542,6 +541,9 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
 @media (max-width: 760px) {
   .tb-personer .hot { width: 20px; height: 20px; font-size: 10.5px; border-width: 1.5px; }
   .epokband span:not(.aktiv) { font-size: 0; }
+  .skala span.udda { display: none; }
+  /* Formgivningens #panel-regel ovan tar annars bort den lägre höjden på mobil */
+  #panel:not(.turlage) { max-height: min(38%, calc(100% - var(--tidslinje-h, 230px) - 40px)); }
 }
 
 /* Delbar länk och lagerräknare */
@@ -646,3 +648,56 @@ h1 { font-size: 28px; line-height: 1.08; margin: 0 0 8px; }
   #lagerpanel { top: calc(var(--panel-h, 0px) + 20px); left: 12px; right: 12px; width: auto; max-height: 40%; padding: 10px 12px; }
   #panel.hopfalld h1 { font-size: 18px; }
 }
+
+/* ---------- Läs ord för ord ----------
+   Varje ord är en liten kolumn: runor, translitterering, normaliserad text, ordförklaring
+   (js/lasning.js). Används i detaljrutan och på inskrifternas egna sidor (sten/). */
+#detalj details.lasning { margin: 0 0 12px; }
+#detalj details.lasning > summary { cursor: pointer; font-weight: 600; font-size: 13px; color: var(--accent); padding: 4px 0; }
+#detalj details.lasning[open] > summary { margin-bottom: 6px; }
+.las-rader { margin: 0 0 8px; font-size: 12px; color: var(--text-2); }
+.las-ord { display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: flex-start; margin: 0 0 10px; }
+.las-ord .lo { display: flex; flex-direction: column; gap: 1px; padding: 6px 8px; border-radius: 8px; background: var(--yta-2); min-width: 2.2em; }
+.las-ord .lo.namn { background: color-mix(in srgb, var(--accent) 12%, var(--yta-2)); }
+.las-ord .ru { font-family: "Noto Sans Runic", "Segoe UI Historic", "Segoe UI Symbol", sans-serif; font-size: 19px; line-height: 1.25; letter-spacing: .04em; color: var(--text); }
+.las-ord .tr { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; color: var(--text-2); }
+.las-ord .no { font-family: var(--serif); font-style: italic; font-size: 14.5px; color: var(--text); }
+.las-ord .gl { font-size: 11.5px; font-weight: 600; color: var(--accent); max-width: 11em; line-height: 1.25; }
+.las-ord .lo.namn .gl { font-weight: 500; color: var(--text-2); }
+.las-ord .sida { flex-basis: 100%; font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); }
+#detalj .lasning .not { margin: 0; }
+#detalj .las-ord span { text-decoration: none; }
+
+/* ---------- Här är jag ----------
+   Knappen ovanför zoomknapparna, markören för besökarens plats och listorna i detaljrutan (js/plats.js). */
+.har-hallare { margin: 0 10px 8px 0; }
+.har-knapp { display: flex; align-items: center; gap: 8px; font: 600 13px/1 var(--sans); padding: 9px 14px 9px 11px; border-radius: 999px;
+  border: 1px solid var(--kant); background: var(--yta); color: var(--text); box-shadow: 0 2px 10px rgb(0 0 0 / .18); cursor: pointer; }
+.har-knapp span { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--accent); box-shadow: inset 0 0 0 2px var(--yta); background: var(--accent); }
+.har-knapp:hover { border-color: var(--accent); }
+.har-knapp[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.har-knapp[aria-pressed="true"] span { border-color: #fff; background: #fff; box-shadow: inset 0 0 0 2px var(--accent); }
+.har-prick { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); border: 3px solid #fff;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent), 0 1px 6px rgb(0 0 0 / .4); animation: har-puls 2.4s ease-out infinite; }
+@keyframes har-puls { 70%, 100% { box-shadow: 0 0 0 16px transparent, 0 1px 6px rgb(0 0 0 / .4); } }
+@media (prefers-reduced-motion: reduce) { .har-prick { animation: none; } }
+#detalj .har-jag h3 { margin: 16px 0 6px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-2); font-family: var(--sans); }
+#detalj .har-lista { list-style: none; margin: 0 0 4px; padding: 0; }
+#detalj .har-lista button { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; font: inherit; color: inherit;
+  padding: 8px 10px; margin: 0 0 4px; border: 1px solid var(--kant); border-radius: 10px; background: var(--yta-2); cursor: pointer; }
+#detalj .har-lista button:hover { border-color: var(--accent); }
+#detalj .har-lista span { font-size: 12.5px; color: var(--text-2); }
+#detalj .har-jag .not { margin: 12px 0 10px; }
+/* På bred skärm flyttas kartknapparna undan när detaljrutan är öppen, så att de inte ligger ovanpå den. */
+@media (min-width: 761px) { body:has(#detalj:not([hidden])) .maplibregl-ctrl-bottom-right { right: 388px; } }
+@media (max-width: 760px) {
+  /* Formgivningens #detalj-regel tar annars bort den lägre höjden på mobil, och rutan täcker kartan. */
+  #detalj { max-height: 45%; }
+  /* Fältläge: medan "Här är jag" är på syns bara kartan, knapparna (uppe till höger) och rutan längst ner. */
+  body.har-lage #panel, body.har-lage #lagerpanel, body.har-lage #tidslinje { display: none; }
+  body.har-lage #detalj { bottom: 12px; max-height: 48%; }
+  body.har-lage .maplibregl-ctrl-bottom-right { bottom: auto; top: 8px; }
+}
+/* MapLibres egna hover-regel för knappar i kartkontroller gör annars knappen genomskinlig (fastnar vid tryck på mobil). */
+.maplibregl-ctrl.har-hallare button.har-knapp:not(:disabled):hover { background-color: var(--yta); }
+.maplibregl-ctrl.har-hallare button.har-knapp[aria-pressed="true"]:not(:disabled):hover { background-color: var(--accent); }
