@@ -11,6 +11,7 @@ function visaRuta(html) {
   ruta.innerHTML = `<button class="stang" aria-label="Stäng">×</button>${html}`;
   ruta.hidden = false;
   ruta.scrollTop = 0;
+  if (!$('lager-innehall').hidden) sattLagerOppna(false, false);   // detaljrutan ställer sig under kartlagren
   lage.vald = null;
   ruta.querySelector('.stang').addEventListener('click', () => { ruta.hidden = true; visaFlytt(null); skrivAdress(true); });
 }
@@ -29,6 +30,10 @@ function visaInskrift(r) {
     const km = avstandKm(r.x, r.y, r.cx, r.cy);
     const langd = km < 1 ? `${Math.round(km * 100) * 10} m` : `${km.toLocaleString('sv-SE', { maximumFractionDigits: km < 10 ? 1 : 0 })} km`;
     status = `<p class="status"><b>Flyttad.</b> Markerad på sin äldsta kända plats, står i dag ${langd} därifrån (streckad linje).${r.pm ? ` ${esc(r.pm)}` : ''}</p>`;
+  } else if (/^Mynt/.test(r.f || '') && r.pl === 'Okänd') {
+    // Sven Estridsens runmynt m.fl.: fyndplatsen saknas, och databasen placerar dem där de präglades
+    const ort = avstandKm(r.x, r.y, 13.19, 55.70) < 3 ? 'Lund' : avstandKm(r.x, r.y, 12.08, 55.64) < 3 ? 'Roskilde' : null;
+    status = `<p class="status"><b>Fyndplatsen är okänd.</b> Myntet visas där det präglades${ort ? `, i ${ort}` : ''}, och många mynt delar därför samma punkt på kartan.</p>`;
   } else if (r.pm) {
     status = `<p class="status">${esc(r.pm)}</p>`;
   }
@@ -54,7 +59,7 @@ function visaInskrift(r) {
       ${rad(ordKnapp('Ristare', 'ristare'), r.c)}
       ${rad('Plats', r.pl)}
       ${rad('Socken', r.so)}
-      ${rad('Landskap', [r.la, r.co].filter(Boolean).join(', '))}
+      ${rad(r.co === 'Norge' ? 'Fylke' : 'Landskap', [r.la, r.co].filter(Boolean).join(', '))}
       ${rad('Äldre nr', r.bn || r.ln, [r.bn && ordKnapp(r.bn, 'bautil'), r.ln && ordKnapp(r.ln, 'liljegren')].filter(Boolean).join(', '))}
       ${rad('Nämner', [...(r.rs || []).map((k) => resmal[k]?.n || RIKTNINGAR[k]), r.br ? 'brobygge' : null].filter(Boolean).join(', '))}
     </dl>
@@ -91,10 +96,11 @@ function kopplaLasning(r) {
 // (fältet ts, se scripts/ai-oversattning.rb) med tydlig märkning och databasens engelska under.
 function oversattningHtml(r) {
   if (!r.t || !/[^…\s.§A-H]/.test(r.t)) return '';
-  if (!r.ts) return `<blockquote>${esc(r.t)}${r.tl === 'en' ? ' <span class="not">(engelsk översättning)</span>' : ''}</blockquote>`;
+  const sprak = r.tl === 'da' ? 'dansk' : 'engelsk';   // tl = "da": Hedebys danska texter, se scripts/ai-oversattning.rb
+  if (!r.ts) return `<blockquote>${esc(r.t)}${r.tl === 'en' || r.tl === 'da' ? ` <span class="not">(${sprak} översättning)</span>` : ''}</blockquote>`;
   return `<blockquote class="ai">${esc(r.ts)}
       <span class="ai-marke">${ordKnapp('AI-översättning', 'ai')}</span></blockquote>
-    <details class="engelsk"><summary>Databasens engelska översättning</summary><p>${esc(r.t)}</p></details>`;
+    <details class="engelsk"><summary>Databasens ${sprak}a översättning</summary><p>${esc(r.t)}</p></details>`;
 }
 
 // Personer i texten (fälten pn och sl, se scripts/bygg-namn.rb). Släktbanden är tolkade ur

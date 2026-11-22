@@ -20,11 +20,12 @@ const css = (namn) => getComputedStyle(document.documentElement).getPropertyValu
 const mork = matchMedia('(prefers-color-scheme: dark)').matches;
 
 const lage = {
-  ar: 1030, typer: new Set(['R']), sedan: true, grov: true, orter: true,
+  ar: 1030, typer: new Set(['R', 'O']), sedan: true, grov: true, orter: true,
   bevarade: true, forsvunna: true, leder: true, spelar: false,
   resor: false, broar: false, vagar: false, bygd: false, gravar: false, ode: false,
 };
-// Från start visas bara inskrifterna, strandlinjen, orter och leder; övriga lager slås på i panelen.
+// Från start visas runstenar och lösföremål (där finns de flesta norska inskrifterna, som runpinnarna
+// från Bergen och Trondheim), strandlinjen, orter och leder; övriga lager slås på i panelen.
 let gravfalt = [], odegardar = [], kult = [], kyrkor = [], fardnamn = [];
 lage.fardnamn = false;
 let sjofart = [], forsvar = [], skatter = [];

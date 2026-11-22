@@ -68,6 +68,11 @@ Sidan läser `data/*.json` med `fetch` och måste därför servas över http:
 - `data/skatter.json` – depåfynd ur fornlämningsregistret, klassade efter period, byggd av `scripts/bygg-skatter.sh`.
 - `data/mynt.json` – vikingatida mynt i Statens historiska museers samlingar, summerade per fyndplats,
   byggd av `scripts/bygg-mynt.rb` (kräver Ruby; exporten från samlingar.shm.se är ca 22 MB och CC0).
+- Norska poster i `data/gravfalt.json`, `data/forsvar.json`, `data/sjofart.json` och `data/vagar.json` (id `no:…`) – gravfält och
+  gravminnen, bygdeborgar, automatiskt fredade hamnområden och automatiskt fredade hålvägar, vägfar, vägar, ridvägar, broar och vadställen ur Riksantikvarens kulturminnesregister Askeladden
+  (OGC API på api.ra.no, NLOD 2.0), inlagda av `scripts/bygg-askeladden.rb`. Skriptet körs efter de svenska
+  byggskripten, som skriver om filerna utan de norska posterna. Gravarnas ålder bygger på registrets datering av
+  de enskilda gravarna; de flesta är bara daterade till järnålder, och odaterade visas som förhistoriska med okänd ålder. Registret anger vägarna som ytor; en avlång yta görs om till en mittlinje (ringen delas vid de två punkter som ligger längst isär och sidorna medelvärdesbildas), övriga behålls som ytor (fältet `y`).
 - `scripts/bygg-data.sh` – hämtar från RAÄ:s Runor-API och bygger om `runor.json`
   (kräver `curl` och `jq`; första körningen tar cirka fem minuter).
 
@@ -100,7 +105,7 @@ visas under.
 Fält i `runor.json`: `s` signum, `x`/`y` longitud/latitud (äldsta kända plats),
 `a`/`b` tidigaste/senaste år, `k` typ (R runsten, G gravmonument, O övrigt),
 `f` föremål, `p` period, `d` dateringstext, `st` stil, `c` ristare, `pl` plats,
-`so` socken, `la` landskap, `co` land, `t` översättning (`tl` språk),
+`so` socken, `la` landskap (för Norge fylket, indelningen före 2020), `co` land, `t` översättning (`tl` språk),
 `r` translitterering, `u` länk, `e` = 1 om åren är härledda ur stilgruppen (Gräslund),
 2 om de följer den danska periodindelningen i `d` (Helnæs-Gørlev 750–900, för-Jelling 900–950, Jelling
 950–1000, efter-Jelling 1000–1050; ungefärligt), 3 om de bygger på historiska uppgifter (Jellingstenarna DR 41
@@ -113,8 +118,8 @@ Liljegren (1833), `cx`/`cy` nuvarande plats om stenen flyttats, `pm` placeringst
 
 Knappen "Här är jag" (`js/plats.js`) visar besökarens plats på kartan, slår på lagret med vägar, broar och vad och listar
 de närmaste väglämningarna och bevarade runstenarna med avstånd (fågelvägen) och väderstreck. Avståndet till en väg mäts
-till närmaste punkt på dess sträckning. Väglämningarna är bevarade bitar ur fornlämningsregistret, inte hela sträckningar,
-och odaterade; registret täcker bara Sverige. Flyttade runstenar räknas på sin nuvarande plats och försvunna tas inte med.
+till närmaste punkt på dess sträckning. Väglämningarna är bevarade bitar ur RAÄ:s fornlämningsregister och norska Askeladden, inte hela
+sträckningar, och oftast odaterade; registren täcker bara Sverige och Norge. Flyttade runstenar räknas på sin nuvarande plats och försvunna tas inte med.
 Platsen stannar i webbläsaren och sparas inte. På smal skärm göms panelen och tidslinjen medan läget är på.
 
 ## Läs ord för ord

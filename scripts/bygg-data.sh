@@ -74,7 +74,9 @@ find details -name '*.json' -size +0 -print0 | xargs -0 cat | jq -c '
       c: ([.carver[]? | .name + (if .certainty then "" else "?" end)] | unique | join(", ")),
       pl: (.provenance.place.place | ren),
       so: .provenance.parish.parish,
-      la: .provenance.province.province,
+      # Norge har inga landskap i databasen (bara "NO"); där används fylket (indelningen före 2020).
+      la: (if .provenance.country.country_code == "NO" and (.provenance.hundred.hundred // "") != ""
+           then .provenance.hundred.hundred | sub(" fylke$"; "") else .provenance.province.province end),
       co: .provenance.country.sv,
       t: ($sv // $en | ren),
       tl: (if $sv then "sv" elif $en then "en" else null end),

@@ -310,6 +310,387 @@
     ]
   },
   {
+    "id": "norge",
+    "n": "Norge i runor",
+    "kort": "Från Tunestenen till vardagens runpinnar på Bryggen i Bergen",
+    "bild": "Runepinne med skipsgrafitti.jpg",
+    "steg": [
+      {
+        "rubrik": "Wiwaz ristar för sin herre",
+        "ar": 450,
+        "s": [
+          "N KJ72"
+        ],
+        "oppna": "N KJ72",
+        "vy": {
+          "c": [
+            11.0834,
+            59.2921
+          ],
+          "z": 8
+        },
+        "bild": "Tune stone I.JPG",
+        "bildtext": "Tunestenen i Kulturhistorisk museum, Oslo",
+        "text": "Tunestenen från Østfold är en av Nordens äldsta runstenar, ristad med den äldre runraden någon gång mellan 400 och 530. Wiwaz gjorde runorna efter Woduridaz, ”min herre”. Enligt en vanlig tolkning nämner stenens andra sida tre döttrar och ett arvsöl, alltså att ett arv skulle fördelas. Språket är urnordiska, en förfader till både norska och svenska."
+      },
+      {
+        "rubrik": "Eggjastenen och havet",
+        "ar": 680,
+        "s": [
+          "N KJ101"
+        ],
+        "oppna": "N KJ101",
+        "vy": {
+          "c": [
+            6.7742,
+            61.1878
+          ],
+          "z": 8
+        },
+        "bild": "N KJ101.jpg",
+        "bildtext": "Eggjastenen",
+        "text": "Eggjastenen hittades 1917 när en åker plöjdes i Sogn. Den låg med runorna nedåt över en grav, och texten var alltså inte till för de levande. Det är den längsta inskriften med den äldre runraden, från andra hälften av 600-talet, och handlar om havet, en drunkning och vem som för de döda över till ”det andra landet”. Tolkningarna går isär på många punkter."
+      },
+      {
+        "rubrik": "Död i Knuts här i England",
+        "ar": 1015,
+        "s": [
+          "N 184"
+        ],
+        "oppna": "N 184",
+        "vy": {
+          "c": [
+            7.8384,
+            58.576
+          ],
+          "z": 8
+        },
+        "bild": "Galtelandssteinen på Evje.jpg",
+        "bildtext": "Kopia av Galtelandsstenen nära fyndplatsen",
+        "text": "På Galtelandsstenen i Agder minns Arnstein sin son Bjór, som dog i hirden när Knut anföll England. Knut den store erövrade England 1015–1016, så stenen är troligen ristad strax efter. Den slutar med en kort trosbekännelse: ”Gud är en.” Norrmän stred alltså i den danske kungens här, samma krig som många svenska Englandsstenar minns."
+      },
+      {
+        "rubrik": "Tolv vintrar av kristendom",
+        "ar": 1034,
+        "s": [
+          "N 449"
+        ],
+        "oppna": "N 449",
+        "vy": {
+          "c": [
+            8.0881,
+            63.2966
+          ],
+          "z": 8
+        },
+        "bild": "Kulisteinen.jpg",
+        "bildtext": "Platsen på Kuli, Smøla",
+        "text": "Kulistenen från Smøla på Nordmøre säger att kristendomen hade funnits tolv vintrar i Norge. Det är första gången namnet Norge står i en inhemsk text. En träbro på platsen har daterats till omkring 1034 genom årsringarna, och räknar man tolv år bakåt hamnar man kanske vid Mostertinget 1024, då kristen lag antogs. Runtextdatabasen daterar själv stenen något tidigare, så sambandet är en tolkning."
+      },
+      {
+        "rubrik": "Gunnvor bygger en bro",
+        "ar": 1040,
+        "s": [
+          "N 68"
+        ],
+        "oppna": "N 68",
+        "vy": {
+          "c": [
+            10.6029,
+            60.3228
+          ],
+          "z": 8
+        },
+        "bild": "Dynna stone.JPG",
+        "bildtext": "Dynnastenen i Kulturhistorisk museum, Oslo",
+        "text": "Gunnvor, Trydriks dotter, lät bygga en bro efter sin dotter Astrid, ”den skickligaste mön i Hadeland”. Att bygga en bro eller en väg över sank mark var en kristen gärning för den dödas själ. Bilderna på Dynnastenen visar Betlehemsstjärnan, de tre vise männen och Kristusbarnet. Liksom på många svenska stenar är det här en kvinna som står för minnesmärket."
+      },
+      {
+        "rubrik": "Vardagen på Bryggen",
+        "ar": 1250,
+        "s": [
+          "N B149",
+          "N B390",
+          "N 687",
+          "N 650",
+          "N B448"
+        ],
+        "oppna": "N B390",
+        "vy": {
+          "c": [
+            5.32,
+            60.398
+          ],
+          "z": 9
+        },
+        "text": "Efter branden på Bryggen i Bergen 1955 hittade arkeologerna omkring 600 runinskrifter, de flesta på trästickor från 1100–1400-talen. Här skriver vanligt folk: märklappar som ”Eyjulfr äger denna säck”, en påminnelse om vad Eindridi är skyldig, ett brev om spjut och vapensmide från en Sigurd Lavard och kärleksord som ”Ingibjǫrg älskade mig när jag var i Stavanger”. ”Gyda säger att du ska gå hem” brukar läsas som en hälsning från en hustru. Runor var långt in på medeltiden ett vardagsskrift, inte bara minnesstenar. Pinnarna är dåligt daterade i databasen (ofta 1100–1500)."
+      },
+      {
+        "rubrik": "Pilgrimer vid Olavs grav",
+        "ar": 1300,
+        "s": [
+          "N 478"
+        ],
+        "oppna": "N 478",
+        "vy": {
+          "c": [
+            10.3969,
+            63.4269
+          ],
+          "z": 9
+        },
+        "bild": "Nidaros Cathedral.jpg",
+        "bildtext": "Nidarosdomen i Trondheim i dag",
+        "lager": [
+          "kyrkor"
+        ],
+        "text": "Olav Haraldsson stupade vid Stiklestad 1030 och räknades snart som helgon. Över hans grav i Nidaros växte domkyrkan fram, och pilgrimer kom från hela Norden. I murarna finns runor ristade av besökare och byggare, som den här bönen: ”Gud och den helige kung Olav med sina heliga förböner hjälpe den man som ristade dessa runor.” Pilgrimslederna till Nidaros finns med bland lederna på kartan."
+      }
+    ]
+  },
+  {
+    "id": "danmark",
+    "n": "Danernas rike",
+    "kort": "Från hedniska skeppssättningar till kungens runmynt i Lund",
+    "bild": "Glavendrup 1.jpg",
+    "steg": [
+      {
+        "rubrik": "Ragnhild och Alli på Fyn",
+        "ar": 925,
+        "s": [
+          "DR 209"
+        ],
+        "oppna": "DR 209",
+        "vy": {
+          "c": [
+            10.293,
+            55.5097
+          ],
+          "z": 8
+        },
+        "bild": "Glavendrup 1.jpg",
+        "bildtext": "Glavendrupstenen och skeppssättningen",
+        "text": "Glavendrupstenen står vid en stor skeppssättning på norra Fyn. Ragnhild reste den efter sin make Alli, ”vigdens gode”, alltså föreståndare för en helig plats, och sönerna gjorde minnesmärken efter sin far. Runristaren Soti ber Tor viga runorna och förbannar den som skadar stenen. Det är en av Danmarks längsta runinskrifter, ristad före Jellingkungarnas kristnande."
+      },
+      {
+        "rubrik": "Samma Ragnhild på Själland?",
+        "ar": 935,
+        "s": [
+          "DR 230"
+        ],
+        "oppna": "DR 230",
+        "vy": {
+          "c": [
+            12.2964,
+            55.354
+          ],
+          "z": 8
+        },
+        "bild": "Kbh Mus Run Tryggevelde 1.jpg",
+        "bildtext": "Tryggevældestenen i Nationalmuseet, Köpenhamn",
+        "text": "Vid Tryggevælde på Själland lät Ragnhild, Ulfs syster, göra en sten, en hög och en skeppssättning efter maken Gunnulf. Förbannelsen är nästan ordagrant densamma som på Glavendrupstenen, och många har därför tänkt sig att det är samma kvinna, gift två gånger. Det går inte att bevisa, men stenarna visar att en kvinna kunde stå bakom de mest påkostade minnesmärkena."
+      },
+      {
+        "rubrik": "En kung i Hedeby",
+        "ar": 945,
+        "s": [
+          "DR 4",
+          "DR 2"
+        ],
+        "oppna": "DR 4",
+        "vy": {
+          "c": [
+            9.56,
+            54.495
+          ],
+          "z": 9
+        },
+        "bild": "Hedeby Museum, Small Sigtrygg Stone.jpg",
+        "bildtext": "Den lilla Sigtryggstenen i Hedeby museum",
+        "text": "Vid Hedeby, Danmarks stora handelsstad vid Slien, gjorde Asfrid, Odinkars dotter, två stenar efter kung Sigtryg, hennes och Gnupas son. Enligt den sachsiske krönikören Widukind besegrades kung Gnupa år 934 av den tyske kungen Henrik. Adam av Bremen skrev hundra år senare att ätten hade kommit från Svitjod; hur det var vet vi inte. Strax efter tog Gorm och Harald i Jelling makten."
+      },
+      {
+        "rubrik": "Harald Blåtands ringborgar",
+        "ar": 980,
+        "s": [
+          "DR 133"
+        ],
+        "oppna": "DR 133",
+        "vy": {
+          "c": [
+            10.4,
+            56.0
+          ],
+          "z": 6.5
+        },
+        "bild": "Trelleborg airphoto.JPG",
+        "bildtext": "Trelleborg vid Slagelse från luften",
+        "text": "Omkring 980 byggdes ringborgarna Trelleborg, Fyrkat och Aggersborg efter samma exakta plan; årsringarna i Trelleborgs timmer visar att träden fälldes 980–981. De brukar knytas till Harald Blåtand och hans makt över hela riket. Samtidigt minns en mor och två söner i Skivum, inte långt från Aggersborg, en man som var ”den förste och bäste av jordägare i Danmark”."
+      },
+      {
+        "rubrik": "Han flydde inte vid Uppsala",
+        "ar": 1005,
+        "s": [
+          "DR 295",
+          "DR 279"
+        ],
+        "oppna": "DR 295",
+        "vy": {
+          "c": [
+            13.53,
+            55.56
+          ],
+          "z": 8.5
+        },
+        "bild": "Hällestadstenen 1 runestone, Hällestad church, Scania, Sweden - May 2018.jpg",
+        "bildtext": "Hällestadstenen 1 vid Hällestads kyrka",
+        "text": "Skåne hörde till det danska riket, och här finns runstenar över män som stred vid Uppsala. Eskil reste en sten efter Toke, Gorms son, ”han flydde icke vid Uppsala”, och Saxe en efter Åsbjörn, som kämpade så länge han hade vapen. Slaget brukar knytas till Fyrisvallarna på 980-talet, där Styrbjörn enligt sagorna föll mot Erik Segersäll, men inskrifterna själva säger inget om när det var."
+      },
+      {
+        "rubrik": "Skåningar i London",
+        "ar": 1030,
+        "s": [
+          "DR 337"
+        ],
+        "oppna": "DR 337",
+        "vy": {
+          "c": [
+            14.1424,
+            55.4369
+          ],
+          "z": 8.5
+        },
+        "text": "Sven och Torgöt gjorde minnesmärken i Valleberga efter Måne och Svene: ”Gud hjälpe deras själ väl, men de ligger i London.” Under Sven Tveskägg och Knut den store var England en del av det danska väldet, och män från hela riket, Skåne inräknat, for västerut. Mer om dem finns i berättelsen om Englandsfararna."
+      },
+      {
+        "rubrik": "Kungens mynt i Lund",
+        "ar": 1070,
+        "s": [
+          "DR 314",
+          "DR M1",
+          "DR M10",
+          "DR M100"
+        ],
+        "oppna": "DR M100",
+        "vy": {
+          "c": [
+            13.1936,
+            55.7096
+          ],
+          "z": 10
+        },
+        "bild": "Exterior of Lunds domkyrka (09).jpg",
+        "bildtext": "Lunds domkyrka i dag",
+        "text": "Lund anlades omkring år 990 som kungens stad och fick tidigt ett myntverk. Under Sven Estridsen på 1060- och 70-talen präglades mynt med runor, ofta med myntmästarens namn och staden: ”Þorgautr, Lund”. Den stora klungan av mynt i Lund på kartan är alltså präglingsorten, inte fyndplatser. Några decennier senare, omkring 1103, blev Lund ärkesäte för hela Norden."
+      }
+    ]
+  },
+  {
+    "id": "finland",
+    "n": "Österut till Finland",
+    "kort": "Ledung, korståg och runor på laggkärl i Åbo",
+    "bild": "Turun tuomiokirkko 20091011.jpg",
+    "steg": [
+      {
+        "rubrik": "Över Ålands hav",
+        "ar": 900,
+        "vy": {
+          "c": [
+            21.4,
+            60.6
+          ],
+          "z": 6.5
+        },
+        "bild": "Luistari archaeological site 01.jpg",
+        "bildtext": "Gravfältet i Luistari, Eura",
+        "text": "Österleden gick från Roslagen över Ålands hav och vidare längs Finlands sydkust. Åland var tätt bebott under vikingatiden, med hundratals gravhögar kring Saltvik, och i Satakunta har över tusen gravar grävts ut på gravfältet i Luistari i Eura. Runstenar reste man däremot nästan aldrig på andra sidan havet, så kartan blir tom här. Det betyder inte att landet var tomt."
+      },
+      {
+        "rubrik": "Dräpt i Finland",
+        "ar": 1040,
+        "s": [
+          "U 582",
+          "Gs 13"
+        ],
+        "oppna": "Gs 13",
+        "vy": {
+          "c": [
+            20.8,
+            60.6
+          ],
+          "z": 5.4
+        },
+        "platser": [
+          {
+            "n": "Tavastland",
+            "x": 24.6,
+            "y": 61.25,
+            "liten": true
+          }
+        ],
+        "bild": "Gs 13, Gävle.jpg",
+        "bildtext": "Gs 13, i dag i Gävle",
+        "text": "Två svenska stenar minns män som dog öster om havet. Björn och Igulfrid i Uppland reste en sten efter sonen Otrygg: ”Han dräptes i Finland.” I Gästrikland lät Brusi resa en sten efter brodern Egil, som dog i Tavastland när Brusi ledde landets ledung. Finland betydde då troligen bara sydvästra delen, och Tavastland inlandet. Stenarna säger inte om männen var där för handel, plundring eller krig."
+      },
+      {
+        "rubrik": "Runor på finsk mark",
+        "ar": 1050,
+        "s": [
+          "FI NOR1998;14",
+          "FI SAO1987;38"
+        ],
+        "oppna": "FI SAO1987;38",
+        "vy": {
+          "c": [
+            24.6,
+            60.9
+          ],
+          "z": 5.8
+        },
+        "text": "I Finland finns bara några få runinskrifter från vikingatiden. Ett fragment av en runsten från Stora Ängesön i Åbolands skärgård bär namnet Þorfastr. Ett spänne från Tuukkala i Södra Savolax, långt inne i landet, har två namn: ”Bótvé, Hegvé äger mig.” Föremålet kan ha kommit dit genom handel eller giftermål; runorna visar kontakterna över havet, inte vem som bar spännet."
+      },
+      {
+        "rubrik": "Korståg och legender",
+        "ar": 1240,
+        "s": [
+          "G 319"
+        ],
+        "oppna": "G 319",
+        "vy": {
+          "c": [
+            22.0,
+            60.5
+          ],
+          "z": 5.4
+        },
+        "bild": "Hame Castle 2019-08.jpg",
+        "bildtext": "Tavastehus slott i dag",
+        "text": "Enligt legenden förde Erik den helige och biskop Henrik ett korståg till Finland på 1150-talet, men legenden skrevs långt senare och hur mycket som hände är omstritt. Säkrare är Birger jarls tåg till Tavastland, som Erikskrönikan berättar om och som brukar dateras till 1240-talet. Borgen i Tavastehus byggdes troligen något senare. På Gotland minns en gravhäll i Rute från samma tid en man ”som dog i Finland”."
+      },
+      {
+        "rubrik": "Ave Maria i Åbo",
+        "ar": 1400,
+        "s": [
+          "FI Harjula2016;220",
+          "FI Harjula2016;218",
+          "FI Harjula2016;222",
+          "FI Harjula2019;247"
+        ],
+        "oppna": "FI Harjula2016;220",
+        "vy": {
+          "c": [
+            22.273,
+            60.451
+          ],
+          "z": 9
+        },
+        "bild": "Turun tuomiokirkko 20091011.jpg",
+        "bildtext": "Åbo domkyrka i dag",
+        "text": "Åbo blev biskopsstad på 1200-talet och Finlands största stad. Vid utgrävningar i den medeltida stadskärnan, bland annat där museet Aboa Vetus ligger i dag, har man hittat bottnar av laggkärl och en kam med runor från 1300- och 1400-talen: ”Ave Maria” och ”Lev väl!”. Runorna levde alltså kvar som vardagsskrift även här, i en stad där svenska, finska och tyska hördes."
+      }
+    ]
+  },
+  {
     "id": "england",
     "n": "Englandsfararna",
     "kort": "Danagäld och Knut den stores här",

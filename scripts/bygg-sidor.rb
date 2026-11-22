@@ -61,9 +61,11 @@ def platsrad(r)
   [r['pl'], r['so'], landskap(r), r['co']].compact.uniq.join(', ')
 end
 
-# Registret: svenska och danska inskrifter per landskap, övriga per land.
+# Registret: svenska och danska inskrifter per landskap, norska per fylke, övriga per land.
+INDELNING = { 'Sverige' => 'landskap', 'Danmark' => 'landskap', 'Norge' => 'fylke' }
 def grupp(r)
-  %w[Sverige Danmark].include?(r['co']) ? (landskap(r) || "#{r['co']}, okänt landskap") : (r['co'] || 'Okänt land')
+  del = INDELNING[r['co']]
+  del ? (landskap(r) || "#{r['co']}, okänt #{del}") : (r['co'] || 'Okänt land')
 end
 
 def naturlig(signum)
@@ -121,6 +123,12 @@ def status_html(r)
     "<p class=\"status borta\"><b>Försvunnen.</b> Platsen nedan är den äldsta kända. #{kalla}</p>\n"
   elsif r['cx']
     "<p class=\"status\"><b>Flyttad.</b> Står i dag #{langd(avstand_km(r['x'], r['y'], r['cx'], r['cy']))} från sin äldsta kända plats.#{r['pm'] ? " #{esc(r['pm'])}" : ''}</p>\n"
+  elsif r['f'].to_s.start_with?('Mynt') && r['pl'] == 'Okänd'
+    # Som i visaInskrift(): runmynten saknar fyndplats, och databasen placerar dem där de präglades.
+    ort = if avstand_km(r['x'], r['y'], 13.19, 55.70) < 3 then 'Lund'
+          elsif avstand_km(r['x'], r['y'], 12.08, 55.64) < 3 then 'Roskilde'
+          end
+    "<p class=\"status\"><b>Fyndplatsen är okänd.</b> Myntet visas där det präglades#{ort ? ", i #{ort}" : ''}, och många mynt delar därför samma punkt på kartan.</p>\n"
   elsif r['pm']
     "<p class=\"status\">#{esc(r['pm'])}</p>\n"
   else
@@ -147,11 +155,12 @@ end
 
 def oversattning_html(r)
   return '' unless har_oversattning?(r)
+  sprak = r['tl'] == 'da' ? 'dansk' : 'engelsk'   # tl = "da": Hedebys danska texter, som i oversattningHtml()
   unless r['ts']
-    return "<blockquote>#{esc(r['t'])}#{r['tl'] == 'en' ? ' <span class="not">(engelsk översättning)</span>' : ''}</blockquote>\n"
+    return "<blockquote>#{esc(r['t'])}#{%w[en da].include?(r['tl']) ? " <span class=\"not\">(#{sprak} översättning)</span>" : ''}</blockquote>\n"
   end
-  "<blockquote class=\"ai\">#{esc(r['ts'])}\n<span class=\"ai-marke\">AI-översättning från databasens engelska, inte granskad av runolog</span></blockquote>\n" \
-    "<details class=\"engelsk\"><summary>Databasens engelska översättning</summary><p>#{esc(r['t'])}</p></details>\n"
+  "<blockquote class=\"ai\">#{esc(r['ts'])}\n<span class=\"ai-marke\">AI-översättning från databasens #{sprak}a, inte granskad av runolog</span></blockquote>\n" \
+    "<details class=\"engelsk\"><summary>Databasens #{sprak}a översättning</summary><p>#{esc(r['t'])}</p></details>\n"
 end
 
 def personer_html(r)
@@ -214,7 +223,7 @@ def stensida(r, bilder, resmal, nara)
   html << "<dl>\n"
   html << rad.call('Datering', datering(r) + (r['d'] ? " (#{r['d']})" : ''))
   html << rad.call('Period', r['p']) << rad.call('Stil', r['st']) << rad.call('Ristare', r['c'])
-  html << rad.call('Plats', r['pl']) << rad.call('Socken', r['so']) << rad.call('Landskap', [r['la'], r['co']].compact.join(', '))
+  html << rad.call('Plats', r['pl']) << rad.call('Socken', r['so']) << rad.call(r['co'] == 'Norge' ? 'Fylke' : 'Landskap', [r['la'], r['co']].compact.join(', '))
   html << rad.call('Äldre nr', [r['bn'], r['ln']].compact.join(', ')) << rad.call('Nämner', namner)
   html << "</dl>\n" << not_html(r)
   html << "<p class=\"lankar\"><a class=\"knapp\" href=\"#{esc(kartlank(r))}\">Visa på kartan och tidslinjen</a>\n"
@@ -262,12 +271,13 @@ def gruppsida(namn, lista_)
 end
 
 def registersida(grupper, antal)
-  html = huvud('Alla runinskrifter', "Register över #{antal} nordiska runinskrifter från år 150 till 1550, ordnade efter landskap och land.", 'index.html')
+  html = huvud('Alla runinskrifter', "Register över #{antal} nordiska runinskrifter från år 150 till 1550, ordnade efter landskap, fylke och land.", 'index.html')
   html << stig
-  html << "<article id=\"detalj\" class=\"ruta\">\n<h1>Alla inskrifter</h1>\n<p class=\"under\">#{antal} inskrifter efter landskap och land</p>\n"
+  html << "<article id=\"detalj\" class=\"ruta\">\n<h1>Alla inskrifter</h1>\n<p class=\"under\">#{antal} inskrifter efter landskap, fylke och land</p>\n"
   sverige, ovriga = grupper.partition { |_, l| l.first['co'] == 'Sverige' }
   danmark, ovriga = ovriga.partition { |_, l| l.first['co'] == 'Danmark' }
-  [['Sverige', sverige], ['Danmark', danmark], ['Övriga länder', ovriga]].each do |rubrik, del|
+  norge, ovriga = ovriga.partition { |_, l| l.first['co'] == 'Norge' }
+  [['Sverige', sverige], ['Danmark', danmark], ['Norge', norge], ['Övriga länder', ovriga]].each do |rubrik, del|
     html << "<h2>#{rubrik}</h2>\n<ul class=\"register kort\">\n"
     del.sort_by { |namn, _| namn }.each { |namn, l| html << "<li><a href=\"landskap-#{slug(namn)}.html\">#{esc(namn)}</a> <span>#{l.size}</span></li>\n" }
     html << "</ul>\n"

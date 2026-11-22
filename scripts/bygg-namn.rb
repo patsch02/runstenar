@@ -46,7 +46,8 @@ gemensam = ->(a, b) { i = 0; i += 1 while i < a.length && i < b.length && a[i] =
 # Ord med stor bokstav som inte är personnamn trots att de liknar ett ord i normaliseringen
 EJ_NAMN = %w[God Christ Mary Michael Saint Lord England Englandi Greece Greeks Denmark Gotland Jerusalem
   Saxony Finland Estonia Lombardy Serkland Sweden Swedes Norway Danes Frisians Holmr Garðar Garðaríki
-  Sigtuna Uppsala Hedeby Rome Bath London Holmgarðr Tábýr Virland Langbarðaland Tafeistaland Lífland Eistland]
+  Sigtuna Uppsala Hedeby Rome Bath London Holmgarðr Tábýr Virland Langbarðaland Tafeistaland Lífland Eistland
+  Lund Roskilde Viborg Ribe Ringsted Slagelse Odense Aarhus Dalby]   # myntorter på runmynten
 utanHak = ->(t) { t.gsub(/[\[\]()]/, '') }
 
 poster = {}

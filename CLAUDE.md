@@ -21,7 +21,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 
 ## Filer
 
-- `index.html` – panel (berättelser överst; en vald tur tar över panelen via klassen `turlage`. Sök, lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i js/grund.js).
+- `index.html` – två hopfällbara rutor: `#panel` till vänster (berättelser, museer, ordlista, källor; en vald tur tar över rutan via klassen `turlage`) och `#lagerpanel` till höger (sök och, under knappen "Kartlager", lagergrupperna Runinskrifter, "Var bodde man?", "Hur färdades man?" och "Makt och tro"; varje rad har kryssruta, symbol, antal och en i-knapp med lagrets förbehåll, och lager som inte följer tidslinjen märks "alltid"), detaljruta, tidslinje. Från start visas bara inskrifter, strandlinje, orter och leder (förvalen står i `lage` i js/grund.js).
 - Borttagna ur panelen för tydlighetens skull (kod och data finns kvar, se kommentaren vid `lage` i js/grund.js): Öde-namn, husgrunder och ödetomter, färdnamn, sjöspärrar och båtar, vårdkasar, skattfynd, offerplatser.
 - `style.css` – färger som CSS-variabler, ljust och mörkt läge (`--nu`, `--sedan`, `--accent` …). Formgivningen
   "museum i kvällsljus" (pergament/natt, rödockra som accent, Fraunces för rubriker och Inter för text från Google Fonts)
@@ -71,6 +71,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 |---|---|---|
 | runor.json (6 590 inskrifter) | RAÄ Runor-API (Samnordisk runtextdatabas) | bygg-data.sh + datering.jq (kan köras ensam på runor.json) + bygg-namn.rb (normaliserad text, personnamn och släktband ur cachen) + ai-oversattning.rb (fält `ts`: svensk AI-översättning ur `scripts/ai-oversattningar.json`, engelsk → svensk) |
 | vagar.json, gravfalt.json, odegardar.json, sjofart.json, forsvar.json, skatter.json, kult.json (offerplatser) | RAÄ fornlämningsregister via K-samsök | bygg-vagar/bebyggelse/sjofart/forsvar/skatter/tro |
+| norska poster (id `no:…`) i gravfalt.json, forsvar.json, sjofart.json, vagar.json (registrets ytor gjorda till mittlinjer där de är avlånga, annars ytor i fältet `y`) | Riksantikvarens Askeladden, OGC API på api.ra.no (NLOD 2.0) | bygg-askeladden.rb, körs efter de svenska |
 | ortnamn.json, fardnamn.json, kult.json (sakrala namn) | OpenStreetMap via Overpass (ofta överbelastad: frågorna är uppdelade och har omförsök) | bygg-ortnamn/fardnamn/tro |
 | kyrkor.json (med bild på Commons) | Wikidata | bygg-tro.sh |
 | bilder.json (signum → bild, ca 2 750 inskrifter) | Wikidata/Commons (sträng, fotograf och licens live från Commons API), annars RAÄ:s arkivbilder via K-samsök (objekt) | bygg-bilder.sh |
@@ -78,7 +79,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 | ordbok.json (`ord`: ordform → betydelse, `namn`: former som står med stor bokstav inne i en mening) | handskrivna `scripts/glosor.json` + namnformer ur runor.json | bygg-ordbok.rb |
 | orter.json, leder.json, resmal.json | handskrivna, ungefärliga | – |
 | tidsbild.json (hela tidslinjen: romersk järnålder och folkvandringstid 150–550, vendeltid 550–800, vikingatid 800–1050, tidig medeltid 1050–1250, hög- och senmedeltid 1250–1550; sorterad efter `a`, `b` är exklusivt) | handskrivna kort med foton på Commons (fynd, platser, tidens egna bilder; rekonstruktioner märkta), `personer` = foto av människor med siffror; schematiska figurer (`TB_FIGURER`) bara som reserv | – |
-| turer.json (berättelser: Salme, Rök, Jelling, England, Ingvar, Jarlabanke, Hillersjö, kvinnor som reste stenar, kristnandet, väringar i Grekland) | handskrivna; `bild` per tur, steg med `ar`, `s` (signum att markera), `vy`, `oppna`, `platser`, `linjer`, `bild`, `lager` | – |
+| turer.json (berättelser: Salme, Rök, Jelling, Norge i runor, Danernas rike, Österut till Finland, England, Ingvar, Jarlabanke, Hillersjö, kvinnor som reste stenar, kristnandet, väringar i Grekland) | handskrivna; `bild` per tur, steg med `ar`, `s` (signum att markera), `vy`, `oppna`, `platser`, `linjer`, `bild`, `lager` | – |
 | strandlinje | SGU:s strandförskjutningsmodell, WMS live (en karta per 100 år BP) | – |
 
 ## Förbehåll som ska stå kvar på sajten
@@ -86,7 +87,7 @@ Före publicering (commit och push till `main`, som GitHub Pages publicerar på 
 Många lager har tidsgränser eller klassningar som är våra antaganden, inte data: stildatering
 Rak/Fp/Pr 1–5 enligt Gräslund (fält `e` = 1, ej för danska stenar), årtal för de danska perioderna
 Helnæs-Gørlev–efter-Jelling (`e` = 2) och historisk datering av Jellingstenarna (`e` = 3), alla satta i
-`scripts/datering.jq`, gravfältens ålder efter gravtyp, kultnamn och fornborgar som
+`scripts/datering.jq`, gravfältens ålder efter gravtyp (norska gravar efter Askeladdens datering, odaterade som förhistoriska med okänd ålder; norska vägar som mittlinjer genom registrets ytor), kultnamn och fornborgar som
 tonas bort 1050–1150, ortnamnsperioder, ordmatchning i beskrivningar (resmål, "tidiga" båtar,
 skatternas period), personnamn och släktband som tolkats automatiskt ur översättningarna, svenska AI-översättningar (märkta, med databasens engelska under), runorna i "Läs ord för ord" (återskapade ur
 translittereringen med standardformer, inte ristarens egna), ordparningen (automatisk) och ordförklaringarna (en handskriven

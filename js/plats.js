@@ -5,7 +5,7 @@
 
 // Platsen stannar i webbläsaren: den sparas inte och skickas ingenstans. Adressen innehåller som vanligt
 // kartvyn (två decimaler, ungefär en kilometer), men inte själva platsen.
-// Vägarna är lämningar ur fornlämningsregistret (vagar.json): bevarade bitar, inte hela sträckningar,
+// Vägarna är lämningar ur RAÄ:s fornlämningsregister och norska Askeladden (vagar.json): bevarade bitar, inte hela sträckningar,
 // och odaterade. Runstenarna är de som finns kvar, på sin nuvarande plats om de har flyttats.
 const VADERSTRECK = ['norr', 'nordost', 'öster', 'sydost', 'söder', 'sydväst', 'väster', 'nordväst'];
 const HAR_MAX_KM = 30;       // längre bort än så räknas inte som "i närheten"
@@ -58,12 +58,12 @@ function harNara() {
 function ritaHar() {
   const { vagar: vagarNara, stenar } = harNara();
   const rad = (attr, rubrik, under, t) => `<li><button type="button" ${attr}><b>${esc(rubrik)}</b>
-    <span>${harLangd(t.m)} åt ${t.at}${under ? ` · ${esc(under)}` : ''}</span></button></li>`;
+    <span>${t.m < 15 ? 'Här, där du står' : `${harLangd(t.m)} åt ${t.at}`}${under ? ` · ${esc(under)}` : ''}</span></button></li>`;
   const vagtyp = { väg: 'Färdväg', bro: 'Bro', vad: 'Vadställe' };
   const vaglista = laddade.get('vagar') === 'fel' ? '<p class="not">Vägarna kunde inte hämtas just nu.</p>'
     : !vagar.length ? '<p class="not">Hämtar vägarna …</p>'
-    : vagarNara.length ? `<ul class="har-lista">${vagarNara.map((t) => rad(`data-vag="${t.i}"`, t.v.n ? `${vagtyp[t.v.t]}: ${t.v.n}` : vagtyp[t.v.t], t.v.so, t)).join('')}</ul>`
-    : `<p class="not">Inga vägar, broar eller vad i registret inom ${HAR_MAX_KM} km. Registret täcker bara Sverige.</p>`;
+    : vagarNara.length ? `<ul class="har-lista">${vagarNara.map((t) => rad(`data-vag="${t.i}"`, t.v.n ? `${vagtyp[t.v.t]}: ${t.v.n}` : vagtyp[t.v.t], t.v.so || t.v.la, t)).join('')}</ul>`
+    : `<p class="not">Inga vägar, broar eller vad i registren inom ${HAR_MAX_KM} km. Registren täcker bara Sverige och Norge.</p>`;
   const stenlista = stenar.length
     ? `<ul class="har-lista">${stenar.map((t) => rad(`data-sten="${t.i}"`, t.r.s, [t.r.pl, t.r.cx ? 'flyttad hit' : null].filter(Boolean).join(', '), t)).join('')}</ul>`
     : `<p class="not">Inga bevarade runstenar inom ${HAR_MAX_KM} km.</p>`;
@@ -76,7 +76,7 @@ function ritaHar() {
     ${vaglista}
     <h3>Runstenar i närheten</h3>
     ${stenlista}
-    <p class="not">Vägarna är lämningar ur fornlämningsregistret: bevarade bitar av hålvägar och vägbankar, broar och vad,
+    <p class="not">Vägarna är lämningar ur fornlämningsregistren i Sverige och Norge: bevarade bitar av hålvägar och vägbankar, broar och vad,
       inte hela sträckningar. De är odaterade och kan vara förhistoriska, medeltida eller yngre. Avstånden är fågelvägen
       från din plats. Platsen stannar i din webbläsare: den sparas inte och skickas inte vidare.</p>
     <p><button type="button" class="dela har-sluta">Sluta visa min plats</button></p>

@@ -32,7 +32,7 @@ function laggTillTurer() {
     const knapp = e.target.closest('button');
     if (!knapp) return;
     if (knapp.dataset.steg) gaTillSteg(+knapp.dataset.steg);
-    else if (knapp.dataset.sten) gaTillInskrift(runor[signumIndex.get(knapp.dataset.sten)]);
+    else if (knapp.dataset.sten) gaTillInskrift(runor[signumIndex.get(knapp.dataset.sten)], true);
     else if (knapp.classList.contains('tillbaka')) avslutaTur();
   });
 }
@@ -40,6 +40,8 @@ function laggTillTurer() {
 function startaTur(t) {
   tur = t;
   $('panel').classList.add('turlage');
+  $('lagerpanel').classList.add('turlage');   // turens markering hör till turen, inte till sökningen
+  sattBerattelserOppna(true, false);
   $('tur').hidden = false;
   gaTillSteg(0);
 }
@@ -53,8 +55,13 @@ function gaTillSteg(n) {
   for (const [flagga, id] of [['sedan', 'visa-sedan'], ['grov', 'visa-grov'], ['bevarade', 'visa-bevarade'], ['forsvunna', 'visa-forsvunna']]) {
     lage[flagga] = true; $(id).checked = true;
   }
-  if (!lage.typer.has('R')) { lage.typer.add('R'); document.querySelector('[data-typ="R"]').checked = true; ritaHistogram(); }
   const index = (st.s || []).map((s) => signumIndex.get(s)).filter((i) => i !== undefined);
+  // Runstenarna och föremålstyperna för stegets egna inskrifter (t.ex. runpinnar) slås på
+  const typer = new Set(['R', ...index.map((i) => runor[i].k)]);
+  if ([...typer].some((k) => !lage.typer.has(k))) {
+    for (const k of typer) { lage.typer.add(k); document.querySelector(`[data-typ="${k}"]`).checked = true; }
+    ritaHistogram();
+  }
   lage.fokus = index;   // övriga stenar tonas ner, även i steg utan egna stenar
   lage.ar = st.ar;
   uppdatera();
@@ -112,5 +119,6 @@ function avslutaTur() {
   $('detalj').hidden = true;
   $('tur').hidden = true;
   $('panel').classList.remove('turlage');
+  $('lagerpanel').classList.remove('turlage');
   skrivAdress(true);
 }
